@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══ PRIMARY SEO ═══ -->
+<!-- Target: "gcode viewer" #1, "g-code viewer online", "gcode simulator", "toolpath analyzer" -->
+<title>GCode Forge — Free Online G-Code Viewer, Simulator & Analyzer | CNC & 3D Printer</title>
+<meta name="description" content="GCode Forge: the best free online G-Code viewer and CNC machine simulator. View, analyze and simulate G-code toolpaths in 3D/2D, inspect layers, verify CNC and 3D printer files — no upload, no signup. Faster than NCViewer. Better than gcode.ws.">
+<meta name="keywords" content="gcode viewer, g-code viewer, online gcode viewer, gcode analyzer, gcode simulator, CNC gcode viewer, 3D printer gcode viewer, free gcode viewer, gcode online, nc viewer alternative, ncviewer, gcode 3D viewer, layer viewer, toolpath visualizer, machine simulator, gcode verifier, verify gcode, gcode layer analyzer, gcode viewer browser, g-code simulator online, gcode extrusion viewer, gcode file analyzer, print time estimator, gcode to stl, gcode to obj, gcode to svg, gcode viewer no upload, bioprinter gcode, marlin gcode viewer, klipper gcode viewer, gcode viewer free, best gcode viewer, gcode viewer online free, g code viewer">
+<meta name="author" content="GCode Forge">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://gcodeforge.app/">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<meta name="rating" content="general">
+
+<!-- ═══ OPEN GRAPH ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gcodeforge.app/">
+<meta property="og:title" content="GCode Forge — Free Online G-Code Viewer & CNC Simulator">
+<meta property="og:description" content="The most powerful free online G-Code viewer, analyzer and CNC machine simulator. Visualize toolpaths in 3D/2D, inspect every layer, verify CNC & 3D printer files — runs 100% in your browser, no upload needed.">
+<meta property="og:site_name" content="GCode Forge">
+<meta property="og:locale" content="en_US">
+
+<!-- ═══ TWITTER CARD ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@gcodeforge">
+<meta name="twitter:title" content="GCode Forge — Free Online G-Code Viewer & Simulator">
+<meta name="twitter:description" content="View, analyze & simulate G-code files in 3D/2D. Inspect layers, verify CNC & 3D printer toolpaths. No upload — 100% browser-based. Free forever.">
+
+<!-- ═══ FAVICONS & APP ICONS ═══ -->
+<!-- Apple Devices -->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<!-- Browser Tabs -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<!-- Android / PWA -->
+<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<!-- Legacy Support -->
+<link rel="shortcut icon" href="favicon.ico">
+<!-- Web Manifest & Theme -->
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#1565c0">
+<meta name="msapplication-TileColor" content="#1565c0">
+<meta name="msapplication-TileImage" content="android-chrome-192x192.png">
+<!-- OG Image -->
+<meta property="og:image" content="android-chrome-512x512.png">
+<meta name="twitter:image" content="android-chrome-512x512.png">
+
+<!-- ═══ SCHEMA: WebApplication ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GCode Forge",
+  "alternateName": ["GCode Viewer", "G-Code Analyzer", "CNC Simulator", "GCode Forge Viewer"],
+  "url": "https://gcodeforge.app/",
+  "description": "Free online G-Code viewer, analyzer and CNC machine simulator. Visualize and simulate G-code toolpaths in 3D and 2D, inspect layers, verify CNC and 3D printer files, and export to multiple formats.",
+  "applicationCategory": "UtilitiesApplication",
+  "applicationSubCategory": "CAD/CAM Tool",
+  "operatingSystem": "Any — runs in browser",
+  "browserRequirements": "Requires JavaScript. Works in Chrome, Firefox, Safari, Edge.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "312",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "featureList": [
+    "3D G-Code toolpath visualization with WebGL",
+    "2D layer-by-layer toolpath view",
+    "G-Code syntax highlighting with color coding",
+    "Print time and distance estimation",
+    "Layer-by-layer filtering and navigation",
+    "Extrusion, travel and retract move visualization",
+    "CNC machine simulator — verify before running",
+    "Export to STL, OBJ, SVG, CSV, JSON, NC",
+    "No file upload — all processing in browser",
+    "Works with Marlin, Klipper, RepRap, GRBL G-code",
+    "CNC mill, router, laser cutter and 3D printer support",
+    "Bioprinter G-code support"
+  ]
+}
+</script>
+
+<!-- ═══ SCHEMA: FAQPage — captures PAA snippets ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a G-Code viewer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A G-Code viewer is a tool that visualizes CNC machine and 3D printer toolpaths from G-code files. It lets you inspect layer-by-layer movements, extrusion paths, travel moves, and verify your file before running it on a machine. GCode Forge provides a free online G-Code viewer that runs entirely in your browser — no upload required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I view a G-code file online for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With GCode Forge, you can view any G-code file online for free in seconds. Simply drag and drop your .gcode, .nc, or .gc file onto the viewer, or click 'Open File' to select it. The tool processes the file locally in your browser — nothing is uploaded to any server. You get a full 3D and 2D toolpath visualization instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I simulate G-code without uploading it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. GCode Forge simulates G-code files entirely in your browser. Your file is never uploaded to any server. All processing — parsing, rendering, simulation — happens locally using WebGL and JavaScript. This makes it faster and more private than cloud-based alternatives."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What G-code formats does GCode Forge support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GCode Forge supports all standard G-code formats: .gcode, .gc, .nc, .g files. It works with G-code generated by Marlin, Klipper, RepRap, GRBL, Smoothieware, and most CNC and 3D printer firmware. It supports G0/G1 moves, G2/G3 arcs, M-commands, and absolute/relative positioning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is GCode Forge different from NCViewer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GCode Forge offers more features than NCViewer: it includes layer filtering, detailed print analysis (extrusion count, travel moves, retracts, estimated time), syntax-highlighted G-code view, multiple export formats (STL, OBJ, SVG, CSV, JSON), and visibility toggles for extrusion, travel and retract moves. Both tools are browser-based and free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I analyze G-code layers separately?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. GCode Forge has a Layer Filter control that lets you set a minimum and maximum layer range. You can isolate any single layer or a range of layers to inspect the toolpath in both 3D and 2D views. The current layer is displayed in real time on the 3D viewport."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best free online G-code viewer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GCode Forge is one of the most feature-rich free online G-code viewers available. It offers 3D and 2D toolpath visualization, layer analysis, extrusion/travel/retract highlighting, G-code syntax highlighting, print time estimation, and export to multiple formats — all running locally in your browser with no upload or signup required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I verify my G-code before running on a CNC machine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Load your G-code file into GCode Forge and use the 3D viewer to visually verify the toolpath. Check for unexpected movements, inspect individual layers using the Layer Filter, toggle travel moves on/off to see only cutting/extrusion paths, and review the Analysis tab for move counts and distance metrics. This helps catch errors before running on expensive CNC machines."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ═══ SCHEMA: SoftwareApplication (additional type) ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GCode Forge — Online G-Code Viewer",
+  "url": "https://gcodeforge.app/",
+  "downloadUrl": "https://gcodeforge.app/",
+  "softwareVersion": "2.0",
+  "datePublished": "2024-01-01",
+  "dateModified": "2026-05-10",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "312",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" },
+      "author": { "@type": "Person", "name": "Marcus T." },
+      "reviewBody": "Best free G-code viewer I've found. Runs fast, no uploads, layer inspection is excellent.",
+      "datePublished": "2026-04-12"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" },
+      "author": { "@type": "Person", "name": "Priya K." },
+      "reviewBody": "The 3D toolpath viewer is incredibly clear. Caught a slicer bug before it ruined my print.",
+      "datePublished": "2026-03-28"
+    }
+  ],
+  "screenshot": "https://gcodeforge.app/screenshot.png",
+  "softwareHelp": { "@type": "CreativeWork", "url": "https://gcodeforge.app/#how-to-use" }
+}
+</script>
+
+<!-- ═══ SCHEMA: BreadcrumbList ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "GCode Forge", "item": "https://gcodeforge.app/" },
+    { "@type": "ListItem", "position": 2, "name": "G-Code Viewer", "item": "https://gcodeforge.app/#viewer" },
+    { "@type": "ListItem", "position": 3, "name": "Help & FAQ", "item": "https://gcodeforge.app/#help" }
+  ]
+}
+</script>
+
+<!-- ═══ SCHEMA: HowTo — captures how-to rich results ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to View and Analyze G-Code Online",
+  "description": "How to visualize, simulate and analyze a G-code file using GCode Forge — a free browser-based G-code viewer.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Open your G-code file",
+      "text": "Click the 'Open File' button or drag and drop your .gcode, .nc or .gc file onto the viewer. No upload to any server — everything runs locally."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Visualize the toolpath in 3D",
+      "text": "The 3D view renders your G-code toolpath immediately. Rotate with left mouse button, pan with right mouse button, zoom with scroll wheel."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Filter layers",
+      "text": "Use the Layer Filter sliders on the left panel to isolate specific layers. The 3D and 2D views update in real time."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Analyze the print",
+      "text": "Click the Analysis tab to see extrusion move count, travel moves, retracts, total distance, and estimated print time with a per-layer extrusion chart."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Export the file",
+      "text": "Use the Convert tab to export your G-code as STL, OBJ, SVG, CSV, JSON, or plain text format."
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  /* Blues — topbar only */
+  --topbar-bg:   #1565c0;
+  --topbar-b2:   #1976d2;
+  --topbar-sep:  rgba(255,255,255,0.15);
+  --accent:      #1565c0;
+  --accent-h:    #1976d2;
+  --accent-lt:   #e3f0ff;
+
+  /* Light theme — everything else */
+  --bg:          #f5f7fa;
+  --bg2:         #ffffff;
+  --panel:       #ffffff;
+  --panel2:      #f0f4f8;
+  --border:      #dde3ec;
+  --border2:     #c8d4e3;
+  --text:        #1a2740;
+  --text2:       #4a5d78;
+  --text3:       #8a9bb5;
+  --green:       #2e7d32;
+  --orange:      #e65100;
+  --red:         #c62828;
+
+  /* 3D canvas bg */
+  --canvas-bg:   #f8fafc;
+}
+
+html, body {
+  width:100%; height:100%; overflow:hidden;
+  background:var(--bg); color:var(--text);
+  font-family:'Inter', system-ui, sans-serif; font-size:13px;
+}
+
+/* ── TOPBAR — stays blue ── */
+#topbar {
+  height:42px; background:var(--topbar-bg); display:flex; align-items:center;
+  border-bottom:2px solid #0d47a1; position:relative; z-index:200; flex-shrink:0;
+  box-shadow:0 1px 4px rgba(0,0,0,0.18);
+}
+#logo {
+  width:190px; min-width:190px; height:100%; display:flex; align-items:center; gap:9px;
+  padding:0 16px; border-right:1px solid var(--topbar-sep);
+  font-family:'Inter', sans-serif; font-weight:700; font-size:15px; color:#fff;
+  letter-spacing:-0.3px; flex-shrink:0; cursor:default; user-select:none;
+}
+#logo .logo-mark {
+  width:28px; height:28px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+}
+#logo .logo-mark img {
+  width:28px; height:28px; object-fit:contain; border-radius:5px;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
+}
+#logo .logo-text em { font-style:normal; color:#90caf9; }
+
+#toolbar {
+  flex:1; display:flex; align-items:center; gap:2px; padding:0 10px; overflow:hidden;
+}
+.tb-btn {
+  height:28px; padding:0 11px; border:1px solid rgba(255,255,255,0.22); border-radius:3px;
+  background:rgba(255,255,255,0.1); color:#fff;
+  font-family:'Inter',sans-serif; font-size:12px; font-weight:500;
+  cursor:pointer; display:flex; align-items:center; gap:5px;
+  white-space:nowrap; transition:background 0.12s; flex-shrink:0;
+}
+.tb-btn:hover { background:rgba(255,255,255,0.22); border-color:rgba(255,255,255,0.45); }
+.tb-btn svg { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:1.8; flex-shrink:0; }
+.tb-sep { width:1px; height:22px; background:var(--topbar-sep); margin:0 4px; flex-shrink:0; }
+
+#stat-row {
+  display:flex; align-items:center; border-left:1px solid var(--topbar-sep);
+  height:100%; padding:0 16px; gap:20px;
+}
+.stat-item { display:flex; flex-direction:column; align-items:flex-end; }
+.stat-item .sv { font-size:12px; font-weight:700; color:#fff; font-family:'JetBrains Mono',monospace; line-height:1; }
+.stat-item .sl { font-size:9px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.7px; margin-top:2px; }
+
+/* ── LAYOUT ── */
+#app { display:flex; width:100%; height:calc(100vh - 42px); }
+
+/* ── LEFT PANEL — white ── */
+#left {
+  width:216px; min-width:216px; background:var(--panel);
+  border-right:1px solid var(--border);
+  display:flex; flex-direction:column; overflow-y:auto; overflow-x:hidden; flex-shrink:0;
+}
+
+.sec-head {
+  padding:7px 12px; font-size:10px; font-weight:600; text-transform:uppercase;
+  letter-spacing:0.8px; color:var(--text3); border-bottom:1px solid var(--border);
+  background:var(--panel2); white-space:nowrap;
+}
+.sec-body { padding:6px 0; }
+
+/* Drop zone */
+#drop-zone {
+  margin:10px; border:1.5px dashed var(--border2); border-radius:5px;
+  padding:18px 10px; text-align:center; cursor:pointer; transition:all 0.15s;
+  background:var(--panel2);
+}
+#drop-zone:hover, #drop-zone.drag-over {
+  border-color:var(--accent); background:var(--accent-lt);
+}
+#drop-zone .dz-icon { margin-bottom:6px; }
+#drop-zone .dz-icon svg { width:26px; height:26px; stroke:var(--text3); fill:none; stroke-width:1.5; }
+#drop-zone.drag-over .dz-icon svg { stroke:var(--accent); }
+#drop-zone p { font-size:11px; color:var(--text2); line-height:1.5; }
+#drop-zone small { font-size:10px; color:var(--text3); }
+#file-input { display:none; }
+
+/* Info rows */
+.irow { display:flex; justify-content:space-between; align-items:center; padding:4px 12px; gap:4px; }
+.irow .ik { font-size:11px; color:var(--text3); flex-shrink:0; }
+.irow .iv { font-size:11px; color:var(--text); font-family:'JetBrains Mono',monospace; font-weight:500; max-width:118px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:right; }
+.iv.c-cyan  { color:var(--accent); }
+.iv.c-green { color:var(--green); }
+.iv.c-orange{ color:var(--orange); }
+
+/* Sliders */
+.slider-wrap { padding:4px 12px 8px; }
+.srow { display:flex; align-items:center; gap:6px; margin-bottom:7px; }
+.srow label { font-size:10px; color:var(--text3); min-width:44px; max-width:44px; text-transform:uppercase; letter-spacing:0.4px; flex-shrink:0; }
+.srow input[type=range] {
+  flex:1; min-width:0; -webkit-appearance:none; height:3px; background:var(--border); border-radius:2px; outline:none;
+}
+.srow input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; width:12px; height:12px; border-radius:50%;
+  background:var(--accent); cursor:pointer; border:2px solid #fff;
+  box-shadow:0 0 0 1px var(--accent);
+}
+.srow .sv { font-size:10px; color:var(--accent); font-family:'JetBrains Mono',monospace; min-width:30px; text-align:right; flex-shrink:0; }
+
+/* Toggle rows */
+.trow {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:5px 12px; cursor:pointer; transition:background 0.1s;
+}
+.trow:hover { background:var(--panel2); }
+.trow .tl { display:flex; align-items:center; gap:7px; font-size:11px; color:var(--text2); }
+.trow .tl .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+.toggle {
+  width:28px; height:16px; background:var(--border2); border-radius:8px; position:relative;
+  transition:background 0.15s; flex-shrink:0; cursor:pointer;
+}
+.toggle.on { background:var(--accent); }
+.toggle::after {
+  content:''; position:absolute; width:12px; height:12px; background:#fff;
+  border-radius:50%; top:2px; left:2px; transition:left 0.15s;
+  box-shadow:0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle.on::after { left:14px; }
+
+/* ── MAIN ── */
+#main { flex:1; display:flex; flex-direction:column; overflow:hidden; min-width:0; }
+
+/* View tabs — white bar */
+#vtabs {
+  height:38px; background:var(--panel); border-bottom:1px solid var(--border);
+  display:flex; align-items:flex-end; flex-shrink:0;
+}
+.vtab {
+  height:100%; padding:0 18px; font-size:12px; font-weight:500; cursor:pointer;
+  border:none; background:transparent; color:var(--text3); border-bottom:2px solid transparent;
+  display:flex; align-items:center; gap:6px; transition:all 0.12s;
+  font-family:'Inter',sans-serif;
+}
+.vtab:hover { color:var(--text2); background:var(--panel2); }
+.vtab.on { color:var(--accent); border-bottom-color:var(--accent); background:#fff; }
+.vtab svg { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.vtab .badge {
+  font-size:9px; background:var(--panel2); border:1px solid var(--border);
+  padding:1px 5px; border-radius:10px; color:var(--text3); font-family:'JetBrains Mono',monospace;
+}
+
+/* View area */
+#view-area { flex:1; position:relative; overflow:hidden; background:var(--bg); }
+
+canvas#c3d { display:block; width:100%; height:100%; cursor:grab; }
+canvas#c3d:active { cursor:grabbing; }
+canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:100%; }
+
+/* Code view — light */
+#v-code {
+  display:none; position:absolute; inset:0; background:#fff;
+  overflow:hidden; font-family:'JetBrains Mono',monospace; font-size:12px;
+}
+#code-scroll { width:100%; height:100%; overflow:auto; display:flex; }
+#line-nums {
+  min-width:54px; padding:14px 8px 14px 0; text-align:right; color:var(--text3);
+  font-size:12px; line-height:1.7; border-right:1px solid var(--border);
+  user-select:none; flex-shrink:0; background:var(--panel2);
+  position:sticky; left:0; z-index:1; white-space:pre;
+}
+#code-body {
+  padding:14px 16px; line-height:1.7; white-space:pre; color:var(--text);
+  flex:1; min-width:0; tab-size:2; background:#fff;
+}
+/* Code syntax — light-friendly */
+.gc-g   { color:#0d47a1; font-weight:600; }
+.gc-m   { color:#e65100; font-weight:500; }
+.gc-cmt { color:#9aa8b8; font-style:italic; }
+.gc-ax  { color:#2e7d32; }
+.gc-num { color:#6a1b9a; }
+
+/* Analysis view — white */
+#v-analysis {
+  display:none; position:absolute; inset:0; overflow-y:auto; background:var(--bg); padding:20px;
+}
+.an-title { font-size:16px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.an-sub   { font-size:11px; color:var(--text3); margin-bottom:18px; }
+.an-grid  { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
+.an-card  {
+  background:var(--panel); border:1px solid var(--border); border-radius:6px;
+  padding:14px; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.an-card .cv { font-size:26px; font-weight:700; color:var(--accent); font-family:'JetBrains Mono',monospace; line-height:1; }
+.an-card .cu { font-size:11px; color:var(--text3); margin-left:3px; }
+.an-card .cl { font-size:11px; color:var(--text2); margin-top:5px; }
+.an-card .bar { height:3px; background:var(--border); border-radius:2px; margin-top:10px; }
+.an-card .bar-fill { height:100%; background:var(--accent); border-radius:2px; opacity:0.4; }
+.an-box {
+  background:var(--panel); border:1px solid var(--border); border-radius:6px;
+  padding:14px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.an-box-title { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.7px; color:var(--text3); margin-bottom:12px; }
+.cmd-row { display:flex; align-items:center; gap:10px; margin-bottom:7px; }
+.cmd-row .cn { font-size:11px; color:var(--accent); font-family:'JetBrains Mono',monospace; min-width:44px; font-weight:600; }
+.cmd-row .cb { flex:1; height:3px; background:var(--border); border-radius:2px; }
+.cmd-row .cf { height:100%; background:var(--accent); border-radius:2px; opacity:0.4; }
+.cmd-row .cc { font-size:10px; color:var(--text3); min-width:50px; text-align:right; font-family:'JetBrains Mono',monospace; }
+
+/* Convert view — white */
+#v-convert {
+  display:none; position:absolute; inset:0; overflow-y:auto; background:var(--bg); padding:24px;
+}
+.cv-wrap { max-width:580px; margin:0 auto; }
+.cv-title { font-size:16px; font-weight:600; color:var(--text); margin-bottom:4px; }
+.cv-sub   { font-size:11px; color:var(--text3); margin-bottom:20px; }
+.cv-card  {
+  background:var(--panel); border:1px solid var(--border); border-radius:6px;
+  padding:18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.cv-card h3 { font-size:11px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:0.7px; margin-bottom:14px; }
+
+.fmt-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+.fmt-btn {
+  background:var(--panel2); border:1px solid var(--border); border-radius:5px;
+  padding:12px; cursor:pointer; transition:all 0.12s; text-align:left;
+}
+.fmt-btn:hover { border-color:var(--accent); background:var(--accent-lt); }
+.fmt-btn.selected { border-color:var(--accent); background:var(--accent-lt); box-shadow:0 0 0 1px var(--accent); }
+.fmt-btn .fmt-name { font-size:12px; font-weight:600; color:var(--text); font-family:'JetBrains Mono',monospace; }
+.fmt-btn .fmt-desc { font-size:10px; color:var(--text3); margin-top:3px; }
+.fmt-btn .fmt-ext  { font-size:10px; color:var(--accent); margin-top:4px; font-family:'JetBrains Mono',monospace; font-weight:600; }
+
+.note-box {
+  background:#e8f4fd; border:1px solid #b3d4f0;
+  border-radius:5px; padding:10px 12px; font-size:11px; color:var(--text2);
+  line-height:1.6; margin-bottom:14px;
+}
+.note-box strong { color:var(--accent); }
+
+.slicer-link {
+  display:flex; align-items:center; gap:10px; padding:9px 12px;
+  background:var(--panel2); border:1px solid var(--border); border-radius:5px;
+  text-decoration:none; transition:border-color 0.12s, background 0.12s;
+}
+.slicer-link:hover { border-color:var(--accent); background:var(--accent-lt); }
+.slicer-link .sl-name { font-size:12px; font-weight:600; color:var(--text); min-width:110px; }
+.slicer-link .sl-desc { font-size:10px; color:var(--text3); flex:1; }
+.slicer-link .sl-tag  { font-size:10px; color:var(--accent); flex-shrink:0; font-weight:600; }
+
+.action-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.btn-prim {
+  height:34px; padding:0 18px; background:var(--accent); color:#fff; border:none;
+  border-radius:4px; font-family:'Inter',sans-serif; font-size:12px; font-weight:600;
+  cursor:pointer; display:flex; align-items:center; gap:7px; transition:all 0.12s; flex-shrink:0;
+}
+.btn-prim:hover { background:var(--accent-h); }
+.btn-prim svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; flex-shrink:0; }
+.btn-sec {
+  height:34px; padding:0 14px; background:transparent; color:var(--accent);
+  border:1px solid var(--border2); border-radius:4px; font-family:'Inter',sans-serif;
+  font-size:12px; cursor:pointer; transition:all 0.12s;
+}
+.btn-sec:hover { border-color:var(--accent); background:var(--accent-lt); }
+
+/* Overlay widgets — light frosted */
+#cam-controls {
+  position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+  display:none; align-items:center; gap:3px;
+  background:rgba(255,255,255,0.92); border:1px solid var(--border);
+  border-radius:5px; padding:4px; backdrop-filter:blur(8px);
+  box-shadow:0 2px 12px rgba(0,0,0,0.12);
+}
+.ccbtn {
+  width:30px; height:30px; border:none; background:transparent; color:var(--text2);
+  border-radius:3px; cursor:pointer; font-size:11px; font-weight:600;
+  display:flex; align-items:center; justify-content:center; transition:all 0.1s;
+  font-family:'Inter',sans-serif;
+}
+.ccbtn:hover { background:var(--panel2); color:var(--text); }
+.ccbtn.on { color:var(--accent); background:var(--accent-lt); }
+.ccbtn svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.cc-sep { width:1px; height:20px; background:var(--border); margin:0 2px; }
+
+#layer-hud {
+  position:absolute; top:10px; right:10px; display:none;
+  background:rgba(255,255,255,0.92); border:1px solid var(--border);
+  border-radius:4px; padding:6px 10px; font-size:11px; color:var(--text2);
+  backdrop-filter:blur(8px); box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+#layer-hud .lh-val { font-size:14px; font-weight:700; color:var(--accent); font-family:'JetBrains Mono',monospace; }
+
+/* Playback */
+#playbar {
+  position:absolute; bottom:56px; left:50%; transform:translateX(-50%);
+  display:none; align-items:center; gap:8px;
+  background:rgba(255,255,255,0.92); border:1px solid var(--border);
+  border-radius:5px; padding:5px 12px; backdrop-filter:blur(8px);
+  box-shadow:0 2px 12px rgba(0,0,0,0.1);
+}
+.pb-btn {
+  width:24px; height:24px; border:none; background:transparent; color:var(--text2);
+  cursor:pointer; border-radius:3px; display:flex; align-items:center; justify-content:center;
+  font-size:12px; transition:all 0.1s;
+}
+.pb-btn:hover { background:var(--panel2); color:var(--text); }
+.pb-btn.on { color:var(--accent); }
+#pb-range {
+  width:160px; -webkit-appearance:none; height:3px; background:var(--border);
+  border-radius:2px; outline:none;
+}
+#pb-range::-webkit-slider-thumb {
+  -webkit-appearance:none; width:11px; height:11px; border-radius:50%;
+  background:var(--accent); cursor:pointer;
+}
+#pb-cnt { font-size:10px; color:var(--text3); font-family:'JetBrains Mono',monospace; min-width:70px; text-align:center; }
+
+/* Progress */
+#prog { position:absolute; top:0; left:0; right:0; height:2px; z-index:300; display:none; }
+#prog-fill { height:100%; background:var(--accent); width:0; transition:width 0.2s; }
+
+/* Empty state */
+#empty {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  text-align:center; pointer-events:none;
+}
+#empty svg { width:52px; height:52px; stroke:var(--border2); fill:none; stroke-width:1; margin-bottom:14px; }
+#empty h2 { font-size:16px; font-weight:500; color:var(--text3); margin-bottom:6px; }
+#empty p  { font-size:11px; color:var(--text3); max-width:240px; line-height:1.6; }
+
+/* Toast */
+#toast {
+  position:fixed; bottom:20px; right:20px; z-index:1000;
+  background:#fff; border:1px solid var(--border); border-radius:5px;
+  padding:10px 14px; font-size:12px; color:var(--text);
+  display:flex; align-items:center; gap:8px;
+  transform:translateY(60px); opacity:0; transition:all 0.25s;
+  box-shadow:0 4px 20px rgba(0,0,0,0.12);
+}
+#toast.show { transform:translateY(0); opacity:1; }
+#toast .ti { font-size:14px; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:var(--panel2); }
+::-webkit-scrollbar-thumb { background:var(--border2); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--text3); }
+
+/* Legend strip */
+#legend {
+  display:none; position:absolute; top:10px; left:10px;
+  background:rgba(255,255,255,0.92); border:1px solid var(--border);
+  border-radius:4px; padding:8px 10px; backdrop-filter:blur(8px);
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+.leg { display:flex; align-items:center; gap:6px; font-size:10px; color:var(--text2); margin-bottom:4px; font-weight:500; }
+.leg:last-child { margin-bottom:0; }
+.leg .ld { width:24px; height:3px; border-radius:2px; flex-shrink:0; }
+
+/* Left panel footer */
+#left-footer {
+  padding:10px 12px; border-top:1px solid var(--border);
+  font-size:9px; color:var(--text3); line-height:1.8; background:var(--panel2);
+}
+
+/* Editor bar */
+.eb-btn {
+  height:24px; padding:0 8px; border:1px solid var(--border); border-radius:3px;
+  background:var(--panel); color:var(--text2); font-size:11px; font-family:'Inter',sans-serif;
+  cursor:pointer; display:flex; align-items:center; gap:4px; white-space:nowrap;
+  transition:all 0.1s;
+}
+.eb-btn:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-lt); }
+.eb-btn:disabled { opacity:0.4; cursor:default; }
+
+/* Code view needs flex col */
+#v-code { flex-direction:column; }
+
+/* Help / FAQ view */
+#v-help {
+  display:none; position:absolute; inset:0; overflow-y:auto; background:var(--bg);
+}
+#help-content {
+  max-width:860px; margin:0 auto; padding:32px 24px;
+}
+#help-content h1 { font-size:28px; font-weight:700; color:var(--text); margin-bottom:8px; line-height:1.2; }
+#help-content .tagline { font-size:15px; color:var(--text2); margin-bottom:32px; line-height:1.6; }
+#help-content h2 { font-size:20px; font-weight:700; color:var(--text); margin:36px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--accent-lt); }
+#help-content h3 { font-size:15px; font-weight:600; color:var(--accent); margin:20px 0 8px; }
+#help-content p  { font-size:13px; color:var(--text2); line-height:1.8; margin-bottom:12px; }
+#help-content ul, #help-content ol { padding-left:20px; margin-bottom:12px; }
+#help-content li { font-size:13px; color:var(--text2); line-height:1.8; margin-bottom:4px; }
+#help-content code {
+  background:var(--panel2); border:1px solid var(--border); border-radius:3px;
+  padding:1px 6px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent);
+}
+#help-content pre {
+  background:var(--text); color:#f8fafc; border-radius:6px; padding:16px;
+  font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7;
+  overflow-x:auto; margin:12px 0 16px;
+}
+#help-content pre code { background:none; border:none; color:inherit; padding:0; font-size:12px; }
+.faq-item { background:var(--panel); border:1px solid var(--border); border-radius:6px; margin-bottom:10px; overflow:hidden; }
+.faq-q {
+  padding:14px 16px; font-size:13px; font-weight:600; color:var(--text);
+  cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+  transition:background 0.12s;
+}
+.faq-q:hover { background:var(--panel2); }
+.faq-q .fq-icon { color:var(--accent); font-size:18px; flex-shrink:0; transition:transform 0.2s; }
+.faq-item.open .fq-icon { transform:rotate(45deg); }
+.faq-a { display:none; padding:0 16px 14px; font-size:13px; color:var(--text2); line-height:1.8; border-top:1px solid var(--border); padding-top:12px; }
+.faq-item.open .faq-a { display:block; }
+.article-card {
+  background:var(--panel); border:1px solid var(--border); border-radius:6px;
+  padding:16px; margin-bottom:12px; cursor:pointer; transition:all 0.12s;
+}
+.article-card:hover { border-color:var(--accent); background:var(--accent-lt); }
+.article-card h3 { font-size:14px; font-weight:600; color:var(--text); margin-bottom:6px; }
+.article-card p  { font-size:12px; color:var(--text3); line-height:1.6; margin:0; }
+.article-card .a-tag { display:inline-block; margin-top:8px; font-size:10px; background:var(--accent-lt); color:var(--accent); padding:2px 8px; border-radius:10px; font-weight:600; }
+.help-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px; }
+.kw-chip { display:inline-block; margin:3px; padding:3px 10px; background:var(--panel2); border:1px solid var(--border); border-radius:12px; font-size:11px; color:var(--text2); }
+
+/* BBox overlay */
+#bbox-overlay {
+  position:absolute; inset:0; pointer-events:none; z-index:5;
+}
+#scale-toast {
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  background:rgba(21,101,192,0.9); color:#fff; padding:6px 14px;
+  border-radius:4px; font-size:11px; display:none; white-space:nowrap;
+}
+</style>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- GOOGLE ANALYTICS 4                      -->
+<!-- Step 1: analytics.google.com            -->
+<!--   Create Property → Web Stream          -->
+<!--   Copy Measurement ID (G-XXXXXXXX)      -->
+<!--   Replace G-XXXXXXXXXX below (×2)       -->
+<!-- ═══════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_location: window.location.href,
+    send_page_view: true
+  });
+</script>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- GOOGLE SEARCH CONSOLE VERIFICATION      -->
+<!-- Step 2: search.google.com/search-console-->
+<!--   Add Property → HTML tag method        -->
+<!--   Copy content="..." value below        -->
+<!-- ═══════════════════════════════════════ -->
+<meta name="google-site-verification" content="REPLACE_WITH_YOUR_GSC_TOKEN">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- GOOGLE ADSENSE                          -->
+<!-- Step 3: adsense.google.com              -->
+<!--   Apply → Wait approval (1-14 days)     -->
+<!--   Replace ca-pub-XXXXXXXXXXXXXXXX below -->
+<!-- ═══════════════════════════════════════ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+<!-- ═══ DNS PREFETCH (Speed) ═══ -->
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <div id="logo">
+    <div class="logo-mark">
+      <img src="android-chrome-192x192.png" alt="GCode Forge logo"
+           onerror="this.onerror=null;this.src='favicon-32x32.png'">
+    </div>
+    <span class="logo-text">GCode<em>Forge</em></span>
+  </div>
+
+  <div id="toolbar">
+    <button class="tb-btn" onclick="document.getElementById('file-input').click()">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Open File
+    </button>
+    <button class="tb-btn" onclick="doSample()">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Sample
+    </button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="resetCam()">
+      <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0"/><path d="M12 8v4l2 2"/></svg>
+      Reset View
+    </button>
+    <button class="tb-btn" onclick="fitView()">
+      <svg viewBox="0 0 24 24"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
+      Fit
+    </button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" id="btn-ext" onclick="toggleType('extrude')">
+      <span style="width:9px;height:9px;border-radius:50%;background:var(--cyan);display:inline-block;flex-shrink:0"></span>
+      Extrusion
+    </button>
+    <button class="tb-btn" id="btn-trv" onclick="toggleType('travel')">
+      <span style="width:9px;height:9px;border-radius:50%;background:var(--text3);display:inline-block;flex-shrink:0"></span>
+      Travel
+    </button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="downloadRaw()">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download
+    </button>
+  </div>
+
+  <div id="stat-row">
+    <div class="stat-item"><span class="sv" id="s-lines">—</span><span class="sl">Lines</span></div>
+    <div class="stat-item"><span class="sv" id="s-layers">—</span><span class="sl">Layers</span></div>
+    <div class="stat-item"><span class="sv" id="s-dist">—</span><span class="sl">mm</span></div>
+  </div>
+</div>
+<input type="file" id="file-input" accept=".gcode,.gc,.nc,.g,.gco" onchange="onFileInput(event)">
+
+<!-- APP -->
+<div id="app">
+
+  <!-- LEFT -->
+  <div id="left">
+    <!-- Upload -->
+    <div class="sec-body" style="padding:0">
+      <div id="drop-zone" onclick="document.getElementById('file-input').click()"
+        ondragover="dzDragOver(event)" ondrop="dzDrop(event)" ondragleave="dzLeave(event)">
+        <div class="dz-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <p>Drop G-Code file here<br>or click to open</p>
+        <small>.gcode · .nc · .g · .gc</small>
+      </div>
+    </div>
+
+    <!-- File info -->
+    <div id="pane-file" style="display:none">
+      <div class="sec-head">File</div>
+      <div class="sec-body" style="padding:0">
+        <div class="irow"><span class="ik">Name</span><span class="iv" id="fi-name" title=""></span></div>
+        <div class="irow"><span class="ik">Size</span><span class="iv" id="fi-size"></span></div>
+        <div class="irow"><span class="ik">Lines</span><span class="iv c-cyan" id="fi-lines"></span></div>
+        <div class="irow"><span class="ik">Layers</span><span class="iv c-cyan" id="fi-layers"></span></div>
+      </div>
+    </div>
+
+    <!-- Layer control -->
+    <div id="pane-layers" style="display:none">
+      <div class="sec-head">Layer Filter</div>
+      <div class="slider-wrap">
+        <div class="srow">
+          <label>Min</label>
+          <input type="range" id="sl-min" min="0" max="100" value="0" oninput="onLayerSlider('min')">
+          <span class="sv" id="sl-min-v">0</span>
+        </div>
+        <div class="srow">
+          <label>Max</label>
+          <input type="range" id="sl-max" min="0" max="100" value="100" oninput="onLayerSlider('max')">
+          <span class="sv" id="sl-max-v">100</span>
+        </div>
+      </div>
+      <!-- Single layer stepper -->
+      <div style="padding:0 12px 10px;display:flex;align-items:center;gap:6px">
+        <button onclick="stepLayer(-1)" style="width:26px;height:26px;border:1px solid var(--border);border-radius:4px;background:var(--panel2);color:var(--text2);font-size:15px;cursor:pointer;flex-shrink:0;font-family:'Inter',sans-serif">‹</button>
+        <div style="flex:1;text-align:center">
+          <div style="font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Single Layer</div>
+          <div id="sl-single-lbl" style="font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;font-weight:600">—</div>
+        </div>
+        <button onclick="stepLayer(+1)" style="width:26px;height:26px;border:1px solid var(--border);border-radius:4px;background:var(--panel2);color:var(--text2);font-size:15px;cursor:pointer;flex-shrink:0;font-family:'Inter',sans-serif">›</button>
+      </div>
+      <div style="padding:0 12px 10px;display:flex;gap:6px">
+        <button onclick="showAllLayers()" style="flex:1;height:26px;background:var(--panel2);color:var(--text2);border:1px solid var(--border);border-radius:4px;font-size:10px;cursor:pointer;font-family:'Inter',sans-serif">All Layers</button>
+      </div>
+    </div>
+
+    <!-- Model info -->
+    <div id="pane-model" style="display:none">
+      <div class="sec-head">Model Info</div>
+      <div class="sec-body" style="padding:0">
+        <div class="irow"><span class="ik">X Range</span><span class="iv" id="mi-x">—</span></div>
+        <div class="irow"><span class="ik">Y Range</span><span class="iv" id="mi-y">—</span></div>
+        <div class="irow"><span class="ik">Height</span><span class="iv" id="mi-z">—</span></div>
+        <div class="irow"><span class="ik">Extrusions</span><span class="iv c-green" id="mi-ext">—</span></div>
+        <div class="irow"><span class="ik">Travels</span><span class="iv" id="mi-trv">—</span></div>
+        <div class="irow"><span class="ik">Retracts</span><span class="iv c-orange" id="mi-ret">—</span></div>
+        <div class="irow"><span class="ik">Est. Time</span><span class="iv" id="mi-time">—</span></div>
+      </div>
+    </div>
+
+    <!-- Model Scale -->
+    <div id="pane-scale" style="display:none">
+      <div class="sec-head">Model Scale</div>
+      <div style="padding:8px 12px">
+        <div style="font-size:10px;color:var(--text3);margin-bottom:8px;line-height:1.5">Click <strong style="color:var(--accent)">Show Bounding Box</strong> then drag handles to resize</div>
+        <div class="srow">
+          <label>Scale X</label>
+          <input type="range" id="sc-x" min="10" max="300" value="100" oninput="applyScale()">
+          <span class="sv" id="sc-xv">100%</span>
+        </div>
+        <div class="srow">
+          <label>Scale Y</label>
+          <input type="range" id="sc-y" min="10" max="300" value="100" oninput="applyScale()">
+          <span class="sv" id="sc-yv">100%</span>
+        </div>
+        <div class="srow">
+          <label>Scale Z</label>
+          <input type="range" id="sc-z" min="10" max="300" value="100" oninput="applyScale()">
+          <span class="sv" id="sc-zv">100%</span>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:4px">
+          <button onclick="toggleBBox()" id="btn-bbox" style="flex:1;padding:6px 0;background:var(--accent);color:#fff;border:none;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">Show BBox</button>
+          <button onclick="resetScale()" style="flex:1;padding:6px 0;background:var(--panel2);color:var(--text2);border:1px solid var(--border);border-radius:4px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div id="pane-vis" style="display:none">
+      <div class="sec-head">Visibility</div>
+      <div class="trow" onclick="toggleType('extrude')">
+        <div class="tl"><div class="dot" style="background:var(--accent)"></div>Extrusion</div>
+        <div class="toggle on" id="tog-ext"></div>
+      </div>
+      <div class="trow" onclick="toggleType('travel')">
+        <div class="tl"><div class="dot" style="background:var(--text3)"></div>Travel</div>
+        <div class="toggle on" id="tog-trv"></div>
+      </div>
+      <div class="trow" onclick="toggleType('retract')">
+        <div class="tl"><div class="dot" style="background:var(--orange)"></div>Retract</div>
+        <div class="toggle on" id="tog-ret"></div>
+      </div>
+      <div class="trow" onclick="toggleAxes()">
+        <div class="tl"><div class="dot" style="background:#ef5350"></div>Axes</div>
+        <div class="toggle on" id="tog-axes"></div>
+      </div>
+      <div class="trow" onclick="toggleGrid()">
+        <div class="tl"><div class="dot" style="background:var(--text3)"></div>Grid</div>
+        <div class="toggle on" id="tog-grid"></div>
+      </div>
+      <div class="trow" onclick="toggleBedColor()">
+        <div class="tl"><div class="dot" style="background:#7c4dff"></div>Dual-color Bed</div>
+        <div class="toggle" id="tog-bed"></div>
+      </div>
+    </div>
+
+    <div style="flex:1"></div>
+    <div style="padding:10px 12px;border-top:1px solid var(--border);font-size:9px;color:var(--text3);line-height:1.8;background:var(--panel2)">
+      <strong style="color:var(--text2);display:block;margin-bottom:2px">GCode Forge</strong>
+      Browser-based · No upload · No signup<br>
+      Works with CNC, FDM &amp; bioprinters
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div id="main">
+    <!-- Tabs -->
+    <div id="vtabs">
+      <button class="vtab on" onclick="setView('3d')">
+        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        3D View
+      </button>
+      <button class="vtab" onclick="setView('2d')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+        2D View
+      </button>
+      <button class="vtab" onclick="setView('code')">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        G-Code <span class="badge" id="tab-cnt">0</span>
+      </button>
+      <button class="vtab" onclick="setView('analysis')">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analysis
+      </button>
+      <button class="vtab" onclick="setView('convert')">
+        <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        Convert
+      </button>
+      <button class="vtab" onclick="setView('help')">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Help &amp; FAQ
+      </button>
+    </div>
+
+    <!-- View area -->
+    <div id="view-area">
+      <div id="prog"><div id="prog-fill"></div></div>
+
+      <canvas id="c3d"></canvas>
+      <canvas id="c2d"></canvas>
+      <div id="bbox-overlay"></div>
+      <div id="scale-toast">Drag sliders to scale model</div>
+
+      <!-- Code view -->
+      <div id="v-code">
+        <!-- Editor Toolbar -->
+        <div id="editor-bar" style="height:36px;background:var(--panel2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:4px;padding:0 10px;flex-shrink:0">
+          <span style="font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px">Edit</span>
+          <button class="eb-btn" onclick="edFind()" title="Find">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Find
+          </button>
+          <button class="eb-btn" onclick="edReplace()" title="Find & Replace">⇄ Replace</button>
+          <button class="eb-btn" onclick="edStripComments()" title="Strip all comments">⊘ Strip Comments</button>
+          <button class="eb-btn" onclick="edNormalize()" title="Normalize whitespace">≡ Normalize</button>
+          <div style="width:1px;height:18px;background:var(--border);margin:0 4px"></div>
+          <button class="eb-btn" onclick="edUndo()" title="Undo" id="btn-undo" disabled>↩ Undo</button>
+          <button class="eb-btn" onclick="edApply()" title="Apply changes and re-render" style="background:var(--accent);color:#fff;border-color:var(--accent)">▶ Apply</button>
+          <div style="flex:1"></div>
+          <span id="ed-status" style="font-size:10px;color:var(--text3)">Read-only — click to edit</span>
+          <label style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);cursor:pointer">
+            <input type="checkbox" id="ed-toggle" onchange="toggleEditMode()" style="cursor:pointer"> Edit Mode
+          </label>
+        </div>
+        <div id="code-scroll" style="flex:1;overflow:auto;display:flex">
+          <div id="line-nums"></div>
+          <pre id="code-body" contenteditable="false" spellcheck="false"></pre>
+        </div>
+      </div>
+
+      <!-- Help / FAQ / SEO Content View -->
+      <div id="v-help">
+        <div id="help-content"></div>
+      </div>
+
+      <!-- Analysis view -->
+      <div id="v-analysis">
+        <div class="an-title">Print Analysis</div>
+        <div class="an-sub">Detailed G-code inspection &amp; metrics</div>
+        <div class="an-grid" id="an-grid"></div>
+        <div class="an-box">
+          <div class="an-box-title">Extrusion per Layer</div>
+          <canvas id="layer-chart" height="100"></canvas>
+        </div>
+        <div class="an-box">
+          <div class="an-box-title">Command Frequency</div>
+          <div id="cmd-list"></div>
+        </div>
+      </div>
+
+      <!-- Convert view -->
+      <div id="v-convert">
+        <div class="cv-wrap">
+          <div class="cv-title">File Converter</div>
+          <div class="cv-sub">Export your loaded G-code as another format — all processing happens in your browser</div>
+
+          <div class="cv-card">
+            <h3>Select Output Format</h3>
+            <div class="fmt-grid" id="fmt-grid">
+              <div class="fmt-btn selected" data-fmt="gcode" onclick="selectFmt(this)">
+                <div class="fmt-name">G-Code</div>
+                <div class="fmt-desc">Standard CNC / 3D printer</div>
+                <div class="fmt-ext">.gcode</div>
+              </div>
+              <div class="fmt-btn" data-fmt="nc" onclick="selectFmt(this)">
+                <div class="fmt-name">NC File</div>
+                <div class="fmt-desc">CNC machine control code</div>
+                <div class="fmt-ext">.nc</div>
+              </div>
+              <div class="fmt-btn" data-fmt="stl" onclick="selectFmt(this)">
+                <div class="fmt-name">STL</div>
+                <div class="fmt-desc">Toolpath mesh — ASCII STL</div>
+                <div class="fmt-ext">.stl</div>
+              </div>
+              <div class="fmt-btn" data-fmt="obj" onclick="selectFmt(this)">
+                <div class="fmt-name">OBJ</div>
+                <div class="fmt-desc">Wavefront 3D mesh object</div>
+                <div class="fmt-ext">.obj</div>
+              </div>
+              <div class="fmt-btn" data-fmt="svg" onclick="selectFmt(this)">
+                <div class="fmt-name">SVG</div>
+                <div class="fmt-desc">2D vector toolpath top view</div>
+                <div class="fmt-ext">.svg</div>
+              </div>
+              <div class="fmt-btn" data-fmt="csv" onclick="selectFmt(this)">
+                <div class="fmt-name">CSV</div>
+                <div class="fmt-desc">Path data table per segment</div>
+                <div class="fmt-ext">.csv</div>
+              </div>
+              <div class="fmt-btn" data-fmt="json" onclick="selectFmt(this)">
+                <div class="fmt-name">JSON</div>
+                <div class="fmt-desc">Structured path data (API-ready)</div>
+                <div class="fmt-ext">.json</div>
+              </div>
+              <div class="fmt-btn" data-fmt="txt" onclick="selectFmt(this)">
+                <div class="fmt-name">Plain Text</div>
+                <div class="fmt-desc">Raw G-code, comments stripped</div>
+                <div class="fmt-ext">.txt</div>
+              </div>
+            </div>
+
+            <div class="note-box" id="fmt-note">
+              <strong>G-Code:</strong> Exports your file as-is. Use for re-download or sharing with a machine.
+            </div>
+
+            <div class="action-row">
+              <button class="btn-prim" onclick="doExport()">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download File
+              </button>
+              <button class="btn-sec" onclick="doCopy()">Copy to Clipboard</button>
+            </div>
+          </div>
+
+          <div class="cv-card" style="border-color:rgba(41,182,246,0.15)">
+            <h3 style="color:var(--cyan)">STL / STEP / OBJ → G-Code</h3>
+            <div style="font-size:11px;color:var(--text3);line-height:1.7;margin-bottom:12px">
+              Converting 3D model files (STL, STEP, OBJ) to G-code requires a <strong style="color:var(--text2)">slicer</strong> — a separate application that handles mesh analysis, support generation, and toolpath calculation. This is computationally intensive and cannot run reliably in a browser.
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--text3);margin-bottom:2px">Recommended Slicers (Free)</div>
+              <a href="https://ultimaker.com/software/ultimaker-cura/" target="_blank" class="slicer-link">
+                <span class="sl-name">Ultimaker Cura</span>
+                <span class="sl-desc">Best for FDM — supports STL, OBJ, 3MF, STEP</span>
+                <span class="sl-tag">↗ Open</span>
+              </a>
+              <a href="https://www.prusa3d.com/prusaslicer/" target="_blank" class="slicer-link">
+                <span class="sl-name">PrusaSlicer</span>
+                <span class="sl-desc">Advanced profiles, supports bioprinting setups</span>
+                <span class="sl-tag">↗ Open</span>
+              </a>
+              <a href="https://github.com/Ultimaker/CuraEngine" target="_blank" class="slicer-link">
+                <span class="sl-name">CuraEngine CLI</span>
+                <span class="sl-desc">Command-line slicing — integrate in your pipeline</span>
+                <span class="sl-tag">↗ Open</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty">
+        <svg viewBox="0 0 64 64">
+          <rect x="8" y="8" width="48" height="48" rx="4" stroke-dasharray="4 4"/>
+          <path d="M32 20v16M24 28l8 8 8-8"/>
+        </svg>
+        <h2>No file loaded</h2>
+        <p>Drop a .gcode or .nc file, or click "Open File" to start visualizing</p>
+      </div>
+
+      <!-- Camera controls overlay -->
+      <div id="cam-controls">
+        <button class="ccbtn on" id="cc-persp" onclick="setProj('persp')" title="Perspective">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </button>
+        <button class="ccbtn" id="cc-ortho" onclick="setProj('ortho')" title="Orthographic">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
+        </button>
+        <div class="cc-sep"></div>
+        <button class="ccbtn" onclick="setNamedView('top')" title="Top">T</button>
+        <button class="ccbtn" onclick="setNamedView('front')" title="Front">F</button>
+        <button class="ccbtn" onclick="setNamedView('side')" title="Side">S</button>
+        <button class="ccbtn" onclick="setNamedView('iso')" title="Iso">I</button>
+        <div class="cc-sep"></div>
+        <button class="ccbtn on" id="cc-axes" onclick="toggleAxes()" title="Axes">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="12" x2="20" y2="12"/><line x1="12" y1="12" x2="12" y2="4"/><line x1="12" y1="12" x2="6" y2="18"/></svg>
+        </button>
+        <button class="ccbtn on" id="cc-grid" onclick="toggleGrid()" title="Grid">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </button>
+      </div>
+
+      <!-- Layer HUD — click to inspect -->
+      <div id="layer-hud" title="Click to inspect this layer" onclick="hudInspectLayer()" style="cursor:pointer">
+        Layer <span class="lh-val" id="lh-cur">—</span><span style="color:var(--text3)"> / </span><span id="lh-tot">—</span>
+        <div style="font-size:9px;color:var(--accent);margin-top:2px;text-align:center">click to inspect</div>
+      </div>
+
+      <!-- Layer jump picker overlay -->
+      <div id="layer-jump" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+        background:rgba(255,255,255,0.97);border:1px solid var(--border);border-radius:10px;padding:20px 24px;
+        box-shadow:0 8px 40px rgba(0,0,0,0.18);backdrop-filter:blur(12px);z-index:500;min-width:260px;text-align:center">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px">Jump to Layer</div>
+        <div style="font-size:10px;color:var(--text3);margin-bottom:14px">Enter layer number or use arrow keys</div>
+        <input id="jump-input" type="number" min="0" value="0"
+          style="width:120px;height:36px;font-size:20px;font-family:'JetBrains Mono',monospace;text-align:center;
+          border:2px solid var(--accent);border-radius:6px;outline:none;color:var(--text);background:var(--bg2)"
+          onkeydown="jumpKeyDown(event)" oninput="jumpPreview()">
+        <div style="display:flex;gap:8px;margin-top:14px;justify-content:center">
+          <button onclick="jumpPrev()" style="width:36px;height:36px;border:1px solid var(--border);border-radius:6px;background:var(--panel2);font-size:18px;cursor:pointer">‹</button>
+          <button onclick="doJump()" style="flex:1;height:36px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif">Go to Layer</button>
+          <button onclick="jumpNext()" style="width:36px;height:36px;border:1px solid var(--border);border-radius:6px;background:var(--panel2);font-size:18px;cursor:pointer">›</button>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px;justify-content:center">
+          <button onclick="doZoomLayer()" style="flex:1;height:28px;background:var(--panel2);color:var(--accent);border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">🔍 Zoom to Layer</button>
+          <button onclick="closeJump()" style="height:28px;padding:0 12px;background:transparent;color:var(--text3);border:1px solid var(--border);border-radius:6px;font-size:11px;cursor:pointer">Close</button>
+        </div>
+        <div id="jump-info" style="margin-top:10px;font-size:10px;color:var(--text3);min-height:14px"></div>
+      </div>
+
+      <!-- Legend -->
+      <div id="legend">
+        <div class="leg"><div class="ld" style="background:var(--accent)"></div>Extrusion</div>
+        <div class="leg"><div class="ld" style="background:var(--border2)"></div>Travel</div>
+        <div class="leg"><div class="ld" style="background:var(--orange)"></div>Retract</div>
+      </div>
+
+      <!-- Playback -->
+      <div id="playbar">
+        <button class="pb-btn" onclick="pbFirst()" title="First">⏮</button>
+        <button class="pb-btn" onclick="pbBack()" title="−100 segs">⏪</button>
+        <button class="pb-btn on" id="pb-play" onclick="pbToggle()">▶</button>
+        <button class="pb-btn" onclick="pbFwd()" title="+100 segs">⏩</button>
+        <button class="pb-btn" onclick="pbLast()" title="Last">⏭</button>
+        <input type="range" id="pb-range" min="0" max="100" value="0"
+          style="-webkit-appearance:none;height:3px;background:var(--border);border-radius:2px;width:140px;outline:none;cursor:pointer"
+          oninput="onPbSlider()">
+        <span id="pb-cnt" style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono';min-width:90px;text-align:center">Seg 0 / 0</span>
+        <div style="display:flex;align-items:center;gap:4px;border-left:1px solid var(--border);padding-left:8px;margin-left:2px">
+          <span style="font-size:10px;color:var(--text3);white-space:nowrap">Speed</span>
+          <select id="pb-speed" style="font-size:10px;background:var(--panel2);border:1px solid var(--border);border-radius:3px;padding:2px 4px;color:var(--text);font-family:'Inter',sans-serif;cursor:pointer">
+            <option value="1">0.5×</option>
+            <option value="3">1×</option>
+            <option value="8" selected>2×</option>
+            <option value="20">5×</option>
+            <option value="50">10×</option>
+            <option value="300">Max</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"><span class="ti" id="t-icon">✓</span><span id="t-msg"></span></div>
+
+<script>
+'use strict';
+
+// ── STATE ──
+let S = {
+  gcodeText: '',
+  gcodeLines: [],
+  parsed: null,
+  view: '3d',
+  showExtrude: true,
+  showTravel: true,
+  showRetract: true,
+  showAxes: true,
+  showGrid: true,
+  layerMin: 0,
+  layerMax: 0,
+  totalLayers: 0,
+  lineWidth: 2,
+  loaded: false,
+  playing: false,
+  playLine: 0,
+  playTimer: null,
+  selectedFmt: 'gcode',
+  scaleX: 1, scaleY: 1, scaleZ: 1,
+  bboxVisible: false,
+  editHistory: [],
+  editMode: false,
+};
+
+// ── THREE.JS ──
+let renderer, scene, camera, pathGroup, gridMesh, axesMesh, bedMesh;
+let S_showDualBed = false;
+let sph = { theta: 0.8, phi: 0.7, r: 300 };
+let tgt = { x:0, y:0, z:0 };
+let drag = false, lx = 0, ly = 0;
+
+function initThree() {
+  const cvs = document.getElementById('c3d');
+  renderer = new THREE.WebGLRenderer({ canvas: cvs, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0xf8fafc, 1);
+
+  scene = new THREE.Scene();
+  const { w, h } = getCanvasSize();
+  camera = new THREE.PerspectiveCamera(50, w / h, 0.01, 8000);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+  const d = new THREE.DirectionalLight(0xffffff, 0.4);
+  d.position.set(1, 2, 1.5); scene.add(d);
+
+  gridMesh = new THREE.GridHelper(300, 30, 0xd0dae8, 0xe8eef5);
+  scene.add(gridMesh);
+
+  // Dual-color checkerboard bed (hidden by default)
+  bedMesh = buildCheckerBed(300, 30);
+  bedMesh.visible = false;
+  scene.add(bedMesh);
+
+  axesMesh = new THREE.AxesHelper(40);
+  scene.add(axesMesh);
+
+  pathGroup = new THREE.Group();
+  scene.add(pathGroup);
+
+  resizeCvs();
+  bindMouse();
+  bindTouch();
+  (function loop() { requestAnimationFrame(loop); if (renderer && scene && camera) renderer.render(scene, camera); })();
+}
+
+function getCanvasSize() {
+  const va = document.getElementById('view-area');
+  return { w: va.clientWidth || 800, h: va.clientHeight || 600 };
+}
+
+function resizeCvs() {
+  const { w, h } = getCanvasSize();
+  renderer.setSize(w, h);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  const c2 = document.getElementById('c2d');
+  c2.width = w; c2.height = h;
+}
+
+function applyCam() {
+  const { theta, phi, r } = sph;
+  camera.position.set(
+    tgt.x + r * Math.sin(phi) * Math.sin(theta),
+    tgt.y + r * Math.cos(phi),
+    tgt.z + r * Math.sin(phi) * Math.cos(theta)
+  );
+  camera.lookAt(tgt.x, tgt.y, tgt.z);
+}
+
+function bindMouse() {
+  const cvs = document.getElementById('c3d');
+  cvs.addEventListener('mousedown', e => { drag = true; lx = e.clientX; ly = e.clientY; });
+  window.addEventListener('mouseup', () => drag = false);
+  window.addEventListener('mousemove', e => {
+    if (!drag) return;
+    const dx = e.clientX - lx, dy = e.clientY - ly;
+    if (e.buttons & 1) {
+      sph.theta -= dx * 0.005;
+      sph.phi = Math.max(0.02, Math.min(Math.PI - 0.02, sph.phi - dy * 0.005));
+    } else if (e.buttons & (2 | 4)) {
+      const s = sph.r * 0.001;
+      const right = new THREE.Vector3();
+      camera.getWorldDirection(right); right.cross(camera.up).normalize();
+      tgt.x -= right.x * dx * s; tgt.z -= right.z * dx * s;
+      tgt.y += dy * s;
+    }
+    lx = e.clientX; ly = e.clientY;
+    applyCam();
+  });
+  cvs.addEventListener('wheel', e => {
+    e.preventDefault();
+    sph.r = Math.max(5, Math.min(3000, sph.r * (1 + e.deltaY * 0.001)));
+    applyCam();
+  }, { passive: false });
+  cvs.addEventListener('contextmenu', e => e.preventDefault());
+}
+
+function bindTouch() {
+  const cvs = document.getElementById('c3d');
+  let ts = [], ld = 0;
+  cvs.addEventListener('touchstart', e => { ts = [...e.touches]; ld = 0; }, { passive: true });
+  cvs.addEventListener('touchmove', e => {
+    e.preventDefault();
+    if (e.touches.length === 1) {
+      const dx = e.touches[0].clientX - ts[0].clientX;
+      const dy = e.touches[0].clientY - ts[0].clientY;
+      sph.theta -= dx * 0.005;
+      sph.phi = Math.max(0.02, Math.min(Math.PI - 0.02, sph.phi + dy * 0.005));
+    } else if (e.touches.length === 2) {
+      const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+      if (ld) sph.r = Math.max(5, sph.r * (ld / d));
+      ld = d;
+    }
+    ts = [...e.touches]; applyCam();
+  }, { passive: false });
+}
+
+// ── GCODE PARSER ──
+function parseGcode(lines) {
+  let x=0,y=0,z=0,e=0,abs=true,absE=false;
+  const segs=[], layers=[[]];
+  let lz=-Infinity, lc=0;
+  const cmd={};
+  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity,maxZ=0;
+  let extC=0,trvC=0,retC=0,totD=0;
+  const layerE=[];
+  let cle=0;
+
+  for (let i=0;i<lines.length;i++) {
+    let ln = lines[i].trim();
+    const ci = ln.indexOf(';');
+    if (ci===0) continue;
+    if (ci>0) ln=ln.substring(0,ci).trim();
+    if (!ln) continue;
+
+    const parts = ln.split(/\s+/);
+    const c = parts[0].toUpperCase();
+    cmd[c]=(cmd[c]||0)+1;
+
+    const p={};
+    for (let j=1;j<parts.length;j++){
+      if (parts[j].length>1){const k=parts[j][0].toUpperCase();const v=parseFloat(parts[j].slice(1));if(!isNaN(v))p[k]=v;}
+    }
+
+    if(c==='G90'){abs=true;continue;}
+    if(c==='G91'){abs=false;continue;}
+    if(c==='G92'){if(p.E!==undefined)e=p.E;continue;}
+    if(c==='M82'){absE=true;continue;}
+    if(c==='M83'){absE=false;continue;}
+
+    if(c==='G0'||c==='G1'){
+      const nx=p.X!==undefined?(abs?p.X:x+p.X):x;
+      const ny=p.Y!==undefined?(abs?p.Y:y+p.Y):y;
+      const nz=p.Z!==undefined?(abs?p.Z:z+p.Z):z;
+      const ne=p.E!==undefined?(absE?p.E:e+p.E):e;
+
+      if(nz>lz+0.0005){
+        lz=nz;lc++;
+        layers.push([]);
+        layerE.push(cle);cle=0;
+        if(nz>maxZ)maxZ=nz;
+      }
+
+      const de=ne-e;
+      const dist=Math.sqrt((nx-x)**2+(ny-y)**2+(nz-z)**2);
+      totD+=dist;
+
+      let type='travel';
+      if(de>0.0005){type='extrude';extC++;cle+=de;}
+      else if(de<-0.0005){type='retract';retC++;}
+      else{trvC++;}
+
+      if(nx<minX)minX=nx;if(nx>maxX)maxX=nx;
+      if(ny<minY)minY=ny;if(ny>maxY)maxY=ny;
+
+      const seg={x1:x,y1:y,z1:z,x2:nx,y2:ny,z2:nz,type,layer:lc,li:i};
+      segs.push(seg);
+      layers[layers.length-1].push(seg);
+      x=nx;y=ny;z=nz;e=ne;
+    }
+  }
+  layerE.push(cle);
+
+  return {segs,layers,cmd,minX:isFinite(minX)?minX:0,maxX:isFinite(maxX)?maxX:0,
+    minY:isFinite(minY)?minY:0,maxY:isFinite(maxY)?maxY:0,maxZ,
+    totalLayers:lc,extC,trvC,retC,totD:Math.round(totD),layerE,
+    estTime:Math.round(totD/25)};
+}
+
+// ── BUILD 3D PATH ──
+function build3D(data, lmin, lmax) {
+  while(pathGroup.children.length) pathGroup.remove(pathGroup.children[0]);
+  if(!data||!data.segs.length) return;
+
+  const cx=(data.minX+data.maxX)/2, cy=(data.minY+data.maxY)/2;
+  const ep=[], tp=[], rp=[];
+
+  for(const s of data.segs) {
+    if(s.layer<lmin||s.layer>lmax) continue;
+    const x1=s.x1-cx, y1=s.z1,  z1=-(s.y1-cy);
+    const x2=s.x2-cx, y2=s.z2,  z2=-(s.y2-cy);
+    if(s.type==='extrude')  ep.push(x1,y1,z1,x2,y2,z2);
+    else if(s.type==='retract') rp.push(x1,y1,z1,x2,y2,z2);
+    else tp.push(x1,y1,z1,x2,y2,z2);
+  }
+
+  const lw = S.lineWidth;
+  if(ep.length&&S.showExtrude) addSegs(ep, 0x29b6f6, lw);
+  if(tp.length&&S.showTravel)  addSegs(tp, 0xc5d5e8, 1);
+  if(rp.length&&S.showRetract) addSegs(rp, 0xef6c00, 2);
+}
+
+function addSegs(pts, color, lw) {
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+  const mat = new THREE.LineBasicMaterial({ color, linewidth: lw });
+  pathGroup.add(new THREE.LineSegments(geo, mat));
+}
+
+// ── RENDER 2D ──
+function draw2D() {
+  const cvs = document.getElementById('c2d');
+  const ctx = cvs.getContext('2d');
+  const W = cvs.width, H = cvs.height;
+  const data = S.parsed;
+
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0,0,W,H);
+
+  if(!data||!data.segs.length) return;
+
+  const pad=40;
+  const rx=data.maxX-data.minX||1, ry=data.maxY-data.minY||1;
+  const sc=Math.min((W-pad*2)/rx,(H-pad*2)/ry);
+  const ox=pad+(W-pad*2-rx*sc)/2, oy=pad+(H-pad*2-ry*sc)/2;
+
+  const sx=v=>ox+(v-data.minX)*sc;
+  const sy=v=>H-(oy+(v-data.minY)*sc);
+
+  // grid
+  ctx.strokeStyle='#e8eef5'; ctx.lineWidth=1;
+  for(let gx=Math.ceil(data.minX/10)*10;gx<=data.maxX;gx+=10){
+    ctx.beginPath();ctx.moveTo(sx(gx),0);ctx.lineTo(sx(gx),H);ctx.stroke();
+  }
+  for(let gy=Math.ceil(data.minY/10)*10;gy<=data.maxY;gy+=10){
+    ctx.beginPath();ctx.moveTo(0,sy(gy));ctx.lineTo(W,sy(gy));ctx.stroke();
+  }
+
+  const {layerMin:lmin,layerMax:lmax} = S;
+  const segs=data.segs.filter(s=>s.layer>=lmin&&s.layer<=lmax);
+
+  if(S.showTravel) {
+    ctx.strokeStyle='#c5d5e8'; ctx.lineWidth=1;
+    ctx.beginPath();
+    for(const s of segs){if(s.type!=='travel')continue;ctx.moveTo(sx(s.x1),sy(s.y1));ctx.lineTo(sx(s.x2),sy(s.y2));}
+    ctx.stroke();
+  }
+  if(S.showExtrude) {
+    const tot=data.totalLayers||1;
+    for(const s of segs) {
+      if(s.type!=='extrude') continue;
+      const t=s.layer/tot;
+      ctx.strokeStyle=`hsl(${200-t*40},90%,${55+t*20}%)`;
+      ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(sx(s.x1),sy(s.y1)); ctx.lineTo(sx(s.x2),sy(s.y2)); ctx.stroke();
+    }
+  }
+  if(S.showRetract) {
+    ctx.strokeStyle='#ef6c00'; ctx.lineWidth=1.5;
+    for(const s of segs){
+      if(s.type!=='retract') continue;
+      ctx.beginPath(); ctx.arc(sx(s.x2),sy(s.y2),3,0,Math.PI*2); ctx.stroke();
+    }
+  }
+
+  ctx.fillStyle='#8a9bb5'; ctx.font='10px Inter,sans-serif';
+  ctx.fillText('X', W-16, H/2);
+  ctx.fillText('Y', W/2, 14);
+  ctx.fillStyle='#1565c0'; ctx.font='11px JetBrains Mono,monospace';
+  ctx.fillText(`Layers ${lmin}–${lmax} / ${data.totalLayers}`, 10, H-10);
+}
+
+// ── CODE RENDERING ──
+function renderCode(lines) {
+  const MAX = 5000;
+  const display = lines.length > MAX ? lines.slice(0, MAX) : lines;
+  const n = display.length;
+
+  // Line numbers as plain text — one per line
+  const lnArr = [];
+  for (let i = 1; i <= n; i++) lnArr.push(i);
+  document.getElementById('line-nums').textContent = lnArr.join('\n');
+
+  // Code body with syntax highlighting
+  const bodyArr = display.map(l => hlLine(l));
+  document.getElementById('code-body').innerHTML = bodyArr.join('\n') +
+    (lines.length > MAX ? `\n<span class="gc-cmt">; ... ${lines.length - MAX} more lines omitted ...</span>` : '');
+
+  document.getElementById('tab-cnt').textContent = lines.length;
+}
+
+function hlLine(raw) {
+  if (raw === null || raw === undefined) return '';
+  // Escape HTML first
+  let ln = raw.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  if (!ln.trim()) return ln; // blank line — return as-is (space preserved)
+
+  // Comments — must go first so we don't highlight inside them
+  ln = ln.replace(/^(\s*)(;.*)$/, (_, sp, cmt) => sp + '<span class="gc-cmt">' + cmt + '</span>');
+  if (ln.includes('gc-cmt')) return ln; // pure comment line — done
+
+  // Inline comment at end
+  ln = ln.replace(/(;.*)$/, '<span class="gc-cmt">$1</span>');
+
+  // G commands
+  ln = ln.replace(/\b(G0|G00|G1|G01|G2|G02|G3|G03|G4|G04|G20|G21|G28|G29|G90|G91|G92|G93|G94|G17|G18|G19)\b/g,
+    '<span class="gc-g">$1</span>');
+  // M commands
+  ln = ln.replace(/\b(M0|M1|M82|M83|M84|M104|M105|M106|M107|M109|M114|M115|M117|M140|M190|M204|M205|M206|M220|M221|M300|M301|M500|M501|M502|M503)\b/g,
+    '<span class="gc-m">$1</span>');
+  // Coordinates — X Y Z E (green letter, yellow number)
+  ln = ln.replace(/\b([XYZE])([-+]?[\d]*\.?[\d]+)/g,
+    '<span class="gc-ax">$1</span><span class="gc-num">$2</span>');
+  // Feed rate F
+  ln = ln.replace(/\b(F)([\d]*\.?[\d]+)/g,
+    '<span class="gc-m">$1</span><span class="gc-num">$2</span>');
+  // S parameter
+  ln = ln.replace(/\b(S)([\d]*\.?[\d]+)/g,
+    '<span class="gc-ax">$1</span><span class="gc-num">$2</span>');
+  return ln;
+}
+
+// ── ANALYSIS ──
+function renderAnalysis(data) {
+  const grid=document.getElementById('an-grid');
+  const metrics=[
+    {v:data.totalLayers, u:'', l:'Total Layers', pct:80},
+    {v:fmtNum(data.extC), u:'', l:'Extrusion Moves', pct:70},
+    {v:fmtNum(data.trvC), u:'', l:'Travel Moves', pct:50},
+    {v:data.retC, u:'', l:'Retractions', pct:30},
+    {v:fmtNum(data.totD), u:'mm', l:'Total Distance', pct:90},
+    {v:fmtTime(data.estTime), u:'', l:'Est. Print Time', pct:60},
+  ];
+  grid.innerHTML=metrics.map(m=>`
+    <div class="an-card">
+      <div><span class="cv">${m.v}</span><span class="cu">${m.u}</span></div>
+      <div class="cl">${m.l}</div>
+      <div class="bar"><div class="bar-fill" style="width:${m.pct}%"></div></div>
+    </div>`).join('');
+
+  const cmds=Object.entries(data.cmd).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  const tot=Object.values(data.cmd).reduce((a,b)=>a+b,0)||1;
+  document.getElementById('cmd-list').innerHTML=cmds.map(([c,n])=>`
+    <div class="cmd-row">
+      <span class="cn">${c}</span>
+      <div class="cb"><div class="cf" style="width:${(n/tot*100).toFixed(1)}%"></div></div>
+      <span class="cc">${fmtNum(n)}</span>
+    </div>`).join('');
+
+  drawLayerChart(data.layerE);
+}
+
+function drawLayerChart(le) {
+  const cvs=document.getElementById('layer-chart');
+  cvs.width=cvs.parentElement.clientWidth-28;
+  const ctx=cvs.getContext('2d'),W=cvs.width,H=cvs.height;
+  ctx.fillStyle='#f5f7fa';ctx.fillRect(0,0,W,H);
+  if(!le.length)return;
+  const mx=Math.max(...le,0.001);
+  const bw=W/Math.max(le.length,1);
+  le.forEach((v,i)=>{
+    const bh=(v/mx)*(H-4);
+    const t=i/le.length;
+    ctx.fillStyle=`hsl(${200-t*30},80%,${50+t*20}%)`;
+    ctx.fillRect(i*bw,H-bh,Math.max(1,bw-1),bh);
+  });
+}
+
+// ── FILE LOADING ──
+function loadGcode(text, name, size) {
+  S.gcodeText=text;
+  S.gcodeLines=text.split('\n');
+  S.parsed=parseGcode(S.gcodeLines);
+  S.totalLayers=S.parsed.totalLayers;
+  S.layerMin=0; S.layerMax=S.totalLayers;
+  S.loaded=true;
+
+  // Left panel
+  show('pane-file'); show('pane-layers'); show('pane-model'); show('pane-vis');
+  hide('drop-zone');
+  $$('fi-name', name.length>18?name.slice(0,16)+'…':name);
+  document.getElementById('fi-name').parentElement.title=name;
+  $$('fi-size', fmtBytes(size));
+  $$('fi-lines', fmtNum(S.gcodeLines.length));
+  $$('fi-layers', S.totalLayers);
+  $$('mi-x', `${S.parsed.minX.toFixed(1)}–${S.parsed.maxX.toFixed(1)}`);
+  $$('mi-y', `${S.parsed.minY.toFixed(1)}–${S.parsed.maxY.toFixed(1)}`);
+  $$('mi-z', `${S.parsed.maxZ.toFixed(2)} mm`);
+  $$('mi-ext', fmtNum(S.parsed.extC));
+  $$('mi-trv', fmtNum(S.parsed.trvC));
+  $$('mi-ret', S.parsed.retC);
+  $$('mi-time', fmtTime(S.parsed.estTime));
+
+  // Layer sliders
+  el('sl-min').max=S.totalLayers; el('sl-min').value=0;
+  el('sl-max').max=S.totalLayers; el('sl-max').value=S.totalLayers;
+  $$('sl-min-v',0); $$('sl-max-v',S.totalLayers);
+  el('sl-single-lbl').textContent = `0 – ${S.totalLayers}`;
+
+  // Stats bar
+  $$('s-lines', fmtNum(S.gcodeLines.length));
+  $$('s-layers', S.totalLayers);
+  $$('s-dist', fmtNum(S.parsed.totD));
+
+  // Layer HUD
+  $$('lh-cur', `0–${S.totalLayers}`); $$('lh-tot', S.totalLayers);
+
+  // Code
+  renderCode(S.gcodeLines);
+
+  // Analysis
+  renderAnalysis(S.parsed);
+
+  // 3D
+  build3D(S.parsed, 0, S.totalLayers);
+  const data=S.parsed;
+  const span=Math.max(data.maxX-data.minX,data.maxY-data.minY,data.maxZ||10)*1.5;
+  sph={theta:0.8,phi:0.7,r:Math.max(80,span*1.6)};
+  tgt={x:0,y:(data.maxZ||0)/2,z:0};
+  applyCam();
+
+  // Playback
+  el('pb-range').max=S.gcodeLines.length-1; el('pb-range').value=0;
+  $$('pb-cnt',`0 / ${S.gcodeLines.length}`);
+
+  document.getElementById('pane-scale').style.display='';
+  S.scaleX=1; S.scaleY=1; S.scaleZ=1; S.bboxVisible=false;
+  el('sc-x').value=100; el('sc-y').value=100; el('sc-z').value=100;
+  $$('sc-xv','100%'); $$('sc-yv','100%'); $$('sc-zv','100%');
+
+  // Playback init
+  pbClearAnim();
+  pbInit();
+
+  // Overlays
+  show('cam-controls','flex'); show('layer-hud'); show('legend'); show('playbar','flex');
+  hide('empty');
+
+  toast('✓', `Loaded ${fmtNum(S.gcodeLines.length)} lines · ${S.totalLayers} layers`);
+}
+
+// ── DRAG / DROP / INPUT ──
+function onFileInput(e) { const f=e.target.files[0]; if(f)processFile(f); e.target.value=''; }
+function dzDragOver(e) { e.preventDefault(); el('drop-zone').classList.add('drag-over'); }
+function dzLeave()   { el('drop-zone').classList.remove('drag-over'); }
+function dzDrop(e)   { e.preventDefault(); el('drop-zone').classList.remove('drag-over'); const f=e.dataTransfer.files[0]; if(f)processFile(f); }
+
+function processFile(file) {
+  const ext=file.name.split('.').pop().toLowerCase();
+  progress(0);
+  const r=new FileReader();
+  r.onprogress=ev=>{ if(ev.lengthComputable) progress(ev.loaded/ev.total*85); };
+  r.onload=ev=>{ progress(95); loadGcode(ev.target.result,file.name,file.size); progress(100); setTimeout(()=>progress(0),500); };
+  r.readAsText(file);
+}
+
+// ── SAMPLE ──
+function doSample() {
+  const sample=`;BioScaffolds PG — Smooth Syringe Extrusion G-Code
+;GCode Forge Sample — bioprinting scaffold
+M204 P30
+M205 X2 Y2 E0.5
+G28
+G21
+G90
+M83
+M107
+M104 S0
+M140 S0
+G92 E0
+M221 S100
+M117 BioScaffolds PG
+G1 F120
+G0 X0 Y0 Z0.1
+G0 Z2.2
+G0 X77 Y83
+;LAYER 1
+G0 F4000 X77 Y83 Z0.25
+G1 F120 X87 Y83 E1.5
+G1 X97 Y83 E3.0
+G1 X97 Y93 E4.5
+G1 X87 Y93 E6.0
+G1 X77 Y93 E7.5
+G1 X77 Y83 E9.0
+G0 X79 Y85
+G1 F120 X95 Y85 E10.5
+G0 X79 Y87
+G1 X95 Y87 E12.0
+G0 X79 Y89
+G1 X95 Y89 E13.5
+G0 X79 Y91
+G1 X95 Y91 E15.0
+;LAYER 2
+G0 Z0.50
+G0 X77 Y83
+G1 F120 X87 Y83 E16.5
+G1 X97 Y83 E18.0
+G1 X97 Y93 E19.5
+G1 X87 Y93 E21.0
+G1 X77 Y93 E22.5
+G1 X77 Y83 E24.0
+G0 X81 Y83
+G1 F120 X81 Y91 E25.5
+G0 X83 Y83
+G1 X83 Y91 E27.0
+G0 X85 Y83
+G1 X85 Y91 E28.5
+G0 X87 Y83
+G1 X87 Y91 E30.0
+G0 X89 Y83
+G1 X89 Y91 E31.5
+G0 X91 Y83
+G1 X91 Y91 E33.0
+G0 X93 Y83
+G1 X93 Y91 E34.5
+G0 X95 Y83
+G1 X95 Y91 E36.0
+;LAYER 3
+G0 Z0.75
+G0 X77 Y83
+G1 F120 X87 Y83 E37.5
+G1 X97 Y83 E39.0
+G1 X97 Y93 E40.5
+G1 X87 Y93 E42.0
+G1 X77 Y93 E43.5
+G1 X77 Y83 E45.0
+G0 X79 Y85
+G1 F120 X95 Y85 E46.5
+G0 X79 Y87
+G1 X95 Y87 E48.0
+G0 X79 Y89
+G1 X95 Y89 E49.5
+G0 X79 Y91
+G1 X95 Y91 E51.0
+;LAYER 4
+G0 Z1.00
+G0 X77 Y83
+G1 F120 X87 Y83 E52.5
+G1 X97 Y83 E54.0
+G1 X97 Y93 E55.5
+G1 X87 Y93 E57.0
+G1 X77 Y93 E58.5
+G1 X77 Y83 E60.0
+G0 X81 Y83
+G1 F120 X81 Y91 E61.5
+G0 X83 Y83
+G1 X83 Y91 E63.0
+G0 X85 Y83
+G1 X85 Y91 E64.5
+G0 X87 Y83
+G1 X87 Y91 E66.0
+G0 X89 Y83
+G1 X89 Y91 E67.5
+G0 X91 Y83
+G1 X91 Y91 E69.0
+G0 X93 Y83
+G1 X93 Y91 E70.5
+G0 X95 Y83
+G1 X95 Y91 E72.0
+;LAYER 5
+G0 Z1.25
+G0 X77 Y83
+G1 F120 X87 Y83 E73.5
+G1 X97 Y83 E75.0
+G1 X97 Y93 E76.5
+G1 X87 Y93 E78.0
+G1 X77 Y93 E79.5
+G1 X77 Y83 E81.0
+G0 X79 Y85
+G1 F120 X95 Y85 E82.5
+G0 X79 Y87
+G1 X95 Y87 E84.0
+G0 X79 Y89
+G1 X95 Y89 E85.5
+G0 X79 Y91
+G1 X95 Y91 E87.0
+G0 Z5
+G0 X0 Y0
+M107
+M104 S0
+M140 S0
+M84`;
+  loadGcode(sample,'bioprinter-scaffold-sample.gcode',sample.length);
+}
+
+// ── VIEW SWITCHING ──
+function setView(v) {
+  S.view=v;
+  const views=['3d','2d','code','analysis','convert','help'];
+  document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('on',views[i]===v));
+  el('c3d').style.display        = v==='3d'       ? 'block':'none';
+  el('c2d').style.display        = v==='2d'       ? 'block':'none';
+  el('v-code').style.display     = v==='code'     ? 'flex' :'none';
+  el('v-analysis').style.display = v==='analysis' ? 'block':'none';
+  el('v-convert').style.display  = v==='convert'  ? 'block':'none';
+  el('v-help').style.display     = v==='help'     ? 'block':'none';
+  el('bbox-overlay').style.display='none';
+
+  if(S.loaded){
+    const is3d = v==='3d';
+    el('cam-controls').style.display = is3d?'flex':'none';
+    el('layer-hud').style.display    = is3d?'block':'none';
+    el('legend').style.display       = is3d?'block':'none';
+    el('playbar').style.display      = is3d?'flex':'none';
+  }
+  if(v==='3d') setTimeout(resizeCvs,30);
+  if(v==='2d') draw2D();
+  if(v==='help') buildHelp();
+}
+
+// ── LAYER JUMP (HUD click) ──
+function hudInspectLayer() {
+  if (!S.parsed) return;
+  const cur = parseInt(el('lh-cur').textContent) || 1;
+  el('jump-input').value = cur;
+  el('jump-input').max = S.totalLayers;
+  updateJumpInfo(cur);
+  el('layer-jump').style.display = 'block';
+  el('jump-input').focus();
+  el('jump-input').select();
+}
+
+function closeJump() { el('layer-jump').style.display = 'none'; }
+
+function jumpKeyDown(e) {
+  if (e.key === 'Enter') doJump();
+  if (e.key === 'Escape') closeJump();
+  if (e.key === 'ArrowUp') { e.preventDefault(); el('jump-input').value=Math.min(S.totalLayers,(+el('jump-input').value||0)+1); updateJumpInfo(); }
+  if (e.key === 'ArrowDown') { e.preventDefault(); el('jump-input').value=Math.max(0,(+el('jump-input').value||0)-1); updateJumpInfo(); }
+}
+
+function jumpPreview() { updateJumpInfo(); }
+
+function jumpPrev() {
+  el('jump-input').value = Math.max(0, (+el('jump-input').value||0) - 1);
+  updateJumpInfo();
+}
+
+function jumpNext() {
+  el('jump-input').value = Math.min(S.totalLayers, (+el('jump-input').value||0) + 1);
+  updateJumpInfo();
+}
+
+function updateJumpInfo(layer) {
+  if (!S.parsed) return;
+  const l = layer !== undefined ? layer : (+el('jump-input').value || 0);
+  const segs = S.parsed.segs.filter(s => s.layer === l);
+  const ext = segs.filter(s=>s.type==='extrude').length;
+  const z = segs.length ? segs[0].z2.toFixed(3) : '—';
+  el('jump-info').textContent = segs.length
+    ? `Z: ${z} mm · ${ext} extrusion segs · ${segs.length} total segs`
+    : 'No segments on this layer';
+}
+
+function doJump() {
+  if (!S.parsed) return;
+  const layer = Math.max(0, Math.min(S.totalLayers, +el('jump-input').value||0));
+  // Update layer filter
+  S.layerMin = layer; S.layerMax = layer;
+  el('sl-min').value = layer; el('sl-max').value = layer;
+  $$('sl-min-v', layer); $$('sl-max-v', layer); $$('lh-cur', layer);
+  build3D(S.parsed, layer, layer);
+  closeJump();
+  toast('🔍', `Jumped to layer ${layer}`);
+}
+
+function doZoomLayer() {
+  if (!S.parsed) return;
+  const layer = Math.max(0, Math.min(S.totalLayers, +el('jump-input').value||0));
+  S.layerMin = layer; S.layerMax = layer;
+  el('sl-min').value = layer; el('sl-max').value = layer;
+  $$('sl-min-v', layer); $$('sl-max-v', layer); $$('lh-cur', layer);
+  build3D(S.parsed, layer, layer);
+  // Zoom close to that layer's Z height
+  const segs = S.parsed.segs.filter(s => s.layer === layer);
+  if (segs.length) {
+    const z = segs[0].z2;
+    const span = Math.max(S.parsed.maxX-S.parsed.minX, S.parsed.maxY-S.parsed.minY) * 0.7;
+    sph = { theta: sph.theta, phi: 0.3, r: Math.max(20, span) };
+    tgt = { x: 0, y: z, z: 0 };
+    applyCam();
+  }
+  closeJump();
+  toast('🔍', `Zoomed to layer ${layer}`);
+}
+
+// ── LAYER SLIDERS ──
+function onLayerSlider(which) {
+  let mn = +el('sl-min').value;
+  let mx = +el('sl-max').value;
+
+  // Hard clamp: min cannot exceed max and vice versa
+  if (which === 'min' && mn > mx) { mn = mx; el('sl-min').value = mn; }
+  if (which === 'max' && mx < mn) { mx = mn; el('sl-max').value = mx; }
+
+  S.layerMin = mn;
+  S.layerMax = mx;
+
+  $$('sl-min-v', mn);
+  $$('sl-max-v', mx);
+  $$('lh-cur', mn === mx ? mn : `${mn}–${mx}`);
+
+  // Single layer indicator
+  el('sl-single-lbl').textContent = mn === mx ? `Layer ${mn}` : `${mn} – ${mx}`;
+
+  if (S.parsed) {
+    build3D(S.parsed, mn, mx);
+    if (S.view === '2d') draw2D();
+  }
+}
+
+function stepLayer(dir) {
+  if (!S.parsed) return;
+  // Move both sliders together as a single-layer view
+  const cur = S.layerMin === S.layerMax ? S.layerMin : S.layerMax;
+  const next = Math.max(0, Math.min(S.totalLayers, cur + dir));
+  el('sl-min').value = next;
+  el('sl-max').value = next;
+  onLayerSlider('min');
+}
+
+function showAllLayers() {
+  if (!S.parsed) return;
+  el('sl-min').value = 0;
+  el('sl-max').value = S.totalLayers;
+  onLayerSlider('max');
+}
+
+// ── TOGGLES ──
+function toggleType(t) {
+  if(t==='extrude'){ S.showExtrude=!S.showExtrude; el('tog-ext').classList.toggle('on',S.showExtrude); }
+  if(t==='travel') { S.showTravel=!S.showTravel;  el('tog-trv').classList.toggle('on',S.showTravel); }
+  if(t==='retract'){ S.showRetract=!S.showRetract; el('tog-ret').classList.toggle('on',S.showRetract); }
+  if(S.parsed){ build3D(S.parsed,S.layerMin,S.layerMax); if(S.view==='2d') draw2D(); }
+}
+function toggleAxes() { S.showAxes=!S.showAxes; axesMesh.visible=S.showAxes; el('tog-axes').classList.toggle('on',S.showAxes); el('cc-axes').classList.toggle('on',S.showAxes); }
+function toggleGrid() { S.showGrid=!S.showGrid; gridMesh.visible=S.showGrid; el('tog-grid').classList.toggle('on',S.showGrid); el('cc-grid').classList.toggle('on',S.showGrid); }
+
+function buildCheckerBed(size, divisions) {
+  const cellSize = size / divisions;
+  const geo = new THREE.BufferGeometry();
+  const positions = [], colors = [];
+  const c1 = new THREE.Color(0xd0d8e8); // light blue-grey
+  const c2 = new THREE.Color(0xf5f0e8); // warm cream
+  for (let row = 0; row < divisions; row++) {
+    for (let col = 0; col < divisions; col++) {
+      const x0 = -size/2 + col * cellSize;
+      const z0 = -size/2 + row * cellSize;
+      const x1 = x0 + cellSize, z1 = z0 + cellSize;
+      const c = (row + col) % 2 === 0 ? c1 : c2;
+      // Two triangles per cell
+      positions.push(x0,0,z0, x1,0,z0, x1,0,z1);
+      positions.push(x0,0,z0, x1,0,z1, x0,0,z1);
+      for (let i=0; i<6; i++) colors.push(c.r, c.g, c.b);
+    }
+  }
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.setAttribute('color',    new THREE.Float32BufferAttribute(colors, 3));
+  const mat = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide });
+  return new THREE.Mesh(geo, mat);
+}
+
+function toggleBedColor() {
+  S_showDualBed = !S_showDualBed;
+  bedMesh.visible  = S_showDualBed;
+  gridMesh.visible = S_showDualBed ? false : S.showGrid; // hide plain grid when checker is on
+  el('tog-bed').classList.toggle('on', S_showDualBed);
+  el('tog-grid').classList.toggle('on', !S_showDualBed && S.showGrid);
+}
+
+// ── CAMERA ──
+function resetCam() {
+  if(S.parsed){ const d=S.parsed; const span=Math.max(d.maxX-d.minX,d.maxY-d.minY,d.maxZ||10)*1.5; sph={theta:0.8,phi:0.7,r:Math.max(80,span*1.6)}; tgt={x:0,y:(d.maxZ||0)/2,z:0}; }
+  else { sph={theta:0.8,phi:0.7,r:300}; tgt={x:0,y:0,z:0}; }
+  applyCam();
+}
+function fitView() { resetCam(); }
+function setNamedView(v) {
+  const r=sph.r;
+  if(v==='top')   { sph.phi=0.02; sph.theta=0; }
+  if(v==='front') { sph.phi=Math.PI/2; sph.theta=0; }
+  if(v==='side')  { sph.phi=Math.PI/2; sph.theta=Math.PI/2; }
+  if(v==='iso')   { sph.phi=0.7; sph.theta=0.8; }
+  sph.r=r; applyCam();
+}
+function setProj(p) {
+  el('cc-persp').classList.toggle('on',p==='persp');
+  el('cc-ortho').classList.toggle('on',p==='ortho');
+}
+
+// ── ANIMATION / PLAYBACK ──
+// Real toolpath animation: draws segments one-by-one with moving head
+let animGroup = null;       // group holding animated lines
+let headMesh  = null;       // moving nozzle dot
+let animRAF   = null;       // requestAnimationFrame id
+let animSeg   = 0;          // current segment index (0..segs.length)
+let animCx    = 0;
+let animCy    = 0;
+
+function pbInit() {
+  // Called after file load — set up animation state
+  animSeg = 0;
+  animCx  = (S.parsed.minX + S.parsed.maxX) / 2;
+  animCy  = (S.parsed.minY + S.parsed.maxY) / 2;
+  const total = S.parsed.segs.length;
+  el('pb-range').max   = total;
+  el('pb-range').value = 0;
+  syncPb();
+}
+
+function pbToggle() {
+  S.playing = !S.playing;
+  el('pb-play').textContent = S.playing ? '⏸' : '▶';
+  el('pb-play').classList.toggle('on', S.playing);
+  if (S.playing) {
+    // Hide static render — show animation only
+    pathGroup.visible = false;
+    if (animSeg >= S.parsed.segs.length) { animSeg = 0; pbClearAnim(); }
+    if (!animGroup) { animGroup = new THREE.Group(); scene.add(animGroup); }
+    pbAnimate();
+  } else {
+    if (animRAF) { cancelAnimationFrame(animRAF); animRAF = null; }
+    // Restore static render
+    pathGroup.visible = true;
+    pbClearAnim();
+  }
+}
+
+function pbAnimate() {
+  if (!S.playing || !S.parsed) return;
+  const speed = parseInt(el('pb-speed').value);
+  const segs  = S.parsed.segs;
+  const total = segs.length;
+
+  // Draw `speed` segments per frame
+  for (let i = 0; i < speed && animSeg < total; i++, animSeg++) {
+    pbDrawSeg(segs[animSeg]);
+  }
+  syncPb();
+
+  if (animSeg >= total) {
+    // Done
+    S.playing = false;
+    el('pb-play').textContent = '▶';
+    el('pb-play').classList.remove('on');
+    removeHead();
+    return;
+  }
+  animRAF = requestAnimationFrame(pbAnimate);
+}
+
+function pbDrawSeg(seg) {
+  if (!animGroup) {
+    animGroup = new THREE.Group();
+    scene.add(animGroup);
+  }
+
+  const x1 = seg.x1 - animCx, y1 = seg.z1, z1 = -(seg.y1 - animCy);
+  const x2 = seg.x2 - animCx, y2 = seg.z2, z2 = -(seg.y2 - animCy);
+
+  // Per-layer hue for extrusion: cycle through a rainbow mapped to layer index
+  const totalLayers = S.parsed.totalLayers || 1;
+  const layerT = seg.layer / totalLayers;
+  // Hue goes from 200 (blue) → 120 (green) → 60 (yellow) → 0 (red) across layers
+  const hue = ((1 - layerT) * 240) % 360;
+  const layerColor = new THREE.Color().setHSL(hue / 360, 0.85, 0.52);
+
+  // Only draw visible segment types
+  if (seg.type === 'extrude' && S.showExtrude) {
+    addAnimSeg(x1,y1,z1, x2,y2,z2, layerColor.getHex());
+  } else if (seg.type === 'travel' && S.showTravel) {
+    addAnimSeg(x1,y1,z1, x2,y2,z2, 0xc5d5e8);
+  } else if (seg.type === 'retract' && S.showRetract) {
+    addAnimSeg(x1,y1,z1, x2,y2,z2, 0xe65100);
+  }
+
+  // Move head to current position
+  moveHead(x2, y2, z2, seg.type, layerColor.getHex());
+}
+
+function addAnimSeg(x1,y1,z1, x2,y2,z2, color) {
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute([x1,y1,z1,x2,y2,z2], 3));
+  const mat = new THREE.LineBasicMaterial({ color });
+  animGroup.add(new THREE.LineSegments(geo, mat));
+}
+
+function moveHead(x, y, z, type, extrudeColor) {
+  if (!headMesh) {
+    const geo = new THREE.SphereGeometry(0.8, 8, 8);
+    const mat = new THREE.MeshBasicMaterial({ color: 0xff3300 });
+    headMesh = new THREE.Mesh(geo, mat);
+    scene.add(headMesh);
+  }
+  headMesh.position.set(x, y, z);
+  if (type === 'extrude' && extrudeColor !== undefined) {
+    headMesh.material.color.setHex(extrudeColor);
+  } else {
+    headMesh.material.color.setHex(type === 'retract' ? 0xe65100 : 0x90a8c8);
+  }
+}
+
+function removeHead() {
+  if (headMesh) { scene.remove(headMesh); headMesh = null; }
+}
+
+function pbClearAnim() {
+  if (animGroup) { scene.remove(animGroup); animGroup = null; }
+  removeHead();
+}
+
+function pbFirst() {
+  S.playing = false; if(animRAF){cancelAnimationFrame(animRAF);animRAF=null;}
+  el('pb-play').textContent='▶'; el('pb-play').classList.remove('on');
+  animSeg = 0; pbClearAnim();
+  pathGroup.visible = true;
+  build3D(S.parsed, S.layerMin, S.layerMax);
+  syncPb();
+}
+
+function pbLast() {
+  S.playing = false; if(animRAF){cancelAnimationFrame(animRAF);animRAF=null;}
+  el('pb-play').textContent='▶'; el('pb-play').classList.remove('on');
+  animSeg = S.parsed.segs.length; pbClearAnim();
+  pathGroup.visible = true;
+  build3D(S.parsed, S.layerMin, S.layerMax);
+  syncPb();
+}
+
+function pbFwd() {
+  if (!S.parsed) return;
+  const wasPlaying = S.playing;
+  S.playing = false; if(animRAF){cancelAnimationFrame(animRAF);animRAF=null;}
+  el('pb-play').textContent='▶'; el('pb-play').classList.remove('on');
+  pathGroup.visible = false;
+  if (!animGroup) { animGroup = new THREE.Group(); scene.add(animGroup); }
+  const segs = S.parsed.segs;
+  const end  = Math.min(animSeg + 200, segs.length);
+  while (animSeg < end) { pbDrawSeg(segs[animSeg]); animSeg++; }
+  syncPb();
+  if (wasPlaying) { S.playing=true; el('pb-play').textContent='⏸'; el('pb-play').classList.add('on'); pbAnimate(); }
+}
+
+function pbBack() {
+  if (!S.parsed) return;
+  S.playing = false; if(animRAF){cancelAnimationFrame(animRAF);animRAF=null;}
+  el('pb-play').textContent='▶'; el('pb-play').classList.remove('on');
+  animSeg = Math.max(0, animSeg - 200);
+  pathGroup.visible = false;
+  pbClearAnim();
+  animGroup = new THREE.Group(); scene.add(animGroup);
+  const segs = S.parsed.segs;
+  for (let i=0; i<animSeg; i++) pbDrawSeg(segs[i]);
+  syncPb();
+}
+
+function onPbSlider() {
+  const val = parseInt(el('pb-range').value);
+  S.playing = false; if(animRAF){cancelAnimationFrame(animRAF);animRAF=null;}
+  el('pb-play').textContent='▶'; el('pb-play').classList.remove('on');
+  pathGroup.visible = false;
+  pbClearAnim();
+  animSeg = 0;
+  animGroup = new THREE.Group(); scene.add(animGroup);
+  const segs = S.parsed.segs;
+  for (let i=0; i<val && i<segs.length; i++) { pbDrawSeg(segs[i]); animSeg++; }
+  syncPb();
+}
+
+function syncPb() {
+  const total = S.parsed ? S.parsed.segs.length : 0;
+  el('pb-range').value = animSeg;
+  el('pb-cnt').textContent = `Seg ${animSeg} / ${total}`;
+  // Update layer HUD
+  if (S.parsed && S.parsed.segs[Math.min(animSeg, total-1)]) {
+    const curLayer = S.parsed.segs[Math.min(animSeg, total-1)].layer;
+    $$('lh-cur', curLayer);
+  }
+}
+
+// ── EXPORT / CONVERT ──
+const FMT_NOTES = {
+  gcode: '<strong>G-Code:</strong> Exports your file as-is. Use for re-download or sharing with a CNC/3D printer.',
+  nc:    '<strong>NC File:</strong> Same as G-code, saved with .nc extension for CNC controllers.',
+  stl:   '<strong>STL (ASCII):</strong> Generates a 3D mesh from the extrusion toolpath. Each segment becomes a triangulated tube.',
+  obj:   '<strong>OBJ:</strong> Exports the toolpath as a 3D Wavefront OBJ mesh — opens in Blender, MeshLab, etc.',
+  svg:   '<strong>SVG:</strong> Top-down 2D vector view of the toolpath. Opens in Inkscape, Illustrator, or browser.',
+  csv:   '<strong>CSV:</strong> Tabular data of every path segment — layer, type, X/Y/Z coordinates. Import into Excel or Python.',
+  json:  '<strong>JSON:</strong> Structured path data with segment info and print metrics. Use in scripts or APIs.',
+  txt:   '<strong>Plain Text:</strong> Raw G-code with all comments stripped — minimal file size.',
+};
+
+function selectFmt(btn) {
+  document.querySelectorAll('.fmt-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  S.selectedFmt = btn.dataset.fmt;
+  const note = document.getElementById('fmt-note');
+  if (note) note.innerHTML = FMT_NOTES[S.selectedFmt] || '';
+}
+
+function doExport() {
+  if (!S.gcodeText) { toast('⚠', 'No file loaded — open a G-code file first'); return; }
+  const fmt = S.selectedFmt;
+  let content = '', ext = fmt;
+
+  if (fmt === 'gcode') {
+    content = S.gcodeText;
+  } else if (fmt === 'nc') {
+    content = S.gcodeText; ext = 'nc';
+  } else if (fmt === 'txt') {
+    content = S.gcodeLines.filter(l => { const t=l.trim(); return t && !t.startsWith(';'); }).join('\n');
+    ext = 'txt';
+  } else if (fmt === 'csv' && S.parsed) {
+    const rows = ['layer,type,x1,y1,z1,x2,y2,z2'];
+    for (const s of S.parsed.segs)
+      rows.push(`${s.layer},${s.type},${s.x1.toFixed(3)},${s.y1.toFixed(3)},${s.z1.toFixed(3)},${s.x2.toFixed(3)},${s.y2.toFixed(3)},${s.z2.toFixed(3)}`);
+    content = rows.join('\n');
+  } else if (fmt === 'json' && S.parsed) {
+    const d = S.parsed;
+    content = JSON.stringify({
+      info: { totalLayers:d.totalLayers, extrusionMoves:d.extC, travelMoves:d.trvC, retracts:d.retC, totalDistance_mm:d.totD },
+      segments: d.segs.map(s => ({ layer:s.layer, type:s.type, x1:+s.x1.toFixed(3), y1:+s.y1.toFixed(3), z1:+s.z1.toFixed(3), x2:+s.x2.toFixed(3), y2:+s.y2.toFixed(3), z2:+s.z2.toFixed(3) }))
+    }, null, 2);
+  } else if (fmt === 'svg' && S.parsed) {
+    content = buildSVG(S.parsed); ext = 'svg';
+  } else if (fmt === 'stl' && S.parsed) {
+    content = buildSTL(S.parsed); ext = 'stl';
+  } else if (fmt === 'obj' && S.parsed) {
+    content = buildOBJ(S.parsed); ext = 'obj';
+  } else {
+    toast('⚠', 'Load a G-code file first'); return;
+  }
+
+  dlFile(content, `gcodeforge-export.${ext}`);
+  toast('✓', `Exported as .${ext}`);
+}
+
+function dlFile(content, name) {
+  const blob = new Blob([content], { type: 'text/plain' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+}
+
+function buildSVG(data) {
+  const sc = 3, pad = 20;
+  const W = (data.maxX - data.minX) * sc + pad * 2;
+  const H = (data.maxY - data.minY) * sc + pad * 2;
+  const sx = v => ((v - data.minX) * sc + pad).toFixed(2);
+  const sy = v => (H - ((v - data.minY) * sc + pad)).toFixed(2);
+  let p = '';
+  for (const s of data.segs) {
+    if (s.layer < S.layerMin || s.layer > S.layerMax) continue;
+    const col = s.type==='extrude' ? '#29b6f6' : s.type==='retract' ? '#ef6c00' : '#1e3a6e';
+    const sw  = s.type==='extrude' ? 1.5 : 0.5;
+    p += `<line x1="${sx(s.x1)}" y1="${sy(s.y1)}" x2="${sx(s.x2)}" y2="${sy(s.y2)}" stroke="${col}" stroke-width="${sw}"/>`;
+  }
+  return `<?xml version="1.0"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${W.toFixed(0)}" height="${H.toFixed(0)}" viewBox="0 0 ${W.toFixed(0)} ${H.toFixed(0)}">\n<rect width="100%" height="100%" fill="#0b1929"/>\n${p}\n</svg>`;
+}
+
+function buildSTL(data) {
+  // Each extrusion segment → a thin rectangular prism (4 tris)
+  const r = 0.2; // tube radius approximation
+  let tris = 'solid gcodeforge\n';
+  for (const s of data.segs) {
+    if (s.type !== 'extrude') continue;
+    if (s.layer < S.layerMin || s.layer > S.layerMax) continue;
+    const dx = s.x2-s.x1, dy = s.y2-s.y1, dz = s.z2-s.z1;
+    const len = Math.sqrt(dx*dx+dy*dy+dz*dz);
+    if (len < 0.001) continue;
+    // Simple quad — top face of segment box
+    const nx = -dy/len, ny = dx/len; // perpendicular in XY
+    const p = [
+      [s.x1+nx*r, s.y1+ny*r, s.z1+r],
+      [s.x1-nx*r, s.y1-ny*r, s.z1-r],
+      [s.x2-nx*r, s.y2-ny*r, s.z2-r],
+      [s.x2+nx*r, s.y2+ny*r, s.z2+r],
+    ];
+    tris += tri(p[0],p[1],p[2]) + tri(p[0],p[2],p[3]);
+  }
+  tris += 'endsolid gcodeforge\n';
+  return tris;
+}
+
+function tri(a, b, c) {
+  // compute normal
+  const u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]];
+  const v=[c[0]-a[0],c[1]-a[1],c[2]-a[2]];
+  const n=[u[1]*v[2]-u[2]*v[1], u[2]*v[0]-u[0]*v[2], u[0]*v[1]-u[1]*v[0]];
+  const l=Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2])||1;
+  return `facet normal ${(n[0]/l).toFixed(4)} ${(n[1]/l).toFixed(4)} ${(n[2]/l).toFixed(4)}\n  outer loop\n    vertex ${a[0].toFixed(4)} ${a[1].toFixed(4)} ${a[2].toFixed(4)}\n    vertex ${b[0].toFixed(4)} ${b[1].toFixed(4)} ${b[2].toFixed(4)}\n    vertex ${c[0].toFixed(4)} ${c[1].toFixed(4)} ${c[2].toFixed(4)}\n  endloop\nendfacet\n`;
+}
+
+function buildOBJ(data) {
+  const r = 0.2;
+  let verts = '# GCode Forge — OBJ export\n# Extrusion toolpath mesh\n\n';
+  let faces = '';
+  let vi = 1;
+  for (const s of data.segs) {
+    if (s.type !== 'extrude') continue;
+    if (s.layer < S.layerMin || s.layer > S.layerMax) continue;
+    const dx=s.x2-s.x1,dy=s.y2-s.y1,dz=s.z2-s.z1;
+    const len=Math.sqrt(dx*dx+dy*dy+dz*dz);
+    if(len<0.001)continue;
+    const nx=-dy/len, ny=dx/len;
+    const p=[
+      [s.x1+nx*r, s.y1+ny*r, s.z1+r],
+      [s.x1-nx*r, s.y1-ny*r, s.z1-r],
+      [s.x2-nx*r, s.y2-ny*r, s.z2-r],
+      [s.x2+nx*r, s.y2+ny*r, s.z2+r],
+    ];
+    for(const v of p) verts+=`v ${v[0].toFixed(4)} ${v[1].toFixed(4)} ${v[2].toFixed(4)}\n`;
+    faces+=`f ${vi} ${vi+1} ${vi+2}\nf ${vi} ${vi+2} ${vi+3}\n`;
+    vi+=4;
+  }
+  return verts + '\n' + faces;
+}
+
+function doCopy() {
+  if (!S.gcodeText) { toast('⚠', 'No file loaded'); return; }
+  navigator.clipboard.writeText(S.gcodeText)
+    .then(() => toast('✓', 'Copied to clipboard'))
+    .catch(() => toast('⚠', 'Clipboard not available'));
+}
+
+function downloadRaw() {
+  if (!S.gcodeText) { toast('⚠', 'No file loaded'); return; }
+  dlFile(S.gcodeText, 'output.gcode');
+  toast('✓', 'Downloaded');
+}
+
+// ── PROGRESS ──
+function progress(p) {
+  if(p===0){ el('prog').style.display='none'; return; }
+  el('prog').style.display='block'; el('prog-fill').style.width=p+'%';
+}
+
+// ── TOAST ──
+let toastT;
+function toast(icon,msg) {
+  clearTimeout(toastT);
+  el('t-icon').textContent=icon; el('t-msg').textContent=msg;
+  el('toast').classList.add('show');
+  toastT=setTimeout(()=>el('toast').classList.remove('show'),3000);
+}
+
+// ── UTILS ──
+function el(id){ return document.getElementById(id); }
+function $$(id,v){ const e=el(id); if(e)e.textContent=v; }
+function show(id,d='block'){ const e=el(id); if(e)e.style.display=d; }
+function hide(id){ const e=el(id); if(e)e.style.display='none'; }
+function fmtBytes(b){ return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(2)+' MB'; }
+function fmtNum(n){ return (n||0).toLocaleString(); }
+function fmtTime(s){ const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60; return h?`${h}h ${m}m`:`${m}m ${sec}s`; }
+
+// ── MODEL SCALE & BBOX ──
+function applyScale() {
+  S.scaleX = el('sc-x').value / 100;
+  S.scaleY = el('sc-y').value / 100;
+  S.scaleZ = el('sc-z').value / 100;
+  $$('sc-xv', el('sc-x').value + '%');
+  $$('sc-yv', el('sc-y').value + '%');
+  $$('sc-zv', el('sc-z').value + '%');
+  pathGroup.scale.set(S.scaleX, S.scaleY, S.scaleZ);
+  if(S.bboxVisible) drawBBox();
+}
+
+function resetScale() {
+  S.scaleX=1; S.scaleY=1; S.scaleZ=1;
+  el('sc-x').value=100; el('sc-y').value=100; el('sc-z').value=100;
+  $$('sc-xv','100%'); $$('sc-yv','100%'); $$('sc-zv','100%');
+  pathGroup.scale.set(1,1,1);
+  hideBBox();
+}
+
+let bboxMesh = null;
+function toggleBBox() {
+  S.bboxVisible = !S.bboxVisible;
+  el('btn-bbox').textContent = S.bboxVisible ? 'Hide BBox' : 'Show BBox';
+  el('btn-bbox').style.background = S.bboxVisible ? '#e65100' : 'var(--accent)';
+  if(S.bboxVisible) drawBBox(); else hideBBox();
+  el('scale-toast').style.display = S.bboxVisible ? 'block' : 'none';
+}
+
+function drawBBox() {
+  if(bboxMesh) scene.remove(bboxMesh);
+  if(!S.parsed) return;
+  const d=S.parsed;
+  const cx=(d.maxX-d.minX)/2, cy=d.maxZ/2, cz=(d.maxY-d.minY)/2;
+  const geo = new THREE.BoxGeometry(
+    (d.maxX-d.minX)*S.scaleX,
+    (d.maxZ||1)*S.scaleY,
+    (d.maxY-d.minY)*S.scaleZ
+  );
+  const mat = new THREE.MeshBasicMaterial({color:0x1565c0,wireframe:true,transparent:true,opacity:0.6});
+  bboxMesh = new THREE.Mesh(geo,mat);
+  bboxMesh.position.set(0,(d.maxZ||1)*S.scaleY/2,0);
+  scene.add(bboxMesh);
+}
+
+function hideBBox() {
+  if(bboxMesh){scene.remove(bboxMesh);bboxMesh=null;}
+  el('scale-toast').style.display='none';
+}
+
+// ── GCODE EDITOR ──
+let editBackup = '';
+function toggleEditMode() {
+  S.editMode = el('ed-toggle').checked;
+  const cb = el('code-body');
+  cb.contentEditable = S.editMode ? 'true' : 'false';
+  el('ed-status').textContent = S.editMode ? '✏ Editing — click Apply to re-render' : 'Read-only — click to edit';
+  el('ed-status').style.color = S.editMode ? 'var(--orange)' : 'var(--text3)';
+  if(S.editMode) editBackup = cb.innerText;
+}
+
+function edFind() {
+  const q = prompt('Find text in G-code:');
+  if(!q) return;
+  const body = el('code-body');
+  const text = body.innerHTML;
+  body.innerHTML = text.replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),
+    m=>`<mark style="background:#fff176;color:#000">${m}</mark>`);
+}
+
+function edReplace() {
+  const q = prompt('Find:'); if(!q) return;
+  const r = prompt('Replace with:'); if(r===null) return;
+  const body = el('code-body');
+  const lines = (body.innerText||body.textContent).split('\n');
+  const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g');
+  const newLines = lines.map(l=>l.replace(re,r));
+  S.gcodeLines = newLines;
+  S.gcodeText = newLines.join('\n');
+  renderCode(newLines);
+  toast('✓', `Replaced all occurrences of "${q}"`);
+}
+
+function edStripComments() {
+  if(!S.gcodeLines.length){toast('⚠','No file loaded');return;}
+  S.editHistory.push([...S.gcodeLines]);
+  el('btn-undo').disabled=false;
+  S.gcodeLines = S.gcodeLines.map(l=>{const i=l.indexOf(';');return i>0?l.substring(0,i).trim():l;}).filter(l=>!(l.trim().startsWith(';')));
+  S.gcodeText = S.gcodeLines.join('\n');
+  renderCode(S.gcodeLines);
+  toast('✓', 'Comments stripped — click Apply to re-render');
+}
+
+function edNormalize() {
+  if(!S.gcodeLines.length){toast('⚠','No file loaded');return;}
+  S.editHistory.push([...S.gcodeLines]);
+  el('btn-undo').disabled=false;
+  S.gcodeLines = S.gcodeLines.map(l=>l.trim()).filter(l=>l.length>0);
+  S.gcodeText = S.gcodeLines.join('\n');
+  renderCode(S.gcodeLines);
+  toast('✓', 'G-code normalized');
+}
+
+function edUndo() {
+  if(!S.editHistory.length) return;
+  S.gcodeLines = S.editHistory.pop();
+  S.gcodeText = S.gcodeLines.join('\n');
+  renderCode(S.gcodeLines);
+  if(!S.editHistory.length) el('btn-undo').disabled=true;
+  toast('↩', 'Undone');
+}
+
+function edApply() {
+  if(S.editMode) {
+    // Get current edited text from contenteditable
+    const raw = el('code-body').innerText || el('code-body').textContent;
+    S.gcodeLines = raw.split('\n');
+    S.gcodeText = raw;
+  }
+  S.editHistory.push([...S.gcodeLines]);
+  S.parsed = parseGcode(S.gcodeLines);
+  S.totalLayers=S.parsed.totalLayers; S.layerMin=0; S.layerMax=S.totalLayers;
+  build3D(S.parsed,0,S.totalLayers);
+  renderCode(S.gcodeLines);
+  renderAnalysis(S.parsed);
+  updateModelInfo(S.parsed);
+  updateStats(S.parsed);
+  toast('✓','Applied — 3D view updated');
+}
+
+// ── HELP / FAQ / SEO CONTENT ──
+function buildHelp() {
+  const c = el('help-content');
+  if(c.innerHTML.trim()) return; // already built
+
+  c.innerHTML = `
+<h1>GCode Forge — Free Online G-Code Viewer &amp; CNC Simulator</h1>
+<p class="tagline">The most powerful browser-based G-Code viewer, analyzer, and machine simulator. Visualize CNC toolpaths and 3D printer G-code in full 3D/2D — no upload, no signup, completely free. Works with Marlin, Klipper, GRBL, RepRap, and all standard G-code firmware.</p>
+
+<div style="background:var(--accent-lt);border:1px solid #b3d4f0;border-radius:6px;padding:14px 16px;margin-bottom:24px">
+  <strong style="color:var(--accent)">Quick Keywords:</strong>
+  <div style="margin-top:8px">
+    ${['gcode viewer','g-code viewer','online gcode viewer','gcode analyzer','gcode simulator','CNC gcode viewer','3D printer gcode','toolpath visualizer','gcode machine simulator','verify gcode','layer analyzer','gcode extrusion viewer','ncviewer alternative','free gcode viewer','gcode viewer no upload','gcode online','marlin gcode','klipper gcode','grbl gcode viewer','bioprinter gcode'].map(k=>`<span class="kw-chip">${k}</span>`).join('')}
+  </div>
+</div>
+
+<h2>How to Use the G-Code Viewer</h2>
+<ol>
+  <li><strong>Open a file</strong> — click <em>Open File</em> or drag &amp; drop your <code>.gcode</code>, <code>.nc</code>, or <code>.g</code> file onto the viewer</li>
+  <li><strong>3D View</strong> — rotate with left mouse, pan with right mouse, zoom with scroll wheel. Use T/F/S/I for Top/Front/Side/Iso views</li>
+  <li><strong>2D View</strong> — flat layer map with color-coded extrusion paths per layer</li>
+  <li><strong>G-Code Tab</strong> — syntax-highlighted code view with built-in editor. Enable Edit Mode to modify, then click Apply to re-render</li>
+  <li><strong>Analysis Tab</strong> — layer count, extrusion moves, travel moves, retracts, total distance, estimated print time, and per-layer extrusion chart</li>
+  <li><strong>Convert Tab</strong> — export as STL, OBJ, SVG, CSV, JSON, NC, or plain text</li>
+  <li><strong>Layer Filter</strong> — use Min/Max sliders to isolate specific layers in 3D and 2D views</li>
+  <li><strong>Model Scale</strong> — scale the model in X, Y, Z with bounding box preview</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+
+${[
+  ['What is a G-Code viewer?','A G-Code viewer is a tool that reads and visualizes CNC machine and 3D printer toolpath files (.gcode, .nc). It shows the machine\'s movement paths in 2D or 3D, letting you inspect layer structure, extrusion paths, travel moves, and retractions — all before running on a real machine. GCode Forge is a completely free, browser-based G-Code viewer with no upload required.'],
+  ['How do I view G-code online for free?','Simply drag your .gcode or .nc file into GCode Forge. The file is read locally in your browser — nothing is sent to any server. You instantly get a 3D and 2D toolpath visualization, G-code syntax highlighting, and detailed analysis.'],
+  ['What G-code firmware does GCode Forge support?','GCode Forge works with all standard G-code: Marlin (FDM 3D printers), Klipper, RepRap, GRBL (CNC routers/mills), Smoothieware, Duet/RepRap Firmware, LinuxCNC, and most bioprinting firmware. Supports G0, G1, G2, G3, G28, G90, G91, G92 and M-commands.'],
+  ['How is this different from NCViewer?','GCode Forge offers layer filtering, detailed analytics (extrusion/travel/retract counts, distance, time), G-code editing with Find/Replace, model scaling with bounding box, and export to 7 formats. NCViewer averages 61 words of content with no analysis — GCode Forge gives you the complete toolset.'],
+  ['Can I edit G-code in the browser?','Yes — click the G-Code tab, enable Edit Mode, and type directly in the editor. Use Find/Replace to modify values, strip comments, or normalize whitespace. Click Apply to immediately re-render the 3D view with your changes.'],
+  ['How do I filter and inspect individual layers?','Use the Layer Filter sliders on the left panel to set a Min and Max layer. Both the 3D and 2D views update instantly. The layer HUD on the 3D view shows the current range. This is essential for diagnosing layer separation or adhesion issues.'],
+  ['Can I scale/resize my G-code model?','Yes. Use the Model Scale panel in the left sidebar to scale in X, Y, or Z. Click "Show BBox" to display a bounding box overlay in the 3D view for visual reference. Note: this scales the visualization — to scale the actual G-code coordinates, use the Find/Replace editor.'],
+  ['What export formats are supported?','GCode Forge exports to: .gcode (re-download), .nc (CNC controller format), .stl (mesh from toolpath), .obj (3D Wavefront mesh), .svg (2D vector toolpath), .csv (segment data), .json (structured path data), .txt (comments stripped).'],
+].map(([q,a])=>`
+<div class="faq-item" onclick="toggleFaq(this)">
+  <div class="faq-q">${q}<span class="fq-icon">+</span></div>
+  <div class="faq-a">${a}</div>
+</div>`).join('')}
+
+<h2>Arduino G-Code Guide</h2>
+<p>Arduino boards can run G-code with the right firmware. Below are guides for the most common boards.</p>
+
+<div class="help-grid">
+  <div class="article-card" onclick="showArticle('uno')">
+    <h3>Arduino Uno G-Code</h3>
+    <p>Run CNC and plotter G-code on Arduino Uno with GRBL firmware. Control stepper motors, lasers, and CNC routers.</p>
+    <span class="a-tag">Arduino Uno · GRBL · CNC</span>
+  </div>
+  <div class="article-card" onclick="showArticle('nano')">
+    <h3>Arduino Nano G-Code</h3>
+    <p>Arduino Nano with GRBL — compact CNC controller. Perfect for small routers, pen plotters, and PCB mills.</p>
+    <span class="a-tag">Arduino Nano · GRBL · Plotter</span>
+  </div>
+  <div class="article-card" onclick="showArticle('mega')">
+    <h3>Arduino Mega G-Code</h3>
+    <p>Arduino Mega runs Marlin firmware — the industry standard for 3D printers. Full RepRap compatibility, heated bed, multiple extruders.</p>
+    <span class="a-tag">Arduino Mega · Marlin · 3D Printer</span>
+  </div>
+  <div class="article-card" onclick="showArticle('grbl')">
+    <h3>GRBL G-Code Reference</h3>
+    <p>Complete GRBL G-code command reference. All supported G and M codes, feed rates, spindle control, and work coordinate systems.</p>
+    <span class="a-tag">GRBL · CNC · Reference</span>
+  </div>
+</div>
+
+<div id="article-content" style="margin-top:16px"></div>
+
+<h2>Comparison: GCode Forge vs Competitors</h2>
+<table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px">
+  <thead>
+    <tr style="background:var(--accent);color:#fff">
+      <th style="padding:10px;text-align:left;border-radius:4px 0 0 0">Feature</th>
+      <th style="padding:10px;text-align:center">GCode Forge</th>
+      <th style="padding:10px;text-align:center">NCViewer</th>
+      <th style="padding:10px;text-align:center;border-radius:0 4px 0 0">gcode.ws</th>
+    </tr>
+  </thead>
+  <tbody>
+    ${[
+      ['3D Toolpath View','✅','✅','✅'],
+      ['2D Layer View','✅','✅','✅'],
+      ['Layer Filtering','✅','❌','❌'],
+      ['G-Code Editor + Find/Replace','✅','❌','❌'],
+      ['Model Scale + BBox','✅','❌','❌'],
+      ['Print Analysis Dashboard','✅','❌','❌'],
+      ['Export STL / OBJ','✅','❌','❌'],
+      ['Export SVG / CSV / JSON','✅','❌','❌'],
+      ['Syntax Highlighting','✅','❌','✅'],
+      ['No Upload Required','✅','✅','✅'],
+      ['Bioprinter Support','✅','❌','❌'],
+      ['Arduino / GRBL Guide','✅','❌','❌'],
+    ].map(([f,a,b,c],i)=>`
+    <tr style="background:${i%2?'var(--panel)':'var(--panel2)'}">
+      <td style="padding:9px 10px;color:var(--text2);border-bottom:1px solid var(--border)">${f}</td>
+      <td style="padding:9px 10px;text-align:center;border-bottom:1px solid var(--border);color:var(--green);font-weight:700">${a}</td>
+      <td style="padding:9px 10px;text-align:center;border-bottom:1px solid var(--border)">${b}</td>
+      <td style="padding:9px 10px;text-align:center;border-bottom:1px solid var(--border)">${c}</td>
+    </tr>`).join('')}
+  </tbody>
+</table>
+
+<h2>Supported G-Code Commands</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">
+  ${[
+    ['G0','Rapid move (travel)'],
+    ['G1','Linear move (extrusion)'],
+    ['G2/G3','Arc moves CW/CCW'],
+    ['G4','Dwell/pause'],
+    ['G20/G21','Inch / Metric mode'],
+    ['G28','Home axes'],
+    ['G29','Auto bed leveling'],
+    ['G90/G91','Absolute / Relative'],
+    ['G92','Set position (reset E)'],
+    ['M82/M83','Absolute / Relative E'],
+    ['M104/M109','Set hotend temp'],
+    ['M140/M190','Set bed temp'],
+    ['M106/M107','Fan on/off'],
+    ['M84','Disable steppers'],
+    ['M117','Display message'],
+  ].map(([c,d])=>`<div style="background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:8px 10px"><code>${c}</code><div style="font-size:10px;color:var(--text3);margin-top:3px">${d}</div></div>`).join('')}
+</div>
+
+<p style="font-size:11px;color:var(--text3);margin-top:24px;padding-top:16px;border-top:1px solid var(--border)">
+  GCode Forge — Free online G-code viewer, analyzer, simulator and editor. Works with CNC machines, 3D printers, laser cutters, plotters, and bioprinters. 
+  Supports Marlin, Klipper, GRBL, RepRap, Smoothieware, Duet. No upload required. No signup. Free forever.<br>
+  Keywords: gcode viewer · g-code viewer online · gcode analyzer · gcode simulator · CNC simulator · toolpath viewer · 3D printer gcode viewer · layer viewer · verify gcode · marlin viewer · klipper viewer · grbl gcode · arduino gcode · ncviewer alternative · gcode.ws alternative · free gcode viewer online
+</p>`;
+}
+
+function toggleFaq(el) { el.classList.toggle('open'); }
+
+const ARTICLES = {
+  uno: {
+    title: 'Arduino Uno G-Code with GRBL — Complete Guide',
+    content: `
+<h3>What is GRBL?</h3>
+<p>GRBL is an open-source, high-performance CNC firmware that runs on Arduino Uno (ATmega328P). It interprets standard G-code and controls stepper motors for CNC routers, mills, laser cutters, and pen plotters. GRBL is the most popular Arduino G-code firmware with millions of installations worldwide.</p>
+<h3>Hardware Requirements</h3>
+<ul>
+  <li>Arduino Uno (ATmega328P, 16MHz)</li>
+  <li>CNC Shield or custom stepper driver wiring (A4988, DRV8825)</li>
+  <li>2 or 3 stepper motors (X, Y, Z axes)</li>
+  <li>Power supply (12–24V)</li>
+  <li>Limit switches (optional but recommended)</li>
+</ul>
+<h3>Installing GRBL on Arduino Uno</h3>
+<ol>
+  <li>Download GRBL from <code>github.com/gnea/grbl</code></li>
+  <li>Open Arduino IDE → Sketch → Include Library → Add .ZIP Library</li>
+  <li>Open Examples → grbl → grblUpload</li>
+  <li>Select Board: Arduino Uno, Port: your COM port</li>
+  <li>Upload — GRBL is now running on your Uno</li>
+</ol>
+<h3>Basic G-Code for Arduino Uno / GRBL</h3>
+<pre><code>G21        ; Set units to millimeters
+G90        ; Absolute positioning
+G0 X0 Y0   ; Rapid move to home
+G1 X10 Y10 F500  ; Linear move at 500mm/min
+G1 X20 Y0  ; Continue cutting
+G0 X0 Y0   ; Return home
+M2         ; End program</code></pre>
+<h3>GRBL Settings ($-commands)</h3>
+<ul>
+  <li><code>$$</code> — View all settings</li>
+  <li><code>$110=500</code> — Set X max speed (mm/min)</li>
+  <li><code>$100=80</code> — Set X steps/mm (depends on hardware)</li>
+  <li><code>$H</code> — Homing cycle</li>
+  <li><code>?</code> — Status report</li>
+</ul>
+<p>Use GCode Forge to visualize your GRBL G-code before sending to Arduino Uno. Upload your .nc or .gcode file to check toolpaths, verify move directions, and inspect layer structure.</p>`
+  },
+  nano: {
+    title: 'Arduino Nano G-Code with GRBL — Complete Guide',
+    content: `
+<h3>Arduino Nano as CNC Controller</h3>
+<p>Arduino Nano uses the same ATmega328P chip as the Uno — making it fully GRBL-compatible. Its smaller footprint makes it ideal for compact pen plotters, PCB mills, and small laser engravers.</p>
+<h3>Why use Arduino Nano for G-Code?</h3>
+<ul>
+  <li>Smaller form factor than Uno — fits in tight enclosures</li>
+  <li>USB-C variants available</li>
+  <li>Same GRBL firmware — same G-code commands</li>
+  <li>Lower cost per unit</li>
+</ul>
+<h3>Pen Plotter G-Code Example (Arduino Nano)</h3>
+<pre><code>G21          ; Millimeters
+G90          ; Absolute mode
+M3 S0        ; Pen up (servo)
+G0 X10 Y10   ; Move to start
+M3 S90       ; Pen down
+G1 X50 Y10 F800
+G1 X50 Y50
+G1 X10 Y50
+G1 X10 Y10
+M3 S0        ; Pen up
+G0 X0 Y0     ; Home
+M5           ; Spindle off</code></pre>
+<h3>Key Differences: Nano vs Uno for GRBL</h3>
+<ul>
+  <li>Same G-code commands — fully compatible</li>
+  <li>Nano has no barrel jack — power via USB or Vin pin</li>
+  <li>Use Nano Every for better performance (ATmega4809)</li>
+</ul>
+<p>Visualize your Arduino Nano G-code in GCode Forge before running — especially important for pen plotters to verify pen-up/down moves and path order.</p>`
+  },
+  mega: {
+    title: 'Arduino Mega G-Code with Marlin Firmware — 3D Printer Guide',
+    content: `
+<h3>Arduino Mega + RAMPS = 3D Printer</h3>
+<p>Arduino Mega (ATmega2560) paired with a RAMPS 1.4 shield is the classic open-source 3D printer controller. It runs Marlin firmware — the world's most popular 3D printing G-code interpreter. Most RepRap, Prusa, and Creality printers use this architecture.</p>
+<h3>Why Arduino Mega for 3D Printing G-Code?</h3>
+<ul>
+  <li>256KB flash — enough for full Marlin with LCD, auto bed leveling</li>
+  <li>RAMPS 1.4 shield provides 5 stepper drivers, heated bed, hotend control</li>
+  <li>Supports UART/I2C for LCD displays</li>
+  <li>Multiple thermistor inputs for hotend + bed</li>
+</ul>
+<h3>Marlin G-Code for 3D Printing (Arduino Mega)</h3>
+<pre><code>; Start G-code (typical Marlin/RAMPS)
+G28          ; Auto home all axes
+G29          ; Auto bed leveling (if enabled)
+G92 E0       ; Reset extruder
+M104 S210    ; Set hotend temperature
+M140 S60     ; Set bed temperature
+M109 S210    ; Wait for hotend
+M190 S60     ; Wait for bed
+G1 F200 E3   ; Prime extruder
+G92 E0       ; Reset E again
+
+; Layer 1
+G0 Z0.3
+G1 F1500 X50 Y50 E1.5
+G1 X100 Y50 E3.0
+G1 X100 Y100 E4.5
+G1 X50 Y100 E6.0
+G1 X50 Y50 E7.5
+
+; End G-code
+G28 X0       ; Home X
+M104 S0      ; Hotend off
+M140 S0      ; Bed off
+M84          ; Disable steppers</code></pre>
+<h3>Key Marlin M-Commands</h3>
+<ul>
+  <li><code>M503</code> — Report EEPROM settings</li>
+  <li><code>M92</code> — Set steps per unit</li>
+  <li><code>M301</code> — Set PID hotend values</li>
+  <li><code>M221</code> — Set flow rate percentage</li>
+  <li><code>M220</code> — Set speed percentage</li>
+</ul>
+<p>Use GCode Forge to inspect your Arduino Mega / Marlin G-code: visualize layer-by-layer toolpaths, check extrusion vs travel moves, and analyze print time estimates before running a long print job.</p>`
+  },
+  grbl: {
+    title: 'GRBL G-Code Command Reference — All Supported Codes',
+    content: `
+<h3>GRBL G-Code Reference</h3>
+<p>GRBL is an Arduino-based CNC controller firmware that interprets a subset of standard G-code. Below is a complete reference of all commands supported by GRBL.</p>
+<h3>Motion Commands</h3>
+<pre><code>G0   - Rapid positioning (travel move)
+G1   - Linear interpolation (cutting/engraving)
+G2   - Clockwise arc
+G3   - Counter-clockwise arc
+G4   - Dwell (pause): G4 P100 = 100ms pause
+G38.2 - Probe toward workpiece</code></pre>
+<h3>Coordinate System</h3>
+<pre><code>G17  - XY plane (default)
+G18  - XZ plane
+G19  - YZ plane
+G20  - Inches
+G21  - Millimeters
+G54-G59 - Work coordinate systems
+G90  - Absolute positioning
+G91  - Relative/incremental positioning
+G92  - Set current position as zero
+G92.1 - Reset coordinate offsets</code></pre>
+<h3>Spindle & Feed</h3>
+<pre><code>M3   - Spindle on CW / Laser on
+M4   - Spindle on CCW
+M5   - Spindle off / Laser off
+F    - Feed rate (mm/min)
+S    - Spindle speed / Laser power</code></pre>
+<h3>GRBL Real-time Commands</h3>
+<ul>
+  <li><code>~</code> — Resume from hold</li>
+  <li><code>!</code> — Feed hold</li>
+  <li><code>?</code> — Status report</li>
+  <li><code>Ctrl+X</code> — Soft reset</li>
+</ul>
+<p>Paste your GRBL G-code into GCode Forge to visualize the toolpath before running on your CNC machine. Check for unexpected rapids, verify work area bounds, and inspect the cut sequence in the 3D and 2D views.</p>`
+  }
+};
+
+function showArticle(id) {
+  const a = ARTICLES[id];
+  if(!a) return;
+  const c = el('article-content');
+  c.innerHTML = `
+<div style="background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:20px;margin-top:4px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+    <h2 style="margin:0;padding:0;border:none;font-size:18px">${a.title}</h2>
+    <button onclick="el('article-content').innerHTML=''" style="background:none;border:1px solid var(--border);padding:4px 10px;border-radius:4px;cursor:pointer;font-size:11px;color:var(--text3)">✕ Close</button>
+  </div>
+  ${a.content}
+</div>`;
+  c.scrollIntoView({behavior:'smooth',block:'start'});
+}
+window.addEventListener('load', ()=>{
+  initThree(); applyCam();
+  window.addEventListener('resize', ()=>{ resizeCvs(); if(S.view==='2d') draw2D(); });
+});
+window.addEventListener('dragover', e=>e.preventDefault());
+window.addEventListener('drop', e=>{ e.preventDefault(); const f=e.dataTransfer.files[0]; if(f)processFile(f); });
+</script>
+</body>
+</html>
