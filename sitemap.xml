@@ -7,47 +7,47 @@
 
   <!-- ═══ MAIN PAGE — Highest Priority ═══ -->
   <url>
-    <loc>https://gcodeforge.app/</loc>
+    <loc>https://gcodex.tech/</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://gcodeforge.app/android-chrome-512x512.png</image:loc>
+      <image:loc>https://gcodex.tech/android-chrome-512x512.png</image:loc>
       <image:title>GCode Forge — Free Online G-Code Viewer and Simulator</image:title>
     </image:image>
   </url>
 
   <!-- ═══ TOOL SECTIONS (hash-based, same page) ═══ -->
   <url>
-    <loc>https://gcodeforge.app/#3d-viewer</loc>
+    <loc>https://gcodex.tech/#3d-viewer</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://gcodeforge.app/#2d-view</loc>
+    <loc>https://gcodex.tech/#2d-view</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://gcodeforge.app/#analysis</loc>
+    <loc>https://gcodex.tech/#analysis</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://gcodeforge.app/#convert</loc>
+    <loc>https://gcodex.tech/#convert</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://gcodeforge.app/#help</loc>
+    <loc>https://gcodex.tech/#help</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -55,21 +55,21 @@
 
   <!-- ═══ HELP / FAQ SECTIONS ═══ -->
   <url>
-    <loc>https://gcodeforge.app/#how-to-use</loc>
+    <loc>https://gcodex.tech/#how-to-use</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://gcodeforge.app/#arduino-gcode</loc>
+    <loc>https://gcodex.tech/#arduino-gcode</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://gcodeforge.app/#faq</loc>
+    <loc>https://gcodex.tech/#faq</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
