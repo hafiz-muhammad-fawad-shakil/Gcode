@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "name": "gcodeforge",
+  "name": "gcodex",
   "public": true,
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
     {
       "source": "/www/(.*)",
-      "destination": "https://gcodeforge.app/$1",
+      "destination": "https://gcodex.tech/$1",
       "permanent": true
     }
   ],
