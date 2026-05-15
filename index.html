@@ -1389,9 +1389,10 @@ function parseGcode(lines) {
     cmd[c]=(cmd[c]||0)+1;
 
     const p={};
-    for (let j=1;j<parts.length;j++){
-      if (parts[j].length>1){const k=parts[j][0].toUpperCase();const v=parseFloat(parts[j].slice(1));if(!isNaN(v))p[k]=v;}
-    }
+    // Handle both "X10.5" and "X 10.5" (BioScaffolds/syringe printers use spaces)
+    const paramStr = parts.slice(1).join(' ');
+    const paramMatches = paramStr.matchAll(/([A-Za-z])\s*([-+]?[0-9]*\.?[0-9]+)/g);
+    for (const m of paramMatches) { p[m[1].toUpperCase()] = parseFloat(m[2]); }
 
     if(c==='G90'){abs=true;continue;}
     if(c==='G91'){abs=false;continue;}
