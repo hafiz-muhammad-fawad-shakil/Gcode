@@ -1,8 +1,7 @@
 # ═══════════════════════════════════════════════
-# robots.txt — GCode Forge (gcodeforge.app)
-# Generated: 2026-05-10
+# robots.txt — GCodex (gcodex.tech)
+# Generated: 2026-05-15
 # ═══════════════════════════════════════════════
-
 # Allow all major search engine bots
 User-agent: Googlebot
 Allow: /
@@ -37,7 +36,7 @@ Crawl-delay: 5
 # Disallow: /private/
 
 # ═══ SITEMAP ═══
-Sitemap: https://gcodeforge.app/sitemap.xml
+Sitemap: https://gcodex.tech/sitemap.xml
 
 # ═══ HOST ═══
-Host: https://gcodeforge.app
+Host: gcodex.tech
