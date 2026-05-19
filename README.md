@@ -45,7 +45,6 @@
 - [🔌 Supported Firmware](#-supported-firmware)
 - [⌨️ G-Code Command Support](#️-g-code-command-support)
 - [🔐 Privacy](#-privacy)
-- [🏗️ Architecture](#️-architecture)
 - [📁 Project Structure](#-project-structure)
 - [🤝 Contributing](#-contributing)
 - [📊 Comparison vs Alternatives](#-comparison-vs-alternatives)
@@ -217,37 +216,6 @@ Your G-code file
 
 ---
 
-## 🏗️ Architecture
-
-Single-file vanilla JS app — zero build steps, zero npm dependencies.
-
-```
-index.html
-├── SEO meta (OG, Twitter Card, Schema.org JSON-LD)
-├── Three.js r128 (CDN)
-├── CSS (~700 lines)
-└── JS (~900 lines)
-    ├── parseGcode()   — G-code parser (G90/G91, M82/M83, G92)
-    ├── build3D()      — Three.js BufferGeometry line segments
-    ├── draw2D()       — Canvas 2D layer map
-    ├── doExport()     — STL / OBJ / SVG / CSV / JSON export
-    └── Editor         — Find, Replace, Strip Comments, Normalize
-```
-
----
-
-## 📁 Project Structure
-
-```
-Gcode/
-├── index.html          ← Entire application
-├── ads.txt             ← AdSense verification
-├── site.webmanifest    ← PWA manifest
-└── favicon.ico
-```
-
----
-
 ## 🖱️ Controls
 
 | Action | Control |
@@ -283,11 +251,6 @@ Gcode/
 ## 🤝 Contributing
 
 ```bash
-git clone https://github.com/hafiz-muhammad-fawad-shakil/Gcode.git
-cd Gcode
-# Edit index.html — no build step
-# Test in browser, then commit & push
-```
 
 **Ideas welcome:**
 - [ ] Dark mode
