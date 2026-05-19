@@ -111,30 +111,8 @@
 
 ## 🚀 Quick Start
 
-### Option 1 — Use Online (Recommended)
-
 Just go to **[gcodex.tech](https://gcodex.tech/)** and drop your file. Nothing to install.
 
-### Option 2 — Run Locally
-
-```bash
-# Clone the repo
-git clone https://github.com/hafiz-muhammad-fawad-shakil/Gcode.git
-cd Gcode
-
-# No build step needed — single HTML file!
-# Python
-python3 -m http.server 8080
-
-# Node.js
-npx serve .
-
-# Open: http://localhost:8080
-```
-
-> You can also open `index.html` directly in your browser — everything runs locally.
-
----
 
 ## 🖥️ Views & Tabs
 
