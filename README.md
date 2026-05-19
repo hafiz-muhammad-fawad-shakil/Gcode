@@ -252,7 +252,7 @@ Your G-code file
 
 ```bash
 
-**Ideas welcome:**
+*deas welcome:
 - [ ] Dark mode
 - [ ] G2/G3 arc rendering in 3D
 - [ ] Print speed color visualization
@@ -265,16 +265,3 @@ Your G-code file
 
 MIT License — free to use, fork, and contribute.
 
----
-
-<div align="center">
-
-**Made with ❤️ for the CNC, 3D printing & bioprinting community**
-
-[![gcodex.tech](https://img.shields.io/badge/🌐-gcodex.tech-1565c0?style=flat-square)](https://gcodex.tech/)
-&nbsp;
-[![Product Hunt](https://img.shields.io/badge/Product_Hunt-GCodex-DA552F?style=flat-square&logo=producthunt)](https://www.producthunt.com/products/gcodex?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-gcodex)
-
-*If GCodex saved you time, give it a ⭐ on GitHub!*
-
-</div>
