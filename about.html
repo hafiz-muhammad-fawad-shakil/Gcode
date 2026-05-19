@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About GCodex — Free Online G-Code Viewer & CNC Simulator</title>
+<meta name="description" content="About GCodex — the most powerful free online G-Code viewer, analyzer and CNC simulator. Built for engineers, makers, and 3D printing enthusiasts. 100% browser-based, no upload required.">
+<meta name="keywords" content="gcode viewer, g-code viewer online, free gcode viewer, gcode analyzer, gcode simulator, CNC toolpath viewer, ncviewer alternative, about gcodex">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About GCodex — Free Online G-Code Viewer">
+<meta property="og:description" content="GCodex is a free, browser-based G-Code viewer built for CNC engineers, 3D printing enthusiasts, and bioprinting researchers.">
+<meta property="og:url" content="https://gcodex.tech/about.html">
+<meta property="og:site_name" content="GCodex">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About GCodex — Free Online G-Code Viewer">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="theme-color" content="#1565c0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About GCodex",
+  "url": "https://gcodex.tech/about.html",
+  "description": "GCodex is a free, browser-based G-Code viewer, analyzer, and CNC simulator for engineers and makers.",
+  "isPartOf": { "@type": "WebSite", "name": "GCodex", "url": "https://gcodex.tech/" }
+}
+</script>
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --topbar-bg:   #1565c0;
+  --topbar-dark: #0d47a1;
+  --topbar-sep:  rgba(255,255,255,0.15);
+  --accent:      #1565c0;
+  --accent-h:    #1976d2;
+  --accent-lt:   #e3f0ff;
+  --bg:          #f5f7fa;
+  --panel:       #ffffff;
+  --border:      #dde3ec;
+  --text:        #1a2740;
+  --text2:       #4a5d78;
+  --text3:       #8a9bb5;
+}
+html, body {
+  font-family:'Inter', system-ui, sans-serif;
+  background:var(--bg); color:var(--text);
+  font-size:14px; line-height:1.75;
+}
+/* ── BLUE TOPBAR ── */
+#topbar {
+  height:44px; background:var(--topbar-bg); display:flex; align-items:center;
+  border-bottom:2px solid var(--topbar-dark); position:sticky; top:0; z-index:200;
+  box-shadow:0 2px 8px rgba(35, 37, 41, 0.2);
+}
+#logo {
+  display:flex; align-items:center; gap:9px; padding:0 18px;
+  text-decoration:none; font-weight:700; font-size:15px; color:#fff;
+  letter-spacing:-0.3px; border-right:1px solid var(--topbar-sep); height:100%; flex-shrink:0;
+}
+#logo img { width:27px; height:27px; border-radius:5px; box-shadow:0 1px 4px rgba(0,0,0,0.3); }
+#logo em { font-style:normal; color:#90caf9; }
+.nav-links { display:flex; align-items:center; gap:2px; padding:0 10px; flex:1; }
+.nav-link {
+  height:29px; padding:0 12px; border:1px solid transparent; border-radius:4px;
+  color:rgba(255,255,255,0.75); font-size:12px; font-weight:500;
+  text-decoration:none; display:flex; align-items:center; gap:5px; transition:all 0.12s;
+}
+.nav-link svg { width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:2; flex-shrink:0; }
+.nav-link:hover { background:rgba(255,255,255,0.12); color:#fff; }
+.nav-link.active { background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.3); color:#fff; }
+.back-btn {
+  margin-left:auto; margin-right:14px; height:29px; padding:0 14px;
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.28);
+  border-radius:4px; color:#fff; font-size:12px; font-weight:500;
+  text-decoration:none; display:flex; align-items:center; gap:6px; transition:all 0.12s; flex-shrink:0;
+}
+.back-btn:hover { background:rgba(255,255,255,0.2); border-color:rgba(255,255,255,0.5); }
+.back-btn svg { width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:2; }
+/* ── WHITE SUBBAR ── */
+#subbar {
+  height:38px; background:#fff; border-bottom:1px solid var(--border);
+  display:flex; align-items:flex-end; box-shadow:0 1px 3px rgba(0,0,0,0.06);
+  position:sticky; top:44px; z-index:100;
+}
+.stab {
+  height:100%; padding:0 18px; font-size:12px; font-weight:500;
+  border:none; background:transparent; color:var(--text3); border-bottom:2px solid transparent;
+  display:flex; align-items:center; gap:6px; transition:all 0.12s;
+  text-decoration:none; white-space:nowrap;
+}
+.stab svg { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.stab:hover { color:var(--text2); background:#f5f7fa; }
+.stab.active { color:var(--accent); border-bottom-color:var(--accent); background:#fff; }
+/* ── PAGE LAYOUT ── */
+.page-wrap { max-width:1020px; margin:0 auto; display:flex; min-height:calc(100vh - 82px); }
+.sidebar {
+  width:210px; min-width:210px; flex-shrink:0; background:var(--panel);
+  border-right:1px solid var(--border); padding:22px 0 48px;
+  position:sticky; top:82px; height:calc(100vh - 82px); overflow-y:auto;
+}
+.sidebar-title {
+  font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.9px;
+  color:var(--text3); padding:0 16px 8px; border-bottom:1px solid var(--border); margin-bottom:6px;
+}
+.sidebar a {
+  display:block; padding:7px 16px; font-size:12px; color:var(--text2);
+  text-decoration:none; border-left:2px solid transparent; transition:all 0.1s;
+}
+.sidebar a:hover { color:var(--accent); background:var(--accent-lt); border-left-color:var(--accent); }
+.main { flex:1; padding:32px 40px 72px; background:var(--panel); border-right:1px solid var(--border); min-width:0; }
+h1 { font-size:26px; font-weight:700; color:var(--text); margin-bottom:6px; letter-spacing:-0.4px; }
+.tagline { font-size:14px; color:var(--text2); margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+h2 { font-size:15px; font-weight:700; color:var(--text); margin:28px 0 10px; }
+p { font-size:13px; color:var(--text2); margin-bottom:12px; line-height:1.85; }
+ul, ol { padding-left:22px; margin-bottom:12px; }
+li { font-size:13px; color:var(--text2); margin-bottom:5px; line-height:1.75; }
+li strong { color:var(--text); }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+code { background:#f0f4f8; border:1px solid var(--border); border-radius:3px; padding:1px 6px; font-family:'JetBrains Mono',monospace; font-size:11.5px; }
+.kw-line { font-size:11px; color:var(--text3); line-height:1.9; margin-top:36px; padding-top:16px; border-top:1px solid var(--border); }
+footer { text-align:center; padding:18px 24px; font-size:11px; color:var(--text3); background:var(--bg); border-top:1px solid var(--border); }
+footer a { color:var(--accent); text-decoration:none; }
+footer a:hover { text-decoration:underline; }
+@media(max-width:700px){ .sidebar{display:none;} .main{padding:22px 18px 60px;} }
+</style>
+</head>
+<body>
+
+<!-- BLUE TOPBAR -->
+<div id="topbar">
+  <a href="index.html" id="logo">
+    <img src="android-chrome-192x192.png" alt="GCodex logo" onerror="this.style.display='none'">
+    GCodex
+  </a>
+  <nav class="nav-links">
+    <a href="index.html" class="nav-link">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      Back
+    </a>
+    <a href="about.html" class="nav-link active">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      About
+    </a>
+    
+    
+
+  </nav>
+ 
+</div>
+
+
+
+<div class="page-wrap">
+  <div class="sidebar">
+    <div class="sidebar-title">On This Page</div>
+    <a href="#what">What is GCodex?</a>
+    <a href="#features">Features</a>
+    <a href="#machines">Supported Machines</a>
+    <a href="#how">How It Works</a>
+    <a href="#stack">Tech Stack</a>
+    <a href="#compare">vs NCViewer</a>
+    <a href="#contribute">Contribute</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="main">
+    <h1>GCodex</h1>
+    <p class="tagline">Free online G-Code viewer, analyzer, simulator &amp; editor — 100% browser-based, no upload, no signup.</p>
+
+    <h2 id="what">What is GCodex?</h2>
+    <p>GCodex is a free, browser-based G-Code viewer and CNC machine simulator. It lets you visualize, analyze, and simulate G-code toolpaths for CNC machines and 3D printers — entirely in your browser, with no file upload and no account required.</p>
+    <p>When you open a G-code file in GCodex, the entire file is read locally using the browser's FileReader API. It is parsed in JavaScript, rendered in 3D using WebGL and Three.js, and displayed in 2D using the Canvas API. Nothing is ever transmitted to any server. Your file stays on your device throughout the session and is discarded from memory when you close or refresh the tab.</p>
+    <p>GCodex was built as a faster, more feature-rich alternative to NCViewer and gcode.ws. It handles larger files, renders toolpaths more smoothly, and includes features those tools don't have — layer filtering, a full analytics dashboard, an in-browser G-code editor with Find &amp; Replace, model scaling with bounding box, and export to eight different file formats.</p>
+
+    <h2 id="features">Features</h2>
+    <p>GCodex has six main tabs, each serving a specific purpose:</p>
+    <ul>
+      <li><strong>3D View</strong> — WebGL-powered toolpath visualization using Three.js. Orbit with left mouse, pan with right mouse, zoom with scroll wheel. Camera presets for Top, Front, Side, and Isometric views. Toggle between perspective and orthographic projection. Visibility toggles for extrusion, travel, and retract moves.</li>
+      <li><strong>2D View</strong> — Flat top-down layer map rendered with the Canvas 2D API. Color-coded extrusion paths per layer with gradient shifts across layers. Grid overlay for scale reference.</li>
+      <li><strong>G-Code Tab</strong> — Full syntax-highlighted code view with line numbers. Enable Edit Mode to modify G-code directly in the browser. Find &amp; Replace, strip all comments, normalize whitespace, and undo support. Click Apply to immediately re-render the 3D view with your changes.</li>
+      <li><strong>Analysis Tab</strong> — Dashboard showing total layers, extrusion move count, travel moves, retractions, total distance in mm, and estimated print time. Per-layer extrusion bar chart. Command frequency breakdown showing the most-used G and M codes.</li>
+      <li><strong>Convert Tab</strong> — Export your loaded G-code to eight formats: .gcode, .nc, .stl, .obj, .svg, .csv, .json, and .txt. All conversion happens locally — no server processing. Also links to recommended slicers (Cura, PrusaSlicer) for STL-to-G-code workflows.</li>
+      <li><strong>Help &amp; FAQ Tab</strong> — Inline documentation, FAQ accordion, Arduino and GRBL guides for Uno, Nano, and Mega, G-code command reference, and a feature comparison table against NCViewer and gcode.ws.</li>
+    </ul>
+
+    <h2 id="machines">Supported Machines &amp; Firmware</h2>
+    <p>GCodex works with all standard G-code generated by any slicer or CAM software:</p>
+    <ul>
+      <li><strong>FDM 3D Printers</strong> — Marlin, Klipper, RepRap, Smoothieware, Duet/RepRap Firmware. Covers Prusa, Creality, Bambu Lab, and Voron machines.</li>
+      <li><strong>CNC Machines</strong> — GRBL (Arduino-based routers, mills, laser cutters), LinuxCNC, Mach3, Mach4, and standard FANUC-dialect G-code.</li>
+      <li><strong>Bioprinters</strong> — Supports syringe extrusion G-code for calcium alginate, hydrogel scaffold printing, and other bioprinting applications. Includes a built-in bioprinting scaffold sample file.</li>
+    </ul>
+    <p>Supported commands include G0, G1, G2, G3, G4, G20, G21, G28, G29, G90, G91, G92, M82, M83, M104, M109, M106, M107, M140, M190, and more.</p>
+
+    <h2 id="how">How It Works</h2>
+    <p>GCodex is a single HTML file that contains all the HTML, CSS, and JavaScript needed to run the entire application. There is no server, no database, no backend, and no build process. You can clone the repository and open <code>index.html</code> directly in any modern browser.</p>
+    <p>When you drop a file, the browser reads it with FileReader. The parser does a single pass through the lines, tracking absolute/relative mode (G90/G91), extruder mode (M82/M83), E-axis resets (G92), and Z-height changes to detect layer boundaries. Each G0/G1 move is classified as extrusion, travel, or retract based on the E delta.</p>
+
+    <h2 id="stack">Tech Stack</h2>
+    <p>GCodex uses no frameworks, no npm packages, and no bundler. The only external dependency is Three.js r128, loaded from the CloudFlare CDN.</p>
+    <ul>
+      <li><strong>Three.js r128</strong> — 3D rendering via WebGL</li>
+      <li><strong>Canvas 2D API</strong> — 2D layer map rendering</li>
+      <li><strong>FileReader API</strong> — local file reading (no upload)</li>
+      <li><strong>CSS transitions</strong> — UI interactions</li>
+      <li><strong>Google Fonts</strong> — Inter and JetBrains Mono</li>
+      <li><strong>Vercel</strong> — deployed with global CDN</li>
+    </ul>
+
+    <h2 id="compare">GCodex vs NCViewer</h2>
+    <p>NCViewer is the most widely known browser-based G-code viewer and ranks highly for the keyword "gcode viewer". However, its feature set is limited. GCodex was built specifically to be a better alternative.</p>
+    <p>NCViewer has a basic 3D and 2D viewer, no analytics, no layer filtering, no editor, no export options, and minimal documentation. GCodex adds layer filtering with real-time 3D and 2D update, a full analytics dashboard with per-layer charts, an in-browser editor with Find &amp; Replace and undo, model scaling with bounding box, eight export formats including STL and OBJ, toolpath animation, Arduino and GRBL guides, and bioprinter support.</p>
+
+    <h2 id="contribute">Contribute</h2>
+    <p>GCodex is open source. The entire application lives in a single <code>index.html</code> file on GitHub. To contribute, fork the repository, make your changes to <code>index.html</code> (no build step needed), test in any browser, and open a pull request.</p>
+    <p>Ideas on the roadmap: dark mode, G2/G3 arc rendering in 3D view, print speed color visualization, mobile-responsive layout, filament weight calculator, and Klipper PRINT_START macro parsing.</p>
+    <p>GitHub: <a href="https://github.com/hafiz-muhammad-fawad-shakil/Gcode" target="_blank" rel="noopener">github.com/hafiz-muhammad-fawad-shakil/Gcode</a></p>
+
+    <h2 id="contact">Contact</h2>
+    <p>For bug reports or feature requests, open an issue on the GitHub repository. For privacy-related questions, see the <a href="privacy-policy.html">Privacy Policy</a>. For usage questions, see the <a href="faq.html">FAQ</a> or <a href="help.html">Help &amp; FAQ</a> page.</p>
+    <p>Website: <a href="https://gcodex.tech/">gcodex.tech</a></p>
+
+    <p class="kw-line">
+      Keywords: gcode viewer · g-code viewer online · free gcode viewer · gcode analyzer · gcode simulator · CNC toolpath viewer · 3D printer gcode viewer · ncviewer alternative · gcode.ws alternative · marlin gcode viewer · klipper gcode viewer · grbl gcode viewer · bioprinter gcode · verify gcode online · gcode viewer no upload
+    </p>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">GCodex</a> ·
+  <a href="about.html">About</a> ·
+  <a href="faq.html">FAQ</a> ·
+  <a href="help.html">Help &amp; FAQ</a> ·
+  <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · Browser-based · No upload · No signup · Free forever
+</footer>
+
+</body>
+</html>
