@@ -446,7 +446,7 @@ html, body {
   height:100%; padding:0 18px; font-size:12px; font-weight:500; cursor:pointer;
   border:none; background:transparent; color:var(--text3); border-bottom:2px solid transparent;
   display:flex; align-items:center; gap:6px; transition:all 0.12s;
-  font-family:'Inter',sans-serif;
+  font-family:'Inter',sans-serif; text-decoration:none;
 }
 .vtab:hover { color:var(--text2); background:var(--panel2); }
 .vtab.on { color:var(--accent); border-bottom-color:var(--accent); background:#fff; }
@@ -817,6 +817,19 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
     <div class="stat-item"><span class="sv" id="s-lines">—</span><span class="sl">Lines</span></div>
     <div class="stat-item"><span class="sv" id="s-layers">—</span><span class="sl">Layers</span></div>
     <div class="stat-item"><span class="sv" id="s-dist">—</span><span class="sl">mm</span></div>
+    <div class="tb-sep"></div>
+    <a href="about.html" class="tb-btn" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      About
+    </a>
+    <a href="faq.html" class="tb-btn" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      FAQ
+    </a>
+    <a href="privacy-policy.html" class="tb-btn" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Privacy
+    </a>
   </div>
 </div>
 <input type="file" id="file-input" accept=".gcode,.gc,.nc,.g,.gco" onchange="onFileInput(event)">
@@ -978,10 +991,18 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
         <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
         Convert
       </button>
-      <button class="vtab" onclick="setView('help')">
+      <a class="vtab" href="about.html" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        About
+      </a>
+      <a class="vtab" href="faq.html" style="text-decoration:none;">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        Help &amp; FAQ
-      </button>
+        FAQ
+      </a>
+      <a class="vtab" href="privacy-policy.html" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Privacy
+      </a>
     </div>
 
     <!-- View area -->
