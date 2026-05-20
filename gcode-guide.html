@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G-Code Complete Guide — GCodex | Learn G-Code A to Z</title>
+<meta name="description" content="Complete G-Code learning guide for CNC and 3D printing. Learn G-Code from scratch — coordinate systems, G00, G01, G02, G03, arcs, tool changes, MDI, lathe programming, and more. Free online G-Code course by GCodex.">
+<meta name="keywords" content="g-code tutorial, learn g-code, g-code course, g-code basics, G00 G01 G02 G03, cnc programming, gcode guide, g-code for beginners, cnc g-code tutorial, g-code reference, tool changes gcode, lathe gcode, circular arcs gcode">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/gcode-guide.html">
+<meta property="og:title" content="G-Code Complete Guide — GCodex">
+<meta property="og:description" content="Learn G-Code A to Z — coordinate systems, motion commands, arcs, tool changes, lathe programming and more. Free guide by GCodex.">
+<meta property="og:url" content="https://gcodex.tech/gcode-guide.html">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="theme-color" content="#1565c0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "G-Code Complete Guide — Learn G-Code A to Z",
+  "description": "Complete G-Code learning guide covering coordinate systems, motion commands G00/G01/G02/G03, arcs, MDI, tool changes, and lathe programming.",
+  "url": "https://gcodex.tech/gcode-guide.html",
+  "author": { "@type": "Organization", "name": "GCodex" },
+  "publisher": { "@type": "Organization", "name": "GCodex", "url": "https://gcodex.tech/" }
+}
+</script>
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --topbar-bg: #1565c0;
+  --accent:    #1565c0;
+  --accent-lt: #e3f0ff;
+  --bg:        #f5f7fa;
+  --panel:     #ffffff;
+  --border:    #dde3ec;
+  --text:      #1a2740;
+  --text2:     #4a5d78;
+  --text3:     #8a9bb5;
+  --cyan:      #00bcd4;
+  --green:     #26a65b;
+  --orange:    #f57c00;
+  --code-bg:   #1e2a3a;
+}
+html, body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--text);
+  font-size: 14px; line-height: 1.75;
+}
+
+/* ── TOPBAR ── */
+#topbar {
+  height: 42px; background: var(--topbar-bg);
+  display: flex; align-items: center;
+  border-bottom: 2px solid #0d47a1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  position: sticky; top: 0; z-index: 200;
+}
+#logo {
+  display: flex; align-items: center; gap: 9px;
+  padding: 0 20px; text-decoration: none;
+  font-weight: 700; font-size: 15px; color: #fff;
+  letter-spacing: -0.3px; border-right: 1px solid rgba(255,255,255,0.15);
+  height: 100%; flex-shrink: 0;
+}
+#logo img { width: 26px; height: 26px; border-radius: 5px; }
+#logo em { font-style: normal; color: #90caf9; }
+.nav-links { display: flex; align-items: center; gap: 2px; padding: 0 12px; flex: 1; }
+.nav-link {
+  height: 28px; padding: 0 12px;
+  border: 1px solid transparent; border-radius: 3px;
+  color: rgba(255,255,255,0.75); font-size: 12px; font-weight: 500;
+  text-decoration: none; display: flex; align-items: center; gap: 5px;
+  transition: all 0.12s;
+}
+.nav-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+.nav-link:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.nav-link.active { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff; }
+.back-btn {
+  margin-left: auto; margin-right: 16px; flex-shrink: 0;
+  height: 28px; padding: 0 14px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 3px; color: #fff; font-size: 12px; font-weight: 500;
+  text-decoration: none; display: flex; align-items: center; gap: 6px;
+  transition: background 0.12s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.22); }
+.back-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* ── WHITE SUBBAR ── */
+#subbar {
+  height: 38px; background: #fff; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-end;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: sticky; top: 42px; z-index: 100;
+  overflow-x: auto;
+}
+.stab {
+  height: 100%; padding: 0 15px; font-size: 12px; font-weight: 500;
+  background: transparent; color: var(--text3); border-bottom: 2px solid transparent;
+  display: flex; align-items: center; gap: 5px;
+  text-decoration: none; white-space: nowrap; transition: all 0.12s; flex-shrink: 0;
+}
+.stab svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.stab:hover { color: var(--text2); background: #f5f7fa; }
+.stab.active { color: var(--accent); border-bottom-color: var(--accent); background: #fff; }
+
+/* ── LAYOUT ── */
+.page-wrap {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; min-height: calc(100vh - 80px);
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 240px; min-width: 240px; flex-shrink: 0;
+  background: var(--panel); border-right: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto;
+}
+.sidebar-title {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--text3);
+  padding: 0 16px 8px; border-bottom: 1px solid var(--border); margin-bottom: 6px;
+}
+.sidebar a {
+  display: block; padding: 6px 16px;
+  font-size: 12px; color: var(--text2); text-decoration: none;
+  border-left: 2px solid transparent; transition: all 0.1s;
+}
+.sidebar a:hover { color: var(--accent); background: #f0f4ff; border-left-color: var(--accent); }
+.sidebar .sec { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text3); padding: 10px 16px 3px; }
+
+/* ── MAIN ── */
+.main {
+  flex: 1; padding: 32px 40px 80px;
+  background: var(--panel); border-right: 1px solid var(--border);
+  min-width: 0;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 50%, #0d47a1 100%);
+  border-radius: 10px; padding: 32px 36px; margin-bottom: 32px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '</>';
+  position: absolute; right: 36px; top: 50%; transform: translateY(-50%);
+  font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 700;
+  color: rgba(255,255,255,0.08); line-height: 1;
+}
+.hero h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.hero p { font-size: 14px; color: rgba(255,255,255,0.75); max-width: 560px; line-height: 1.7; margin-bottom: 20px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-tag {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.9); font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 40px; }
+.section-title {
+  font-size: 18px; font-weight: 700; color: var(--text);
+  margin-bottom: 4px; letter-spacing: -0.3px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title .num {
+  width: 28px; height: 28px; background: var(--accent); color: #fff;
+  border-radius: 6px; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.section-sub { font-size: 13px; color: var(--text3); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+
+/* ── CONTENT BLOCKS ── */
+.prose { font-size: 13px; color: var(--text2); line-height: 1.9; margin-bottom: 14px; }
+.prose strong { color: var(--text); font-weight: 600; }
+
+h3 { font-size: 14px; font-weight: 700; color: var(--text); margin: 22px 0 8px; }
+h4 { font-size: 13px; font-weight: 600; color: var(--accent); margin: 16px 0 6px; }
+
+/* ── CODE BLOCKS ── */
+.code-block {
+  background: var(--code-bg); border-radius: 8px;
+  padding: 16px 20px; margin: 14px 0;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  line-height: 1.8; overflow-x: auto; position: relative;
+}
+.code-block .cb-label {
+  font-size: 9px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: rgba(255,255,255,0.3);
+  position: absolute; top: 8px; right: 14px;
+}
+.code-block .g { color: #90caf9; } /* g-code word */
+.code-block .m { color: #f48fb1; } /* m-code */
+.code-block .c { color: #80cbc4; } /* coordinates */
+.code-block .f { color: #ffcc02; } /* feedrate/speed */
+.code-block .cm { color: #546e7a; font-style: italic; } /* comment */
+.code-block .pl { color: rgba(255,255,255,0.85); } /* plain */
+
+/* ── INFO CARDS ── */
+.card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.card-row.col3 { grid-template-columns: 1fr 1fr 1fr; }
+.info-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 16px;
+}
+.info-card .ic-head { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 7px; }
+.info-card .ic-head .tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+  background: var(--accent); color: #fff; border-radius: 4px; padding: 1px 7px;
+}
+.info-card .ic-head .tag.green { background: var(--green); }
+.info-card .ic-head .tag.orange { background: var(--orange); }
+.info-card .ic-head .tag.cyan { background: var(--cyan); }
+.info-card p { font-size: 12px; color: var(--text2); line-height: 1.7; margin: 0; }
+
+/* ── COMMAND TABLE ── */
+.cmd-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+.cmd-table th {
+  background: var(--bg); padding: 8px 12px; text-align: left;
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.6px; color: var(--text3); border-bottom: 2px solid var(--border);
+}
+.cmd-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.cmd-table tr:hover td { background: #f8fafd; }
+.cmd-table .code { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); font-size: 12px; }
+.cmd-table .desc { color: var(--text2); }
+.cmd-table .note { color: var(--text3); font-size: 11px; }
+
+/* ── TIP BOXES ── */
+.tip {
+  border-radius: 8px; padding: 12px 16px; margin: 16px 0;
+  font-size: 12px; line-height: 1.75; display: flex; gap: 10px; align-items: flex-start;
+}
+.tip svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+.tip.blue { background: #e3f0ff; border-left: 3px solid var(--accent); color: #1a3a6b; }
+.tip.blue svg { stroke: var(--accent); fill: none; stroke-width: 2; }
+.tip.warn { background: #fff8e1; border-left: 3px solid #f57c00; color: #5d3a00; }
+.tip.warn svg { stroke: #f57c00; fill: none; stroke-width: 2; }
+.tip.green { background: #e8f5e9; border-left: 3px solid var(--green); color: #1b4f2a; }
+.tip.green svg { stroke: var(--green); fill: none; stroke-width: 2; }
+
+/* ── LIST ── */
+.bullet-list { padding-left: 0; list-style: none; margin: 12px 0; }
+.bullet-list li {
+  font-size: 13px; color: var(--text2); padding: 5px 0 5px 20px;
+  position: relative; line-height: 1.7;
+}
+.bullet-list li::before {
+  content: ''; position: absolute; left: 0; top: 13px;
+  width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+}
+
+/* ── AXIS VISUAL ── */
+.axis-box {
+  background: var(--code-bg); border-radius: 8px; padding: 20px;
+  display: flex; justify-content: center; align-items: center; margin: 16px 0;
+}
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+/* ── KEYWORD LINE ── */
+.kw-line {
+  font-size: 11px; color: var(--text3); line-height: 1.9;
+  margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 18px 24px;
+  font-size: 11px; color: var(--text3);
+  background: var(--bg); border-top: 1px solid var(--border);
+}
+footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 860px) {
+  .sidebar { display: none; }
+  .main { padding: 20px 18px 60px; }
+  .card-row { grid-template-columns: 1fr; }
+  .card-row.col3 { grid-template-columns: 1fr; }
+  .hero::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <a href="index.html" id="logo">
+    <img src="android-chrome-192x192.png" alt="GCodex" onerror="this.style.display='none'">
+    GCodex
+  </a>
+  <nav class="nav-links">
+    <a href="index.html" class="nav-link">
+      Back
+    </a>
+    
+  </nav>
+  <a href="index.html" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+    Open Viewer
+  </a>
+</div>
+
+<!-- SUBBAR -->
+<div id="subbar">
+  <a href="index.html" class="stab">
+    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>3D View
+  </a>
+  <a href="index.html" class="stab">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>2D View
+  </a>
+  <a href="index.html" class="stab">
+    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>G-Code
+  </a>
+  <a href="index.html" class="stab">
+    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Analysis
+  </a>
+  <a href="index.html" class="stab">
+    <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>Convert
+  </a>
+  <a href="about.html" class="stab">About</a>
+  <a href="faq.html" class="stab">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ
+  </a>
+  <a href="privacy-policy.html" class="stab">Privacy</a>
+  <a href="gcode-guide.html" class="stab active">
+    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>G-Code Guide
+  </a>
+</div>
+
+<!-- PAGE -->
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-title">G-Code Guide</div>
+    <span class="sec">Basics</span>
+    <a href="#intro">What is G-Code?</a>
+    <a href="#why">Why Learn G-Code?</a>
+    <a href="#coordinates">Coordinate System</a>
+    <a href="#units">Units & Absolute/Relative</a>
+    <a href="#dialects">Dialects & Post Processors</a>
+    <a href="#modal">Modal vs One-Shot</a>
+    <span class="sec">Motion</span>
+    <a href="#mdi">MDI — Manual Data Input</a>
+    <a href="#program-structure">Program Structure</a>
+    <a href="#g00-g01">G00 & G01 — Linear Motion</a>
+    <a href="#g02-g03">G02 & G03 — Circular Arcs</a>
+    <a href="#helical">Helical Interpolation</a>
+    <span class="sec">Setup</span>
+    <a href="#part-zero">Part Zero & Touch Offs</a>
+    <a href="#tool-changes">Tool Changes & Offsets</a>
+    <span class="sec">Lathe</span>
+    <a href="#lathe">CNC Lathe Programming</a>
+    <a href="#chamfer">Chamfer & Corner Rounding</a>
+    <span class="sec">Reference</span>
+    <a href="#quick-ref">Quick Reference Table</a>
+    <a href="#m-codes">M-Code Reference</a>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>G-Code Complete Guide — A to Z</h1>
+      <p>Everything you need to learn G-Code from scratch. Covers coordinate systems, all motion commands, circular arcs, MDI, program structure, tool changes, and CNC lathe programming — with examples and code snippets throughout.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">G00 / G01</span>
+        <span class="hero-tag">G02 / G03</span>
+        <span class="hero-tag">M03 / M05</span>
+        <span class="hero-tag">Tool Changes</span>
+        <span class="hero-tag">Lathe</span>
+        <span class="hero-tag">IJK / R</span>
+        <span class="hero-tag">MDI</span>
+        <span class="hero-tag">Part Zero</span>
+      </div>
+    </div>
+
+    <!-- ─── SECTION 1: WHAT IS G-CODE ─── -->
+    <div class="section" id="intro">
+      <div class="section-title"><span class="num">1</span> What is G-Code?</div>
+      <div class="section-sub">The language that controls CNC machines</div>
+
+      <p class="prose">G-Code is the language used to control CNC machines. It tells the machine exactly how to move — where to go, how fast, and what to do. It is the <strong>Lingua Franca of CNC</strong>: used by CNC mills, lathes, routers, laser cutters, and 3D printers worldwide.</p>
+      <p class="prose">In order to make a part on a CNC machine, you write a G-Code program that describes every move the cutter must make. The machine's controller reads these instructions and moves the axes accordingly.</p>
+
+      <div class="tip blue">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>G-Code is just one type of CNC programming. The other is CAM (Computer Aided Manufacturing), where software generates G-Code automatically from a 3D model. Even if you use CAM, knowing G-Code lets you understand, debug, and hand-tune the output.</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 2: WHY LEARN ─── -->
+    <div class="section" id="why">
+      <div class="section-title"><span class="num">2</span> Why Learn G-Code?</div>
+      <div class="section-sub">Skills that make you a better CNC machinist</div>
+
+      <p class="prose">Armed with a solid understanding of G-Code, you can:</p>
+      <ul class="bullet-list">
+        <li>Avoid running back to your CAM program when simple edits to the G-Code would do the job faster</li>
+        <li>Understand and improve the G-Code your CAM program produces for better surface finish and cycle times</li>
+        <li>Tweak your CAM post processor so it produces better code from the start</li>
+        <li>Get a second opinion on CAM G-Code before finding out something is wrong at the machine</li>
+        <li>Fix G-Code bugs quickly — a misplaced move that would otherwise require re-running the entire CAM workflow</li>
+        <li>Create quick hand-written programs for simple parts without touching CAD/CAM at all</li>
+        <li>Develop greater skill at the machine console, including MDI operation</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 3: COORDINATE SYSTEM ─── -->
+    <div class="section" id="coordinates">
+      <div class="section-title"><span class="num">3</span> The Coordinate System</div>
+      <div class="section-sub">Right-handed XYZ — how your machine thinks about space</div>
+
+      <p class="prose">CNC machines use a <strong>Right-Handed Coordinate System</strong>. Hold up your right hand with your index finger extended, thumb pointing up, and middle finger extended at right angles: your middle finger is X, index finger is Y, thumb is Z.</p>
+
+      <div class="card-row col3">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag cyan">X</span> X Axis</div>
+          <p>Left–Right motion on a mill. Positive X moves the table to the right (or spindle to the left).</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag green">Y</span> Y Axis</div>
+          <p>Front–Back motion. Positive Y moves toward the front of the machine (or spindle backward).</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag">Z</span> Z Axis</div>
+          <p>Up–Down motion. Positive Z moves the spindle away from the table (upward). Negative Z plunges into the part.</p>
+        </div>
+      </div>
+
+      <div class="tip warn">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Important:</strong> On most mills, the table moves rather than the spindle. The coordinate directions are always described as if the spindle moves — so table motion is reversed. Always check your machine's manual for its actual axis orientation.</span>
+      </div>
+
+      <h3>4-Axis, 5-Axis, and Rotational Axes</h3>
+      <p class="prose">In addition to linear X, Y, Z axes, rotational axes can be added. By convention:</p>
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag orange">A</span> Rotates around X</div>
+          <p>Tilts a part left or right. Common on 4-axis setups.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag orange">B</span> Rotates around Y</div>
+          <p>Tilts a part forward or backward. Used on 5-axis machines with trunnion tables.</p>
+        </div>
+      </div>
+      <p class="prose">Rotational axes use <strong>degrees</strong> as their unit. Example: <code>A90</code> rotates the 4th axis to 90°.</p>
+
+      <h3>Expressing Coordinates in G-Code</h3>
+      <p class="prose">Simply take the axis letter and add the value. Spaces are optional:</p>
+      <div class="code-block">
+        <span class="cb-label">G-CODE</span>
+        <span class="c">X1Y2Z3</span>     <span class="cm">(no spaces — valid)</span><br>
+        <span class="c">X1 Y2 Z3</span>   <span class="cm">(with spaces — more readable)</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 4: UNITS & ABS/REL ─── -->
+    <div class="section" id="units">
+      <div class="section-title"><span class="num">4</span> Units, Absolute & Relative Coordinates</div>
+      <div class="section-sub">Metric or Imperial, and two ways to describe position</div>
+
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag">G20</span> Inches (Imperial)</div>
+          <p>All coordinate values are interpreted as inches. Issue G20 at the start of your program if working in Imperial.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag green">G21</span> Millimeters (Metric)</div>
+          <p>All coordinate values are interpreted as millimeters. Most modern CNC and 3D printing work uses G21.</p>
+        </div>
+      </div>
+
+      <div class="tip warn">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>Never change units in the middle of a program. Set G20 or G21 at the very beginning and stay consistent.</span>
+      </div>
+
+      <h3>Absolute vs. Relative Coordinates</h3>
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag">G90</span> Absolute Mode</div>
+          <p>All coordinates refer to the <strong>origin (0,0,0)</strong>. X10 always means 10 units from origin, regardless of where the tool is now. This is the most common mode.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag green">G91</span> Relative Mode</div>
+          <p>All coordinates are <strong>relative to the current position</strong>. X10 means move 10 units in the X direction from wherever you are now.</p>
+        </div>
+      </div>
+
+      <p class="prose">Example — cutting a 1″ square using relative mode (G91):</p>
+      <div class="code-block">
+        <span class="cb-label">G-CODE</span>
+        <span class="g">G91</span>                  <span class="cm">(switch to relative mode)</span><br>
+        <span class="c">X1</span>                   <span class="cm">(move 1" right)</span><br>
+        <span class="c">Y1</span>                   <span class="cm">(move 1" up in Y)</span><br>
+        <span class="c">X-1</span>                  <span class="cm">(move 1" left)</span><br>
+        <span class="c">Y-1</span>                  <span class="cm">(move 1" down — back to start)</span><br>
+        <span class="g">G90</span>                  <span class="cm">(switch back to absolute)</span>
+      </div>
+
+      <h3>Offsets</h3>
+      <p class="prose">Offsets are a way to shift the coordinate origin. <strong>Work Offsets</strong> (G54–G59) let you define multiple "Part Zeros" on the machine table at the same time — for example, to machine two identical parts held in separate vises without changing the program.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 5: DIALECTS ─── -->
+    <div class="section" id="dialects">
+      <div class="section-title"><span class="num">5</span> G-Code Dialects & Post Processors</div>
+      <div class="section-sub">Why the same G-Code doesn't always work on every machine</div>
+
+      <p class="prose">G-Code is not perfectly standardized. Different CNC controllers implement different <strong>dialects</strong>. The most common dialects are <strong>Fanuc</strong> (professional shops) and <strong>Mach3/LinuxCNC</strong> (hobbyists). Key differences include:</p>
+
+      <ul class="bullet-list">
+        <li><strong>Supported G-Codes:</strong> Not all controllers support all G-Codes. Early lathe controls often lack G71 roughing cycles.</li>
+        <li><strong>G-Code mappings:</strong> The same function may use different code numbers on different controllers.</li>
+        <li><strong>Formatting:</strong> Some controllers require G00, others accept G0. Some require decimal points: "1." vs "1.0" vs "1".</li>
+        <li><strong>Parameters:</strong> The letters used to pass additional information to a G-Code can vary between dialects.</li>
+        <li><strong>Macro Programming:</strong> Fanuc Macro B is the most common standard, but support varies widely.</li>
+      </ul>
+
+      <h3>Post Processors</h3>
+      <p class="prose">If you use CAM software, it has a <strong>Post Processor</strong> (or "Post") that converts geometry moves into the specific G-Code dialect your machine needs. The Post is what ensures your CAM output is compatible with your controller. If you frequently make the same hand edits to your G-Code output, it's worth investigating whether a Post change would eliminate that work permanently.</p>
+
+      <h3>Modal Behavior</h3>
+      <p class="prose">G-Code is a <strong>modal language</strong>. Many commands set a "mode" that stays active until you change it. For example, once you issue G01 (feed motion), the machine stays in feed motion mode. You don't need to repeat G01 on every line — only when you want to change to a different mode.</p>
+
+      <div class="tip blue">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Most machines power up in G00 (rapids) mode, G90 (absolute), and G20 or G21 depending on configuration. Always explicitly set the modes you need at the start of any program.</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 6: MDI ─── -->
+    <div class="section" id="mdi">
+      <div class="section-title"><span class="num">6</span> MDI — Manual Data Input</div>
+      <div class="section-sub">Using your CNC like a manual machine with DROs and power feeds</div>
+
+      <p class="prose"><strong>MDI</strong> (Manual Data Input) lets you type G-Code commands directly into the CNC controller for immediate execution — no program file needed. Think of it as giving the machine orders one line at a time, exactly like a manual mill with digital readouts and power feeds on every axis.</p>
+
+      <h3>Basic MDI Workflow</h3>
+      <div class="code-block">
+        <span class="cb-label">MDI EXAMPLE</span>
+        <span class="g">G01</span> <span class="f">F20</span>              <span class="cm">(enter linear mode at 20 IPM — do this first!)</span><br>
+        <span class="f">S4000</span> <span class="m">M03</span>            <span class="cm">(set spindle to 4000 RPM, start clockwise)</span><br>
+        <span class="m">M08</span>                  <span class="cm">(flood coolant on)</span><br>
+        <span class="c">X1.0</span>                 <span class="cm">(feed to X=1.0 at 20 IPM)</span><br>
+        <span class="m">M05</span>                  <span class="cm">(stop spindle)</span><br>
+        <span class="m">M09</span>                  <span class="cm">(coolant off)</span>
+      </div>
+
+      <div class="tip warn">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>MDI Safety:</strong> Always issue G01 with a slow feedrate first — never use G00 (rapids) in MDI until you are very experienced. Think carefully before pressing Enter. Know where the E-Stop button is before you start.</span>
+      </div>
+
+      <h3>MDI Quick Reference</h3>
+      <table class="cmd-table">
+        <thead><tr><th>Command</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="code">G00</td><td class="desc">Rapids mode — fastest possible speed. Avoid in MDI until experienced.</td></tr>
+          <tr><td class="code">G01 F&lt;ipm&gt;</td><td class="desc">Linear feed mode at the specified feedrate. Use this for MDI movement.</td></tr>
+          <tr><td class="code">X Y Z</td><td class="desc">Move to specified coordinates in a straight line.</td></tr>
+          <tr><td class="code">S&lt;rpm&gt; M03</td><td class="desc">Set spindle speed and start rotating clockwise.</td></tr>
+          <tr><td class="code">M04</td><td class="desc">Start spindle counterclockwise.</td></tr>
+          <tr><td class="code">M05</td><td class="desc">Stop spindle.</td></tr>
+          <tr><td class="code">M08</td><td class="desc">Flood coolant on.</td></tr>
+          <tr><td class="code">M07</td><td class="desc">Mist/air coolant on.</td></tr>
+          <tr><td class="code">M09</td><td class="desc">All coolant off.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 7: PROGRAM STRUCTURE ─── -->
+    <div class="section" id="program-structure">
+      <div class="section-title"><span class="num">7</span> Basic G-Code Program Structure</div>
+      <div class="section-sub">Blocks, sequence numbers, comments, and word address format</div>
+
+      <p class="prose">A line of G-Code is called a <strong>Block</strong>. A complete G-Code program is made of many blocks executed in sequence from top to bottom.</p>
+
+      <h3>A Minimal G-Code Program</h3>
+      <div class="code-block">
+        <span class="cb-label">G-CODE</span>
+        <span class="pl">%</span>                              <span class="cm">(tape start — marks beginning of program)</span><br>
+        <span class="cm">(-----------------------------------------------)</span><br>
+        <span class="cm">( Program: simple_face.nc              )</span><br>
+        <span class="cm">( Author: Your Name — Date: 2026-05-01  )</span><br>
+        <span class="cm">( Machine: Fanuc Mill, Inches            )</span><br>
+        <span class="cm">( Part Zero: Top of stock, front-left corner )</span><br>
+        <span class="cm">(-----------------------------------------------)</span><br>
+        <span class="g">O1000</span>                          <span class="cm">(program number)</span><br>
+        <span class="pl">N10 </span><span class="g">G20 G90 G17</span>            <span class="cm">(inches, absolute, XY plane)</span><br>
+        <span class="pl">N20 </span><span class="f">S3000 </span><span class="m">M03</span>              <span class="cm">(3000 RPM, spindle CW)</span><br>
+        <span class="pl">N30 </span><span class="g">G00</span> <span class="c">X0 Y0 Z0.5</span>         <span class="cm">(rapid to safe position)</span><br>
+        <span class="pl">N40 </span><span class="g">G01</span> <span class="c">Z-0.1</span> <span class="f">F10</span>          <span class="cm">(plunge to depth at 10 IPM)</span><br>
+        <span class="pl">N50 </span><span class="c">X5.0</span> <span class="f">F30</span>               <span class="cm">(face mill pass at 30 IPM)</span><br>
+        <span class="pl">N60 </span><span class="g">G00</span> <span class="c">Z0.5</span>               <span class="cm">(rapid up to safe Z)</span><br>
+        <span class="pl">N70 </span><span class="m">M05</span>                    <span class="cm">(stop spindle)</span><br>
+        <span class="pl">N80 </span><span class="m">M30</span>                    <span class="cm">(end program, rewind)</span><br>
+        <span class="pl">%</span>                              <span class="cm">(tape end)</span>
+      </div>
+
+      <h3>Block Structure Elements</h3>
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag">%</span> Tape Start/End</div>
+          <p>Marks the absolute beginning and end of a G-Code file. Not required by all controllers but good practice. Anything after the closing % is ignored.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag">O</span> Program Number</div>
+          <p>Identifies the program. Fanuc style: O1000. Some controllers require 4 digits. Used for referencing subprograms.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag">N</span> Sequence Numbers</div>
+          <p>Optional line numbers (N10, N20, etc.) used for reference and jumping to specific blocks. Always increment by 10 to leave room for insertions.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag cyan">/</span> Block Skip</div>
+          <p>Start a line with "/" to allow the operator to optionally skip that line via the control panel. Useful for optional operations.</p>
+        </div>
+      </div>
+
+      <h3>Word Address Format</h3>
+      <p class="prose">Every letter in G-Code is a <strong>Word</strong>. The number following it is its <strong>Address</strong>. For example: <code>X1.5</code> — X is the word, 1.5 is the address. The letter always tells the controller what kind of information is coming next, and the number tells it the value.</p>
+
+      <h3>Order of Execution Within a Block</h3>
+      <p class="prose">Words in a block do <strong>not</strong> necessarily execute left to right. The controller has a defined order of operations: set feedrate mode → set feedrate → set spindle speed → select tool → change tool → spindle on/off → coolant → motion. If you are unsure about the order, put commands in separate blocks to guarantee sequence.</p>
+
+      <h3>Comments</h3>
+      <p class="prose">Anything inside parentheses is a comment and is completely ignored during execution:</p>
+      <div class="code-block">
+        <span class="cb-label">G-CODE</span>
+        <span class="g">G00</span> <span class="c">X0 Y0 Z0</span> <span class="cm">(Rapid to Part Zero)</span>
+      </div>
+
+      <div class="tip green">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Comment liberally. The next person to read your code — or future you — will thank you. Include program name, author, date, machine, units, and Part Zero location in the header.</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 8: G00 G01 ─── -->
+    <div class="section" id="g00-g01">
+      <div class="section-title"><span class="num">8</span> Linear Motion — G00 & G01</div>
+      <div class="section-sub">Rapid positioning and feed-rate cutting in straight lines</div>
+
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag orange">G00</span> Rapid Motion</div>
+          <p>Moves at the <strong>maximum possible speed</strong> of the machine. Used to position the cutter near the cut — <strong>never</strong> enter a cut with G00. Most machines start in G00 mode on power-up.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag green">G01</span> Feed Motion</div>
+          <p>Moves in a <strong>straight line at the programmed feedrate</strong> (F word). Used for all actual cutting moves. Required for safe MDI operation.</p>
+        </div>
+      </div>
+
+      <h3>Feedrate — The F Word</h3>
+      <p class="prose">The <code>F</code> word sets the cutting speed in inches per minute (IPM) or mm/min depending on units mode. The feedrate is modal — set it once and it stays until you change it:</p>
+
+      <div class="code-block">
+        <span class="cb-label">G-CODE</span>
+        <span class="g">G01</span> <span class="f">F25</span> <span class="c">X5.0</span>       <span class="cm">(move to X5.0 at 25 IPM)</span><br>
+        <span class="c">Y3.0</span>                  <span class="cm">(still G01 at 25 IPM — modal)</span><br>
+        <span class="c">X0 Y0</span>                <span class="cm">(still G01 at 25 IPM)</span>
+      </div>
+
+      <h3>Spindle Speed — The S Word</h3>
+      <p class="prose">The <code>S</code> word sets spindle RPM. Use it together with M03 (CW) or M04 (CCW). Both S and F are modal:</p>
+      <div class="code-block">
+        <span class="cb-label">G-CODE</span>
+        <span class="f">S3000</span> <span class="m">M03</span>    <span class="cm">(3000 RPM, clockwise)</span><br>
+        <span class="g">G01</span> <span class="f">F20</span> <span class="c">Z-0.5</span>  <span class="cm">(plunge at 20 IPM)</span>
+      </div>
+
+      <h3>Interpolated Moves</h3>
+      <p class="prose">When you specify multiple axes in one block, all axes move simultaneously and arrive at the destination at the same time — this is called <strong>interpolated motion</strong>. The controller coordinates their speeds automatically:</p>
+      <div class="code-block">
+        <span class="cb-label">G-CODE</span>
+        <span class="g">G00</span> <span class="c">X5 Y3 Z0.5</span>  <span class="cm">(all 3 axes move simultaneously to reach destination)</span>
+      </div>
+
+      <div class="tip blue">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Tip on Z axis:</strong> When approaching a workpiece, move X and Y first, then Z separately. This prevents the cutter from hitting a clamp or raised feature as it descends. Once you are directly over your start point, then plunge in Z.</span>
+      </div>
+
+      <h3>Older Machine Warning — "Dog Leg" G00</h3>
+      <p class="prose">Older controllers may "dog leg" G00 — moving one axis at a time instead of a coordinated straight line. Be very careful programming G00 moves on older machines if there are any obstacles in the path.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 9: G02 G03 ARCS ─── -->
+    <div class="section" id="g02-g03">
+      <div class="section-title"><span class="num">9</span> Circular Arcs — G02 & G03</div>
+      <div class="section-sub">Clockwise and counterclockwise circular interpolation</div>
+
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag orange">G02</span> Clockwise Arc</div>
+          <p>Sets the controller into clockwise circular interpolation mode. Requires an endpoint and the arc center or radius.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag green">G03</span> Counter-Clockwise Arc</div>
+          <p>Sets the controller into counter-clockwise circular interpolation mode. Same syntax as G02.</p>
+        </div>
+      </div>
+
+      <h3>Defining an Arc: Two Methods</h3>
+      <p class="prose">Every arc needs three things: a starting point (current position), an ending point (XYZ), and the center location. There are two ways to specify the center:</p>
+
+      <h4>Method 1 — IJK (Relative Offsets from Start Point)</h4>
+      <p class="prose">I, J, K are the distances from the <strong>starting point</strong> to the center of the arc, along X, Y, Z respectively. Add I to start-X to get center-X, add J to start-Y to get center-Y.</p>
+      <div class="code-block">
+        <span class="cb-label">G-CODE — IJK METHOD</span>
+        <span class="cm">(Arc from X0,Y2 to X2,Y0 — center at X0,Y0)</span><br>
+        <span class="g">G02</span> <span class="c">X2 Y0</span> <span class="f">I0 J-2.0</span> <span class="f">F15</span><br><br>
+        <span class="cm">(I=0 means center is 0 units from start in X)</span><br>
+        <span class="cm">(J=-2 means center is 2 units below start in Y)</span>
+      </div>
+
+      <h4>Method 2 — R (Radius)</h4>
+      <p class="prose">Simply specify the radius with the <code>R</code> word. Easier to write, but note: full circles cannot be programmed with R (ambiguous). For arcs over 180°, use a negative R to force the longer path.</p>
+      <div class="code-block">
+        <span class="cb-label">G-CODE — R METHOD</span>
+        <span class="g">G02</span> <span class="c">X2 Y0</span> <span class="f">R2</span> <span class="f">F15</span>      <span class="cm">(clockwise arc, radius = 2)</span><br>
+        <span class="g">G02</span> <span class="c">X2 Y0</span> <span class="f">R-2</span> <span class="f">F15</span>     <span class="cm">(same endpoints, takes the LONGER path)</span>
+      </div>
+
+      <h3>Full Circles — Same Start and End Point</h3>
+      <p class="prose">A full circle has identical start and end points. Must use IJK (not R — infinitely ambiguous with R):</p>
+      <div class="code-block">
+        <span class="cb-label">FULL CIRCLE</span>
+        <span class="g">G01</span> <span class="c">X3.25 Y2.0</span>            <span class="cm">(position cutter on circle)</span><br>
+        <span class="g">G02</span> <span class="c">X3.25 Y2.0</span> <span class="f">I-1.25 J0</span>  <span class="cm">(full 360° CW circle, center 1.25 to the left)</span>
+      </div>
+
+      <h3>Common Problem: Absolute vs Relative IJK</h3>
+      <p class="prose">The most common configuration error when setting up a CAM post or simulator is mismatching <strong>absolute vs relative IJK</strong>. If your backplot shows giant circles instead of the expected toolpath, check this setting first. IJK is relative (offset from start point) by default on most Fanuc-style controllers, but some controllers use absolute (actual center coordinates).</p>
+
+      <div class="tip warn">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>If you see crop-circle-like giant arcs in your backplot where small arcs are expected, the first thing to check is absolute vs relative IJK mismatch between your CAM post and your controller or simulator settings.</span>
+      </div>
+
+      <h3>Arcs for Better Toolpaths</h3>
+      <p class="prose">Whenever a cutter changes direction abruptly (especially 90°), it creates stress and can leave marks in the finish. <strong>Program a small arc at each corner</strong> rather than a sharp direction change. Even a tiny radius allows the controller to avoid instantaneous direction reversal and will improve surface finish and tool life.</p>
+      <p class="prose">Arcs are also the best way to <strong>enter a cut</strong> — gradually ramping in with an arc instead of plunging straight down greatly reduces cutting forces and extends tool life.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 10: HELICAL ─── -->
+    <div class="section" id="helical">
+      <div class="section-title"><span class="num">10</span> Helical Interpolation</div>
+      <div class="section-sub">Arc motion combined with a Z-axis move — for thread milling and ramping</div>
+
+      <p class="prose">A <strong>helix</strong> is a circular arc that simultaneously moves in a third axis (Z). Helical interpolation is used for thread milling, ramping into a pocket, and interpolating large holes. You add a Z value to a G02/G03 block to create helical motion:</p>
+
+      <div class="code-block">
+        <span class="cb-label">HELICAL INTERPOLATION (THREAD MILLING)</span>
+        <span class="g">G01</span> <span class="g">G91</span> <span class="c">Z-0.65</span> <span class="f">F100</span>               <span class="cm">(plunge to start depth)</span><br>
+        <span class="g">G03</span> <span class="c">X0.094 Y0.094 Z0.018</span> <span class="f">R0.094</span>  <span class="cm">(1 helix pass, 0.018" pitch per pass)</span><br>
+        <span class="g">G03</span> <span class="c">X-0.118 Y0.118 Z0.018</span> <span class="f">R0.118</span> <span class="cm">(next pass, radius slightly larger)</span>
+      </div>
+
+      <p class="prose">In this thread-milling example, each arc block moves the cutter 0.018" deeper in Z while completing one revolution — creating one thread pitch per pass.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 11: PART ZERO ─── -->
+    <div class="section" id="part-zero">
+      <div class="section-title"><span class="num">11</span> Part Zero, Touch Offs & Work Coordinates</div>
+      <div class="section-sub">Telling the machine where the origin of your part is</div>
+
+      <p class="prose"><strong>Part Zero</strong> (also called Work Zero or Program Zero) is the X0 Y0 Z0 origin point your G-Code program refers to. Before running any program, you must tell the machine where Part Zero is in relation to the machine's own coordinate system.</p>
+
+      <h3>Where to Put Part Zero</h3>
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag">Z=0</span> Top of Stock</div>
+          <p>Most common. Makes it easy to see when the cutter is in the material (negative Z) versus cutting air (positive Z).</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag green">Z=0</span> Fixed Jaw / Vise</div>
+          <p>More reliable for repeat jobs. Part Zero is on a surface that doesn't change even if you remove and replace the workpiece.</p>
+        </div>
+      </div>
+
+      <h3>Machine Coordinates vs Work Coordinates</h3>
+      <p class="prose"><strong>Machine Coordinates</strong> are fixed — they are set when you home the machine. <strong>Work Coordinates</strong> are what your G-Code program uses. You establish Work Coordinates by "touching off" — finding the edge of your part and telling the machine that location is X0, Y0, or Z0.</p>
+
+      <h3>Touch Off Methods</h3>
+      <ul class="bullet-list">
+        <li><strong>Paper method:</strong> Use a thin piece of paper (cigarette paper works well) dampened with oil. Jog the spinning cutter until it just moves the paper. Adjust for paper thickness.</li>
+        <li><strong>Gage block:</strong> Use a precision gage block between the stationary cutter and the workpiece surface. Jog until the block just fits with slight drag.</li>
+        <li><strong>Edge finder:</strong> A spinning probe that kicks off-center when it touches a workpiece edge, giving a precise X or Y zero.</li>
+        <li><strong>3D Taster (Haimer):</strong> A mechanical probe that precisely finds edges and centers. Very fast and accurate.</li>
+        <li><strong>Renishaw probe:</strong> Electronic touch probe. Fastest and most accurate — used in production environments.</li>
+      </ul>
+
+      <h3>Multiple Work Coordinate Systems</h3>
+      <p class="prose">G54 through G59 each define an independent Work Coordinate System. This lets you machine multiple identical parts held in separate vises — each vise gets its own Work Offset. The same program runs against each offset to machine each part.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 12: TOOL CHANGES ─── -->
+    <div class="section" id="tool-changes">
+      <div class="section-title"><span class="num">12</span> Tool Changes & Tool Offsets</div>
+      <div class="section-sub">Selecting tools and compensating for their length</div>
+
+      <p class="prose">Most CNC programs use more than one tool. Tool change codes serve two purposes: (1) physically change the tool in the spindle, and (2) load the <strong>Tool Length Offset</strong> — a value that compensates for the fact that different tools have different lengths.</p>
+
+      <h3>Mill Tool Change — T + M06</h3>
+      <div class="code-block">
+        <span class="cb-label">MILL TOOL CHANGE</span>
+        <span class="pl">N10 </span><span class="g">T12</span>       <span class="cm">(select tool 12 — ATC starts rotating it into position)</span><br>
+        <span class="pl">N20 </span><span class="m">M06</span>       <span class="cm">(execute tool change — tool 12 is now in spindle)</span><br>
+        <span class="pl">N30 </span><span class="g">T14</span>       <span class="cm">(pre-select next tool while cutting with T12)</span><br>
+        <span class="cm">(... cutting with T12 ...)</span><br>
+        <span class="m">M06</span>           <span class="cm">(change to T14)</span>
+      </div>
+
+      <div class="tip blue">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Speed tip:</strong> Issue T(next tool) immediately after a tool change. This gives the ATC time to rotate the next tool into position while the machine is cutting, reducing the actual tool change time on the next M06.</span>
+      </div>
+
+      <h3>Tool Length Offsets</h3>
+      <p class="prose">Every tool has a different length. The <strong>Geometry Offset</strong> (stored in the tool table) compensates for the overall length difference. The <strong>Wear Offset</strong> is a fine-tuning adjustment for gradual tool wear and allows the machinist to hit exact tolerances without editing the program.</p>
+
+      <p class="prose">Use G43 to apply a tool length offset (H word references the offset register):</p>
+      <div class="code-block">
+        <span class="cb-label">TOOL LENGTH OFFSET</span>
+        <span class="m">M06</span>                     <span class="cm">(tool change)</span><br>
+        <span class="g">G43</span> <span class="c">Z0.5</span> <span class="f">H12</span>          <span class="cm">(apply tool length offset #12, rapid to Z0.5)</span>
+      </div>
+
+      <h3>Lathe Tool Change (Fanuc Style)</h3>
+      <p class="prose">On lathes, no M06 is needed — the tool changes as soon as the T word executes. Fanuc combines tool number and wear offset in one T command:</p>
+      <div class="code-block">
+        <span class="cb-label">LATHE TOOL CHANGE (FANUC)</span>
+        <span class="g">T0202</span>    <span class="cm">(select tool 02, use wear offset 02)</span><br>
+        <span class="g">T0303</span>    <span class="cm">(select tool 03, use wear offset 03)</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 13: LATHE ─── -->
+    <div class="section" id="lathe">
+      <div class="section-title"><span class="num">13</span> CNC Lathe Programming</div>
+      <div class="section-sub">Turning, facing, and profiling on a 2-axis CNC lathe</div>
+
+      <p class="prose">A basic CNC lathe uses only two axes: <strong>Z</strong> (parallel to the spindle) and <strong>X</strong> (perpendicular to the spindle). The same G00, G01, G02, G03 motion codes are used, but without Y.</p>
+
+      <div class="card-row">
+        <div class="info-card">
+          <div class="ic-head"><span class="tag cyan">Z</span> Z Axis — Lathe</div>
+          <p>Runs left and right, parallel to the spindle centerline. Positive Z moves the carriage away from the chuck (to the right).</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head"><span class="tag cyan">X</span> X Axis — Lathe</div>
+          <p>Runs front to back, perpendicular to the spindle. Positive X moves the tool away from the centerline (increases diameter).</p>
+        </div>
+      </div>
+
+      <h3>Diameter vs Radius Mode</h3>
+      <p class="prose">Most lathes operate in <strong>Diameter Mode</strong> by default: X values represent the diameter of the part, not the distance from centerline. A part with a 2" diameter is programmed as X2.0, even though the tool is only 1.0" from the centerline. Check your controller's manual to verify which mode it defaults to.</p>
+
+      <h3>Part Zero on Lathe Programs</h3>
+      <p class="prose">The X-axis zero is always the <strong>spindle centerline</strong>. For Z, the three common options are:</p>
+      <ul class="bullet-list">
+        <li><strong>End of finished part</strong> — most common; easy to relate dimensions to the print</li>
+        <li><strong>Chuck jaw face</strong> — useful when machining both ends</li>
+        <li><strong>Chuck face</strong> — least useful, rarely matches the actual part position</li>
+      </ul>
+
+      <h3>Simple Lathe Program Example</h3>
+      <div class="code-block">
+        <span class="cb-label">LATHE PROGRAM</span>
+        <span class="pl">N10 </span><span class="g">G20 G90 G18</span>         <span class="cm">(inches, absolute, XZ plane)</span><br>
+        <span class="pl">N20 </span><span class="g">T0101</span>               <span class="cm">(tool 1, offset 1)</span><br>
+        <span class="pl">N30 </span><span class="f">S1200</span> <span class="m">M03</span>          <span class="cm">(1200 RPM, spindle on CW)</span><br>
+        <span class="pl">N40 </span><span class="g">G00</span> <span class="c">X2.2 Z0.1</span>      <span class="cm">(rapid to start position)</span><br>
+        <span class="pl">N50 </span><span class="g">G01</span> <span class="c">Z-2.0</span> <span class="f">F0.008</span>   <span class="cm">(turn OD to length, feed 0.008"/rev)</span><br>
+        <span class="pl">N60 </span><span class="c">X2.5</span>                 <span class="cm">(face end)</span><br>
+        <span class="pl">N70 </span><span class="g">G00</span> <span class="c">Z0.5</span>            <span class="cm">(retract in Z)</span><br>
+        <span class="pl">N80 </span><span class="m">M05</span>                  <span class="cm">(stop spindle)</span><br>
+        <span class="pl">N90 </span><span class="m">M30</span>                  <span class="cm">(end program)</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 14: CHAMFER ─── -->
+    <div class="section" id="chamfer">
+      <div class="section-title"><span class="num">14</span> Automatic Chamfer & Corner Rounding (Lathe)</div>
+      <div class="section-sub">Adding chamfers and radii without separate arcs</div>
+
+      <p class="prose">Many CNC lathe controllers support <strong>automatic chamfer and corner rounding</strong> as part of a G01 move. Instead of programming a separate G02/G03 arc, you add a C (chamfer) or R (radius) word to the G01 block and the controller inserts the feature automatically at the transition.</p>
+
+      <div class="code-block">
+        <span class="cb-label">AUTO CHAMFER / CORNER ROUND</span>
+        <span class="g">G18</span>                             <span class="cm">(select XZ plane)</span><br>
+        <span class="g">G00</span> <span class="c">X5 Z5</span>                   <span class="cm">(rapid to start)</span><br>
+        <span class="g">G01</span> <span class="c">Z2</span> <span class="f">R0.236</span>              <span class="cm">(move in Z, auto corner radius 0.236" at end)</span><br>
+        <span class="c">X10</span> <span class="f">C-0.118</span>              <span class="cm">(move in X, auto chamfer 0.118" at end)</span><br>
+        <span class="c">Z0</span>                              <span class="cm">(final move)</span>
+      </div>
+
+      <p class="prose">Use <code>C</code> for a chamfer and <code>R</code> for a radius. The sign (positive or negative) depends on which direction you are moving and what the next direction will be — consult your controller's chart or simply try both and verify in your simulator.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 15: QUICK REF ─── -->
+    <div class="section" id="quick-ref">
+      <div class="section-title"><span class="num">15</span> G-Code Quick Reference</div>
+      <div class="section-sub">The most commonly used G-Codes</div>
+
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>Description</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="code">G00</td><td class="desc">Rapid positioning (maximum machine speed)</td><td class="note">Modal. Never use for cutting.</td></tr>
+          <tr><td class="code">G01 F_</td><td class="desc">Linear feed motion at programmed feedrate</td><td class="note">Modal. Standard cutting motion.</td></tr>
+          <tr><td class="code">G02</td><td class="desc">Clockwise circular interpolation</td><td class="note">Modal. Needs XY endpoint + IJK or R.</td></tr>
+          <tr><td class="code">G03</td><td class="desc">Counter-clockwise circular interpolation</td><td class="note">Modal. Same syntax as G02.</td></tr>
+          <tr><td class="code">G04 P_</td><td class="desc">Dwell — pause for specified time (ms or sec)</td><td class="note">One-shot.</td></tr>
+          <tr><td class="code">G17</td><td class="desc">Select XY plane (for arcs)</td><td class="note">Default for mills. Modal.</td></tr>
+          <tr><td class="code">G18</td><td class="desc">Select XZ plane (for arcs)</td><td class="note">Default for lathes. Modal.</td></tr>
+          <tr><td class="code">G19</td><td class="desc">Select YZ plane (for arcs)</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G20</td><td class="desc">Set units to inches (Imperial)</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G21</td><td class="desc">Set units to millimeters (Metric)</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G28</td><td class="desc">Return to machine home position</td><td class="note">Usually end-of-program.</td></tr>
+          <tr><td class="code">G40</td><td class="desc">Cancel cutter radius compensation</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G41</td><td class="desc">Cutter radius compensation — left</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G42</td><td class="desc">Cutter radius compensation — right</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G43 H_</td><td class="desc">Apply tool length offset (positive)</td><td class="note">Modal. H = offset register number.</td></tr>
+          <tr><td class="code">G49</td><td class="desc">Cancel tool length offset</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G54–G59</td><td class="desc">Work coordinate system selection</td><td class="note">Modal. G54 is default in most programs.</td></tr>
+          <tr><td class="code">G80</td><td class="desc">Cancel canned cycle</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G81</td><td class="desc">Drilling canned cycle</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G83</td><td class="desc">Peck drilling canned cycle</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G90</td><td class="desc">Absolute coordinate mode</td><td class="note">Modal. Most programs use this.</td></tr>
+          <tr><td class="code">G91</td><td class="desc">Relative (incremental) coordinate mode</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G94</td><td class="desc">Feed per minute mode (IPM or mm/min)</td><td class="note">Modal. Standard for mills.</td></tr>
+          <tr><td class="code">G95</td><td class="desc">Feed per revolution mode (IPR or mm/rev)</td><td class="note">Modal. Standard for lathes.</td></tr>
+          <tr><td class="code">G98</td><td class="desc">Return to initial Z after canned cycle</td><td class="note">Modal.</td></tr>
+          <tr><td class="code">G99</td><td class="desc">Return to R plane after canned cycle</td><td class="note">Modal.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── SECTION 16: M CODES ─── -->
+    <div class="section" id="m-codes">
+      <div class="section-title"><span class="num">16</span> M-Code Reference</div>
+      <div class="section-sub">Miscellaneous / auxiliary functions — spindle, coolant, program control</div>
+
+      <table class="cmd-table">
+        <thead><tr><th>Code</th><th>Description</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="code">M00</td><td class="desc">Program stop (optional stop with M01)</td><td class="note">Stops execution until operator resumes.</td></tr>
+          <tr><td class="code">M01</td><td class="desc">Optional program stop</td><td class="note">Only stops if optional stop switch is on.</td></tr>
+          <tr><td class="code">M02</td><td class="desc">End of program</td><td class="note">Stops execution. Some controllers rewind.</td></tr>
+          <tr><td class="code">M03 S_</td><td class="desc">Start spindle clockwise at S rpm</td><td class="note">S word can be on same or previous line.</td></tr>
+          <tr><td class="code">M04</td><td class="desc">Start spindle counter-clockwise</td><td class="note">Used for left-hand tools or tapping.</td></tr>
+          <tr><td class="code">M05</td><td class="desc">Stop spindle</td><td class="note">Spindle decelerates to stop.</td></tr>
+          <tr><td class="code">M06 T_</td><td class="desc">Tool change (execute previously selected T)</td><td class="note">Mill only. Lathe changes on T word.</td></tr>
+          <tr><td class="code">M07</td><td class="desc">Mist or air coolant on</td><td class="note">Depends on machine configuration.</td></tr>
+          <tr><td class="code">M08</td><td class="desc">Flood coolant on</td><td class="note">Most common coolant command.</td></tr>
+          <tr><td class="code">M09</td><td class="desc">All coolant off</td><td class="note">Stops both M07 and M08.</td></tr>
+          <tr><td class="code">M13</td><td class="desc">Start spindle CW + flood coolant</td><td class="note">Common on lathes.</td></tr>
+          <tr><td class="code">M14</td><td class="desc">Start spindle CCW + flood coolant</td><td class="note">Common on lathes.</td></tr>
+          <tr><td class="code">M19</td><td class="desc">Spindle orientation (orient stop)</td><td class="note">Stops spindle at a specific angle.</td></tr>
+          <tr><td class="code">M30</td><td class="desc">End of program + rewind</td><td class="note">Preferred over M02. Rewinds to beginning.</td></tr>
+          <tr><td class="code">M48</td><td class="desc">Enable feedrate and spindle overrides</td><td class="note">Allows operator to adjust rates.</td></tr>
+          <tr><td class="code">M49</td><td class="desc">Disable feedrate and spindle overrides</td><td class="note">Locks rates at programmed values.</td></tr>
+          <tr><td class="code">M98 P_</td><td class="desc">Call subprogram (P = program number)</td><td class="note">Jumps to subprogram.</td></tr>
+          <tr><td class="code">M99</td><td class="desc">Return from subprogram</td><td class="note">Returns to calling program.</td></tr>
+        </tbody>
+      </table>
+
+      <p class="kw-line">GCodex G-Code guide · learn g-code · g-code tutorial · g-code course · G00 G01 G02 G03 · CNC g-code reference · circular arcs gcode · tool changes g-code · lathe g-code · MDI cnc · g-code for beginners · free g-code course · gcode viewer · ncviewer alternative · gcodex.tech</p>
+    </div>
+
+  </div><!-- /.main -->
+</div><!-- /.page-wrap -->
+
+<footer>
+  <a href="index.html">GCodex</a> ·
+  <a href="about.html">About</a> ·
+  <a href="faq.html">FAQ</a> ·
+  <a href="gcode-guide.html">G-Code Guide</a> ·
+  <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · Browser-based · No upload · No signup · Free forever
+</footer>
+
+</body>
+</html>
+HTMLEOF
+echo "done — $(wc -l < /home/claude/gcode-guide.html) lines"
