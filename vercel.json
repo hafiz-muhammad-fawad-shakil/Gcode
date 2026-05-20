@@ -36,6 +36,9 @@
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(?!favicon\\.ico|favicon-16x16\\.png|favicon-32x32\\.png|apple-touch-icon\\.png|android-chrome-192x192\\.png|android-chrome-512x512\\.png|site\\.webmanifest|robots\\.txt|sitemap\\.xml|ads\\.txt|about\\.html|faq\\.html|privacy-policy\\.html|gcode-guide\\.html)(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
