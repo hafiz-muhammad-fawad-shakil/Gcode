@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — GCodex | G-Code Viewer Questions & Answers</title>
+<meta name="description" content="Frequently asked questions about GCodex — free online G-Code viewer. How to view G-code, supported formats, privacy, CNC and 3D printer compatibility, and more.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/faq.html">
+<meta property="og:title" content="FAQ — GCodex G-Code Viewer">
+<meta property="og:url" content="https://gcodex.tech/faq.html">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="theme-color" content="#1565c0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a G-Code viewer?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A G-Code viewer is a tool that reads and visualizes CNC machine and 3D printer toolpath files. It shows the machine movement paths in 2D or 3D, letting you inspect layer structure, extrusion paths, travel moves, and retractions before running on a real machine." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do my G-code files get uploaded anywhere?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. GCodex processes all files locally in your browser. Nothing is sent to any server. Your G-code files stay on your device." }
+    },
+    {
+      "@type": "Question",
+      "name": "What file formats does GCodex support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "GCodex accepts .gcode, .nc, .g, and .gc files. These cover all major CNC and 3D printing formats." }
+    },
+    {
+      "@type": "Question",
+      "name": "How is GCodex different from NCViewer?",
+      "acceptedAnswer": { "@type": "Answer", "text": "GCodex includes layer filtering, full analytics dashboard, G-code editor with Find and Replace, model scaling, export to 8 formats (STL, OBJ, SVG, CSV, JSON), toolpath animation, and bioprinter support. NCViewer is a basic viewer with none of these features." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GCodex free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, GCodex is completely free. It is supported by Google AdSense ads. No account, subscription, or payment is required to use any feature." }
+    }
+  ]
+}
+</script>
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --topbar-bg: #1565c0;
+  --accent:    #1565c0;
+  --bg:        #f5f7fa;
+  --panel:     #ffffff;
+  --border:    #dde3ec;
+  --text:      #1a2740;
+  --text2:     #4a5d78;
+  --text3:     #8a9bb5;
+}
+html, body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--text);
+  font-size: 14px; line-height: 1.75;
+}
+#topbar {
+  height: 42px; background: var(--topbar-bg);
+  display: flex; align-items: center;
+  border-bottom: 2px solid #0d47a1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  position: sticky; top: 0; z-index: 100;
+}
+#logo {
+  display: flex; align-items: center; gap: 9px;
+  padding: 0 20px; text-decoration: none;
+  font-weight: 700; font-size: 15px; color: #fff;
+  letter-spacing: -0.3px; border-right: 1px solid rgba(255,255,255,0.15);
+  height: 100%;
+}
+#logo img { width: 26px; height: 26px; border-radius: 5px; }
+#logo em { font-style: normal; color: #90caf9; }
+#logo em { font-style: normal; color: #90caf9; }
+.nav-links { display: flex; align-items: center; gap: 2px; padding: 0 12px; }
+.nav-link {
+  height: 28px; padding: 0 12px;
+  border: 1px solid transparent; border-radius: 3px;
+  color: rgba(255,255,255,0.75); font-size: 12px; font-weight: 500;
+  text-decoration: none; display: flex; align-items: center;
+  transition: all 0.12s;
+}
+.nav-link:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.nav-link.active { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff; }
+.back-btn {
+  margin-left: auto; margin-right: 16px;
+  height: 28px; padding: 0 14px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 3px; color: #fff; font-size: 12px; font-weight: 500;
+  text-decoration: none; display: flex; align-items: center; gap: 6px;
+  transition: background 0.12s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.22); }
+.back-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+.content {
+  max-width: 860px; margin: 0 auto;
+  display: flex; min-height: calc(100vh - 42px);
+}
+.sidebar {
+  width: 220px; min-width: 220px; flex-shrink: 0;
+  background: var(--panel); border-right: 1px solid var(--border);
+  padding: 24px 0;
+}
+.sidebar-title {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--text3);
+  padding: 0 16px 8px; border-bottom: 1px solid var(--border); margin-bottom: 8px;
+}
+.sidebar a {
+  display: block; padding: 7px 16px;
+  font-size: 12px; color: var(--text2); text-decoration: none;
+  border-left: 2px solid transparent; transition: all 0.1s;
+}
+.sidebar a:hover { color: var(--accent); background: #f0f4ff; border-left-color: var(--accent); }
+
+.main {
+  flex: 1; padding: 32px 36px 64px; background: var(--panel);
+  border-right: 1px solid var(--border);
+}
+h1 { font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: -0.3px; }
+.tagline {
+  font-size: 14px; color: var(--text2); margin-bottom: 24px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+h2 { font-size: 15px; font-weight: 700; color: var(--text); margin: 28px 0 8px; }
+p { font-size: 13px; color: var(--text2); margin-bottom: 12px; line-height: 1.8; }
+ul, ol { padding-left: 22px; margin-bottom: 12px; }
+li { font-size: 13px; color: var(--text2); margin-bottom: 5px; line-height: 1.75; }
+a { color: var(--accent); }
+code {
+  background: #f0f4f8; border: 1px solid var(--border); border-radius: 3px;
+  padding: 1px 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+pre {
+  background: #1a2740; color: #f8fafc; border-radius: 6px;
+  padding: 14px 16px; font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; line-height: 1.8; overflow-x: auto; margin: 10px 0 14px;
+}
+.kw-line {
+  font-size: 11px; color: var(--text3); line-height: 1.9;
+  margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+}
+footer {
+  text-align: center; padding: 20px 24px;
+  font-size: 11px; color: var(--text3);
+  background: var(--bg); border-top: 1px solid var(--border);
+}
+footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <a href="index.html" id="logo">
+    <img src="android-chrome-192x192.png" alt="GCodex" onerror="this.style.display='none'">
+    GCodex
+  </a>
+  <nav class="nav-links">
+    <a href="index.html" class="nav-link">Back</a>
+  
+  </nav>
+  <a href="index.html" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+    Open Viewer
+  </a>
+</div>
+<!-- WHITE SUBBAR -->
+<div style="height:38px;background:#fff;border-bottom:1px solid #dde3ec;display:flex;align-items:flex-end;box-shadow:0 1px 3px rgba(0,0,0,0.06);position:sticky;top:42px;z-index:100;">
+  <a href="index.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:transparent;color:#8a9bb5;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all 0.12s;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#4a5d78';this.style.background='#f5f7fa'" onmouseout="this.style.color='#8a9bb5';this.style.background='transparent'">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+    3D View
+  </a>
+  <a href="index.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:transparent;color:#8a9bb5;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all 0.12s;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#4a5d78';this.style.background='#f5f7fa'" onmouseout="this.style.color='#8a9bb5';this.style.background='transparent'">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+    2D View
+  </a>
+  <a href="index.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:transparent;color:#8a9bb5;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all 0.12s;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#4a5d78';this.style.background='#f5f7fa'" onmouseout="this.style.color='#8a9bb5';this.style.background='transparent'">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    G-Code
+  </a>
+  <a href="index.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:transparent;color:#8a9bb5;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all 0.12s;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#4a5d78';this.style.background='#f5f7fa'" onmouseout="this.style.color='#8a9bb5';this.style.background='transparent'">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    Analysis
+  </a>
+  <a href="index.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:transparent;color:#8a9bb5;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all 0.12s;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#4a5d78';this.style.background='#f5f7fa'" onmouseout="this.style.color='#8a9bb5';this.style.background='transparent'">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+    Convert
+  </a>
+  <a href="about.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:transparent;color:#8a9bb5;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all 0.12s;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#4a5d78';this.style.background='#f5f7fa'" onmouseout="this.style.color='#8a9bb5';this.style.background='transparent'">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    About
+  </a>
+  <a href="faq.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:#fff;color:#1565c0;border-bottom:2px solid #1565c0;display:flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    FAQ
+  </a>
+  <a href="privacy-policy.html" style="height:100%;padding:0 16px;font-size:12px;font-weight:500;border:none;background:transparent;color:#8a9bb5;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all 0.12s;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#4a5d78';this.style.background='#f5f7fa'" onmouseout="this.style.color='#8a9bb5';this.style.background='transparent'">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Privacy
+  </a>
+</div>
+
+<div class="content">
+  <div class="sidebar">
+    <div class="sidebar-title">Questions</div>
+    <a href="#q1">What is a G-Code viewer?</a>
+    <a href="#q2">View G-code online free</a>
+    <a href="#q3">Files uploaded anywhere?</a>
+    <a href="#q4">Supported file formats</a>
+    <a href="#q5">vs NCViewer</a>
+    <a href="#q6">Is GCodex free?</a>
+    <a href="#q7">Edit G-code in browser</a>
+    <a href="#q8">Filter layers</a>
+    <a href="#q9">Export formats</a>
+    <a href="#q10">Use offline</a>
+    <a href="#q11">Supported firmware</a>
+    <a href="#q12">Bioprinter support</a>
+    <a href="#q13">Verify CNC G-code</a>
+    <a href="#q14">Arduino G-code</a>
+    <a href="#q15">Scale the model</a>
+  </div>
+
+  <div class="main">
+    <h1>Frequently Asked Questions</h1>
+    <p class="tagline">Everything you need to know about using GCodex — the free online G-Code viewer, analyzer, and CNC simulator.</p>
+
+    <h2 id="q1">What is a G-Code viewer?</h2>
+    <p>A G-Code viewer is a tool that reads and visualizes CNC machine and 3D printer toolpath files. G-code is a plain text programming language that tells machines — CNC routers, mills, laser cutters, 3D printers — exactly where to move, at what speed, and what to do at each position. A viewer renders these instructions as a visual toolpath so you can see what the machine will do before you run it.</p>
+    <p>GCodex is a free online G-Code viewer that shows your toolpaths in both interactive 3D (using WebGL) and flat 2D (layer-by-layer). It also analyzes the file, giving you move counts, estimated print time, total travel distance, and a per-layer extrusion chart. Everything runs in your browser — no upload, no signup required.</p>
+
+    <h2 id="q2">How do I view a G-code file online for free?</h2>
+    <p>Open <a href="index.html">gcodex.tech</a> in any modern browser. Then either drag and drop your <code>.gcode</code>, <code>.nc</code>, or <code>.g</code> file onto the drop zone on the left panel, or click "Open File" to browse for it. The file is read locally in your browser — it never leaves your device. You get a full 3D toolpath visualization instantly. No account, no subscription, no upload.</p>
+    <p>You can also click "Sample" in the toolbar to load a built-in bioprinting scaffold G-code sample and explore all the features without your own file.</p>
+
+    <h2 id="q3">Do my G-code files get uploaded to a server?</h2>
+    <p>No. GCodex processes all files entirely within your browser using the FileReader API. When you open a file, JavaScript reads it from your local disk directly into memory — no HTTP request is made, no FormData is sent, no WebSocket transmission happens. Your file data lives only in your browser tab's memory and is discarded when you close or refresh the tab.</p>
+    <p>This is not just a policy — it is a technical reality baked into how GCodex is built. There is no backend server to receive files. You can verify this by opening your browser's Network tab in DevTools and observing that no file data is transmitted when you load a G-code file.</p>
+
+    <h2 id="q4">What G-code file formats does GCodex support?</h2>
+    <p>GCodex accepts the following file extensions: <code>.gcode</code>, <code>.nc</code>, <code>.g</code>, and <code>.gc</code>. These cover all major CNC and 3D printing formats. Any plain text file containing standard G-code commands (G0, G1, M104, etc.) will work regardless of which machine or firmware generated it.</p>
+    <p>If your file has a different extension but contains valid G-code, you can rename it to <code>.gcode</code> before opening it in GCodex.</p>
+
+    <h2 id="q5">How is GCodex different from NCViewer?</h2>
+    <p>NCViewer is the most well-known browser-based G-code viewer and ranks highly in search results. It provides a basic 3D and 2D toolpath view, but its feature set stops there. GCodex was built to go significantly further.</p>
+    <p>GCodex adds layer filtering with Min/Max sliders that update both the 3D and 2D views in real time. It includes a full analytics dashboard with per-layer extrusion charts and command frequency breakdown. It has an in-browser G-code editor with syntax highlighting, Find &amp; Replace, strip comments, normalize whitespace, and undo. It supports model scaling in X, Y, and Z with a wireframe bounding box overlay. It exports to eight formats: STL, OBJ, SVG, CSV, JSON, NC, plain text, and G-code. It has toolpath animation playback with a nozzle head indicator. It includes Arduino and GRBL guides, a G-code command reference, and bioprinter support. Both tools are browser-based and require no upload or signup.</p>
+
+
+    <h2 id="q8">How do I filter and inspect individual layers?</h2>
+    <p>Use the Layer Filter panel on the left sidebar. The Min slider sets the lowest layer to show, and the Max slider sets the highest. Both the 3D view and 2D view update immediately as you drag. The Layer HUD in the top-right corner of the 3D view shows the current layer range.</p>
+    <p>To look at a single layer, drag both sliders to the same value, or use the single-layer stepper buttons (‹ ›) below the sliders to step one layer at a time. Click "All Layers" to reset both sliders to show the full model. You can also click the Layer HUD itself to open a layer jump dialog where you can type a specific layer number and see its Z height and segment count before jumping to it.</p>
+
+    <h2 id="q9">What export formats does GCodex support?</h2>
+    <p>GCodex can export your loaded G-code to eight formats, all processed locally in your browser:</p>
+    <ul>
+      <li><strong>.gcode</strong> — re-downloads your original file as-is</li>
+      <li><strong>.nc</strong> — same content as G-code, with the .nc extension used by many CNC controllers</li>
+      <li><strong>.stl</strong> — ASCII STL mesh built from the extrusion toolpath segments; open in Blender, MeshLab, or any CAD tool</li>
+      <li><strong>.obj</strong> — Wavefront 3D mesh of the toolpath; compatible with most 3D software</li>
+      <li><strong>.svg</strong> — 2D top-down vector export of the toolpath; open in Inkscape, Illustrator, or any browser</li>
+      <li><strong>.csv</strong> — tabular data with columns for layer, type, and X/Y/Z coordinates of each segment; import into Excel or Python</li>
+      <li><strong>.json</strong> — structured path data with segment info and print metrics; useful for scripts or APIs</li>
+      <li><strong>.txt</strong> — raw G-code with all semicolon comments stripped; smaller file size</li>
+    </ul>
+    <p>Note that GCodex cannot convert STL or OBJ files to G-code — that process requires a slicer application such as Ultimaker Cura or PrusaSlicer, which the Convert tab links to.</p>
+
+    
+
+    <h2 id="q11">Which 3D printer and CNC firmware does GCodex support?</h2>
+    <p>GCodex works with all firmware that outputs standard G-code. This includes Marlin (the most widely used firmware for FDM 3D printers, found in Creality, Prusa, and most RepRap machines), Klipper (high-speed printing), RepRap firmware, Smoothieware, Duet/RepRap Firmware, GRBL (CNC routers, laser cutters, pen plotters running on Arduino), and LinuxCNC for professional CNC machines.</p>
+    <p>It also works with G-code generated by slicers including Ultimaker Cura, PrusaSlicer, Bambu Studio, Simplify3D, IdeaMaker, and OrcaSlicer. Any valid G-code file from any of these tools will visualize correctly in GCodex.</p>
+
+    <h2 id="q12">Does GCodex support bioprinter G-code?</h2>
+    <p>Yes. GCodex includes specific support for syringe-based extrusion bioprinting. It handles G-code generated for calcium alginate scaffold printing, hydrogel extrusion, and other bioprinting applications. The built-in sample file (click "Sample" in the toolbar) is a bioprinting scaffold that demonstrates alternating 0°/90° layer patterns typical in tissue engineering research.</p>
+    <p>The parser correctly handles low feed rates and small E values common in bioprinting, and the layer detection works with the small Z increments (0.25mm or less) used in bioprinting layer heights. The 3D view renders extrusion paths in blue, travel moves in light grey, and retract moves in orange, making it easy to verify scaffold geometry before printing.</p>
+
+    <h2 id="q13">How do I verify G-code before running it on a CNC machine?</h2>
+    <p>Load your G-code file into GCodex and use the 3D view to visually inspect the toolpath. Orbit around the model to check all angles. Use the Layer Filter to isolate specific cutting passes and verify their depth. Toggle off travel moves using the Visibility panel to see only the cutting or extrusion paths without the rapid moves cluttering the view.</p>
+    <p>Switch to the Analysis tab to check total move counts and distances. The per-layer extrusion chart helps identify layers with unexpected amounts of material. The command frequency table shows which G and M codes appear most often, which can help catch unsupported commands before running on your specific machine.</p>
+    <p>For CNC work, pay particular attention to Z-height in the 3D view to confirm your toolpath doesn't plunge below expected depths, and check the X/Y bounding box in the Model Info panel to confirm the program fits within your machine's work envelope.</p>
+
+    <h2 id="q14">Can I use GCodex with Arduino G-code (GRBL)?</h2>
+    <p>Yes. GCodex fully supports GRBL G-code generated for Arduino-based CNC machines. GRBL runs on Arduino Uno and Arduino Nano (both use ATmega328P) and interprets a subset of standard G-code. G-code files for GRBL use the same G0, G1, G2, G3, G4, G20, G21, G90, G91, M3, M4, M5 commands that GCodex parses.</p>
+    <p>For 3D printing with Arduino, the Arduino Mega (ATmega2560) running Marlin firmware is the most common setup, especially with the RAMPS 1.4 shield. GCodex fully supports Marlin G-code including temperature commands (M104, M109, M140, M190), fan control (M106, M107), and bed leveling (G29).</p>
+    <p>The Help &amp; FAQ tab inside the main viewer application includes detailed guides for Arduino Uno with GRBL, Arduino Nano with GRBL, and Arduino Mega with Marlin, along with G-code examples and firmware settings references.</p>
+
+    <h2 id="q15">Can I scale or resize the G-code model in the viewer?</h2>
+    <p>Yes. The Model Scale panel in the left sidebar has sliders for X, Y, and Z scale from 10% to 300%. Adjusting these scales the 3D visualization in real time. Click "Show BBox" to display a wireframe bounding box around the model so you can see its extents as you scale.</p>
+    <p>Note that this scales the visualization only — it does not modify the actual G-code coordinate values. If you need to scale the actual machine coordinates, use the Find &amp; Replace tool in the G-Code editor tab to multiply all X, Y, or E values by a factor, then click Apply to re-render.</p>
+
+    <p class="kw-line">
+      Keywords: gcode viewer faq · g-code viewer questions · how to view gcode online · gcode analyzer · gcode simulator · ncviewer alternative · free gcode viewer · gcode viewer no upload · gcode layer viewer · marlin gcode viewer · klipper gcode viewer · grbl gcode · arduino gcode viewer · cnc gcode viewer · 3d printer gcode viewer · bioprinter gcode · verify gcode online · gcode export stl · gcode to svg
+    </p>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">GCodex</a> ·
+  <a href="about.html">About</a> ·
+  <a href="faq.html">FAQ</a> ·
+  <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · Browser-based · No upload · No signup · Free forever
+</footer>
+
+</body>
+</html>
