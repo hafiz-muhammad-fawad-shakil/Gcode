@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="fukXA59DNB6qRFuuy7sTsA" async></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essential G-Code & M-Code Commands Reference — GCodex Blog</title>
+<meta name="description" content="Complete G-Code and M-Code reference with real examples. Covers G0, G1, G2, G3, G28, G29, G90, G91, G92, M104, M109, M140, M190, spindle, coolant, and all essential CNC and 3D printer codes.">
+<meta name="keywords" content="gcode commands list, mcode commands, gcode reference, g0 g1 g2 g3 gcode, gcode cheat sheet, gcode commands explained, cnc gcode commands, 3d printer gcode commands">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/blog-gcode-commands-reference.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Essential G-Code & M-Code Commands Reference — GCodex">
+<meta property="og:url" content="https://gcodex.tech/blog-gcode-commands-reference.html">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="theme-color" content="#1565c0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root { --topbar-bg:#1565c0; --topbar-dark:#0d47a1; --topbar-sep:rgba(255,255,255,0.15); --accent:#1565c0; --accent-h:#1976d2; --accent-lt:#e3f0ff; --bg:#f5f7fa; --panel:#ffffff; --border:#dde3ec; --text:#1a2740; --text2:#4a5d78; --text3:#8a9bb5; }
+html, body { font-family:'Inter', system-ui, sans-serif; background:var(--bg); color:var(--text); font-size:14px; line-height:1.75; }
+#topbar { height:44px; background:var(--topbar-bg); display:flex; align-items:center; border-bottom:2px solid var(--topbar-dark); position:sticky; top:0; z-index:200; box-shadow:0 2px 8px rgba(35,37,41,0.2); }
+#logo { display:flex; align-items:center; gap:9px; padding:0 18px; text-decoration:none; font-weight:700; font-size:15px; color:#fff; letter-spacing:-0.3px; border-right:1px solid var(--topbar-sep); height:100%; flex-shrink:0; }
+#logo img { width:27px; height:27px; border-radius:5px; }
+#logo em { font-style:normal; color:#90caf9; }
+.nav-links { display:flex; align-items:center; gap:2px; padding:0 10px; flex:1; }
+.nav-link { height:29px; padding:0 12px; border:1px solid transparent; border-radius:4px; color:rgba(255,255,255,0.75); font-size:12px; font-weight:500; text-decoration:none; display:flex; align-items:center; transition:all 0.12s; }
+.nav-link:hover { background:rgba(255,255,255,0.12); color:#fff; }
+.nav-link.active { background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.3); color:#fff; }
+.back-btn { margin-left:auto; margin-right:14px; height:29px; padding:0 14px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.28); border-radius:4px; color:#fff; font-size:12px; font-weight:500; text-decoration:none; display:flex; align-items:center; gap:6px; transition:all 0.12s; flex-shrink:0; }
+#subbar { height:38px; background:#fff; border-bottom:1px solid var(--border); display:flex; align-items:flex-end; box-shadow:0 1px 3px rgba(0,0,0,0.06); position:sticky; top:44px; z-index:100; }
+.stab { height:100%; padding:0 18px; font-size:12px; font-weight:500; border:none; background:transparent; color:var(--text3); border-bottom:2px solid transparent; display:flex; align-items:center; transition:all 0.12s; text-decoration:none; white-space:nowrap; }
+.stab:hover { color:var(--text2); background:#f5f7fa; }
+.stab.active { color:var(--accent); border-bottom-color:var(--accent); }
+.page-wrap { max-width:1020px; margin:0 auto; display:flex; min-height:calc(100vh - 82px); }
+.sidebar { width:220px; min-width:220px; flex-shrink:0; background:var(--panel); border-right:1px solid var(--border); padding:22px 0 48px; position:sticky; top:82px; height:calc(100vh - 82px); overflow-y:auto; }
+.sidebar-title { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.9px; color:var(--text3); padding:0 16px 8px; border-bottom:1px solid var(--border); margin-bottom:6px; }
+.sidebar a { display:block; padding:7px 16px; font-size:12px; color:var(--text2); text-decoration:none; border-left:2px solid transparent; transition:all 0.1s; }
+.sidebar a:hover { color:var(--accent); background:var(--accent-lt); border-left-color:var(--accent); }
+.main { flex:1; padding:36px 44px 80px; background:var(--panel); min-width:0; }
+.breadcrumb { font-size:11px; color:var(--text3); margin-bottom:18px; }
+.breadcrumb a { color:var(--accent); text-decoration:none; }
+.post-tag { display:inline-block; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; padding:3px 8px; border-radius:3px; background:#e3f0ff; color:#1565c0; margin-bottom:12px; }
+h1 { font-size:26px; font-weight:700; color:var(--text); margin-bottom:8px; letter-spacing:-0.4px; line-height:1.3; }
+.post-meta { font-size:12px; color:var(--text3); margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+h2 { font-size:16px; font-weight:700; color:var(--text); margin:32px 0 10px; }
+h3 { font-size:14px; font-weight:600; color:var(--text); margin:22px 0 8px; }
+p { font-size:13.5px; color:var(--text2); margin-bottom:14px; line-height:1.85; }
+ul, ol { padding-left:22px; margin-bottom:14px; }
+li { font-size:13.5px; color:var(--text2); margin-bottom:6px; line-height:1.75; }
+li strong { color:var(--text); }
+code { background:#f0f4f8; border:1px solid var(--border); border-radius:3px; padding:1px 6px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#c62828; }
+pre { background:#1a2740; border-radius:6px; padding:18px 20px; margin:16px 0; overflow-x:auto; }
+pre code { background:none; border:none; color:#90caf9; font-size:12px; padding:0; }
+.cmd-block { background:#f9fbff; border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:4px; padding:14px 18px; margin:14px 0; }
+.cmd-block .cmd-name { font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:700; color:var(--accent); margin-bottom:4px; }
+.cmd-block .cmd-desc { font-size:13px; color:var(--text2); margin-bottom:8px; }
+.cmd-block pre { margin:0; padding:10px 14px; font-size:11.5px; }
+.info-box { background:var(--accent-lt); border-left:3px solid var(--accent); border-radius:4px; padding:14px 18px; margin:20px 0; }
+.info-box p { margin:0; font-size:13px; color:#1a2740; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.related-posts { margin-top:48px; padding-top:24px; border-top:1px solid var(--border); }
+.related-posts h2 { font-size:15px; margin-bottom:14px; }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+.related-card { border:1px solid var(--border); border-radius:6px; padding:14px; text-decoration:none; display:block; transition:box-shadow 0.12s; }
+.related-card:hover { box-shadow:0 2px 12px rgba(21,101,192,0.1); text-decoration:none; }
+.related-card h3 { font-size:12px; font-weight:600; color:var(--text); margin:0 0 4px; }
+.related-card p { font-size:11px; color:var(--text3); margin:0; }
+footer { text-align:center; padding:18px 24px; font-size:11px; color:var(--text3); background:var(--bg); border-top:1px solid var(--border); }
+footer a { color:var(--accent); text-decoration:none; }
+</style>
+</head>
+<body>
+<div id="topbar">
+  <a id="logo" href="index.html"><img src="android-chrome-192x192.png" alt="GCodex">G<em>Codex</em></a>
+  <nav class="nav-links">
+    <a href="index.html" class="nav-link">🔧 Viewer</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+    <a href="gcode-guide.html" class="nav-link">G-Code Guide</a>
+    <a href="blog.html" class="nav-link active">Blog</a>
+  </nav>
+  <a href="index.html" class="back-btn">← Open Viewer</a>
+</div>
+<div id="subbar">
+  <a href="blog.html" class="stab">← All Articles</a>
+  <a href="#motion" class="stab active">Motion</a>
+  <a href="#coords" class="stab">Coordinates</a>
+  <a href="#printer" class="stab">3D Printer</a>
+  <a href="#mcodes" class="stab">M-Codes</a>
+</div>
+<div class="page-wrap">
+  <aside class="sidebar">
+    <div class="sidebar-title">In This Article</div>
+    <a href="#intro">Introduction</a>
+    <a href="#addresses">Address Letters</a>
+    <a href="#motion">Motion Commands</a>
+    <a href="#arcs">Arc Commands</a>
+    <a href="#coords">Coordinate Modes</a>
+    <a href="#offsets">Work Offsets</a>
+    <a href="#canned">Canned Cycles</a>
+    <a href="#printer">3D Printer Codes</a>
+    <a href="#mcodes">Essential M-Codes</a>
+    <a href="#startup">Startup Template</a>
+    <div class="sidebar-title" style="margin-top:20px">More Articles</div>
+    <a href="blog-gcode-beginners-guide.html">G-Code Beginner's Guide</a>
+    <a href="blog-troubleshoot-gcode-errors.html">Troubleshooting Errors</a>
+    <a href="blog-marlin-firmware-guide.html">Marlin Firmware Guide</a>
+    <a href="blog.html">All Blog Posts</a>
+  </aside>
+  <main class="main">
+    <div class="breadcrumb"><a href="blog.html">Blog</a> › G-Code › Commands Reference</div>
+    <span class="post-tag">G-Code</span>
+    <h1 id="intro">Essential G-Code &amp; M-Code Commands Every Machinist Must Know</h1>
+    <div class="post-meta">Published June 2025 · 18 min read · By the GCodex Team</div>
+
+    <p>Whether you run a CNC mill, a lathe, a 3D printer, a laser cutter, or a syringe pump bioprinter — you are running G-Code. This reference covers the most important G and M codes, with clear explanations and real-world code examples for each. Bookmark this page: it is the reference sheet you'll return to every time you need to quickly look up a command.</p>
+    <p>This is not an exhaustive standard — that would fill a book. Instead, we focus on the commands you'll actually use 95% of the time, ordered by the workflow you encounter them in. For a conceptual introduction to what G-Code is and how to read it, see our <a href="blog-gcode-beginners-guide.html">Beginner's Guide to G-Code</a>.</p>
+
+    <h2 id="addresses">Address Letters Quick Reference</h2>
+    <p>Every G-Code word starts with an address letter. Here are the key ones:</p>
+    <ul>
+      <li><strong>G</strong> — Preparatory function (motion type, mode setting)</li>
+      <li><strong>M</strong> — Miscellaneous function (machine control: spindle, coolant, program end)</li>
+      <li><strong>X, Y, Z</strong> — Linear axis coordinates</li>
+      <li><strong>A, B, C</strong> — Rotary axis coordinates (rotation around X, Y, Z respectively)</li>
+      <li><strong>I, J, K</strong> — Arc center offsets (used with G2 and G3)</li>
+      <li><strong>F</strong> — Feed rate (mm/min or in/min)</li>
+      <li><strong>S</strong> — Spindle speed (RPM) or laser power</li>
+      <li><strong>T</strong> — Tool number (tool change)</li>
+      <li><strong>E</strong> — Extruder position (3D printers)</li>
+      <li><strong>R</strong> — Arc radius (alternative to I/J/K) or cycle retract height</li>
+      <li><strong>N</strong> — Line (block) number (optional, for reference)</li>
+      <li><strong>P, Q</strong> — Dwell time or cycle parameters</li>
+    </ul>
+
+    <h2 id="motion">Motion Commands</h2>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G0 — Rapid Positioning</div>
+      <div class="cmd-desc">Moves to target position at maximum machine speed. No cutting — used for travel moves. All axes move simultaneously. Does not guarantee a straight-line path at the full programmed feed rate — never use G0 while cutting.</div>
+      <pre><code>G0 X100 Y50 Z5    ; Rapid to X=100, Y=50, Z=5mm (safe height)</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G1 — Linear Interpolation (Cutting Feed)</div>
+      <div class="cmd-desc">Moves in a straight line at the programmed feed rate F. This is the primary cutting command. All axes move simultaneously at a synchronized rate to arrive at the target position together.</div>
+      <pre><code>G1 X50 Y30 Z-3 F800   ; Cut in straight line to X50,Y30 at 3mm depth, 800 mm/min</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G2 / G3 — Circular Arc Interpolation</div>
+      <div class="cmd-desc">G2 cuts a clockwise arc; G3 cuts counter-clockwise. Specify the end point (X, Y) and the arc center offset from the start point (I, J) — or use R for the arc radius. The G17/G18/G19 plane selection must be active (G17 = XY plane is the default).</div>
+      <pre><code>; Full circle (start = end, center offset I,J from start):
+G2 X0 Y0 I25 J0 F600  ; CW full circle, radius=25mm
+
+; Quarter arc using radius:
+G3 X50 Y50 R50 F600   ; CCW 90° arc, radius=50mm</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G4 — Dwell (Pause)</div>
+      <div class="cmd-desc">Pauses program execution for a specified time. Useful for spindle speed stabilization before a cut, or waiting for a drill to clear chips at the bottom of a hole.</div>
+      <pre><code>G4 P1000    ; Pause for 1000 milliseconds (1 second)</code></pre>
+    </div>
+
+    <h2 id="arcs">Coordinate System Commands</h2>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G17 / G18 / G19 — Plane Selection</div>
+      <div class="cmd-desc">Selects the working plane for arc interpolation. G17=XY (default and most common), G18=XZ, G19=YZ.</div>
+      <pre><code>G17   ; Select XY plane (default for most vertical mills)</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G20 / G21 — Units</div>
+      <div class="cmd-desc">G20 = inch mode. G21 = millimeter mode. Always set explicitly at the start of any program to avoid disasters from unit confusion.</div>
+      <pre><code>G21   ; Set millimeter mode — always include this line!</code></pre>
+    </div>
+
+    <div class="cmd-block" id="coords">
+      <div class="cmd-name">G28 — Return to Home (Reference) Position</div>
+      <div class="cmd-desc">Commands the machine to move to the machine's hardware reference/homing switches. On 3D printers this is typically the front-left-bottom corner. On CNC mills it is the machine zero position. Can be followed by axis letters to home specific axes.</div>
+      <pre><code>G28              ; Home all axes
+G28 X Y          ; Home only X and Y axes</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G90 / G91 — Absolute / Incremental Mode</div>
+      <div class="cmd-desc">G90: all coordinates measured from the current work zero (absolute). G91: all coordinates measured from the current position (incremental/relative). Default is G90 in most programs.</div>
+      <pre><code>G90              ; Absolute mode — X50 means go to X=50mm from zero
+G91              ; Incremental mode — X10 means move +10mm from current position
+G90              ; Switch back to absolute</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">G92 — Set Position (Zero Offset)</div>
+      <div class="cmd-desc">Redefines the current position as the specified coordinate without physically moving any axis. Commonly used on 3D printers to set the current position as zero after manual moves or to adjust for a new origin.</div>
+      <pre><code>G92 E0           ; Reset extruder position to 0 (standard before printing)
+G92 X0 Y0        ; Declare current position as X=0, Y=0</code></pre>
+    </div>
+
+    <div class="cmd-block" id="offsets">
+      <div class="cmd-name">G54–G59 — Work Coordinate System Offsets (CNC)</div>
+      <div class="cmd-desc">Activates one of six programmable work coordinate systems. The operator measures the part's datum relative to machine zero and enters those offsets in G54 (or G55–G59 for multiple setups/fixtures). This lets the programmer write code relative to the part, not the machine.</div>
+      <pre><code>G54   ; Activate Work Coordinate System 1 (most common)
+G0 X0 Y0 Z5   ; Rapid to part origin at safe height</code></pre>
+    </div>
+
+    <h2 id="canned">Canned Cycles (Drilling &amp; Boring)</h2>
+    <div class="cmd-block">
+      <div class="cmd-name">G81 — Simple Drill Cycle</div>
+      <div class="cmd-desc">Drills to depth Z, then retracts to the R-plane (retract height). Repeat at each X,Y position until G80 cancels the cycle.</div>
+      <pre><code>G81 X10 Y10 Z-20 R5 F200   ; Drill at X10,Y10 to Z=-20, retract to Z=5
+X50 Y10                    ; Same cycle at X50,Y10
+X50 Y50                    ; And again at X50,Y50
+G80                        ; Cancel canned cycle</code></pre>
+    </div>
+    <div class="cmd-block">
+      <div class="cmd-name">G83 — Peck Drill Cycle</div>
+      <div class="cmd-desc">Drills in incremental depth steps (Q) with full retract to R-plane between each peck, clearing chips. Essential for deep holes in aluminum or steel.</div>
+      <pre><code>G83 X20 Y20 Z-40 R5 Q5 F150  ; Peck drill: 5mm pecks to 40mm depth</code></pre>
+    </div>
+
+    <h2 id="printer">3D Printer–Specific G-Codes</h2>
+    <div class="cmd-block">
+      <div class="cmd-name">G29 — Auto Bed Leveling</div>
+      <div class="cmd-desc">Triggers the auto bed leveling (ABL) routine. The printer probes multiple points on the bed and creates a mesh compensation map. Must be run after G28 (home).</div>
+      <pre><code>G28    ; Home first
+G29    ; Run auto bed leveling</code></pre>
+    </div>
+
+    <h2 id="mcodes">Essential M-Codes</h2>
+
+    <div class="cmd-block">
+      <div class="cmd-name">M3 / M4 / M5 — Spindle Control (CNC)</div>
+      <div class="cmd-desc">M3: spindle ON clockwise. M4: spindle ON counter-clockwise. M5: spindle OFF. The S word sets speed in RPM.</div>
+      <pre><code>M3 S12000   ; Spindle ON CW at 12,000 RPM
+M5          ; Spindle OFF</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">M104 / M109 — Hotend Temperature (3D Printers)</div>
+      <div class="cmd-desc">M104 sets the target temperature without waiting. M109 sets temperature and waits until it is reached before continuing. Always use M109 before starting a print.</div>
+      <pre><code>M104 S215      ; Start heating hotend to 215°C (doesn't wait)
+M109 S215      ; Set hotend to 215°C and WAIT until reached</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">M140 / M190 — Bed Temperature (3D Printers)</div>
+      <div class="cmd-desc">Same wait/no-wait pattern as M104/M109, but for the heated print bed. PLA typically prints on a 60°C bed; ABS requires 100–110°C.</div>
+      <pre><code>M140 S60       ; Start bed heating (doesn't wait)
+M190 S60       ; Set bed to 60°C and wait</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">M106 / M107 — Part Cooling Fan (3D Printers)</div>
+      <div class="cmd-desc">M106 turns on the part cooling fan (0–255 PWM speed). M107 turns it off. Slicers control this automatically but it's useful for manual overrides in start/end scripts.</div>
+      <pre><code>M106 S255   ; Fan full speed
+M107        ; Fan off</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">M8 / M9 — Coolant (CNC)</div>
+      <div class="cmd-desc">M8 turns on flood coolant. M9 turns off all coolant. Some controllers use M7 for mist coolant.</div>
+      <pre><code>M8   ; Coolant ON
+M9   ; Coolant OFF</code></pre>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-name">M30 — Program End</div>
+      <div class="cmd-desc">Ends the program, rewinds to start, and returns control to the operator. Always the last line of a CNC program. On 3D printers, slicers use M84 to disable steppers instead.</div>
+      <pre><code>M30   ; End of program</code></pre>
+    </div>
+
+    <h2 id="startup">A Complete 3D Printer Startup Template</h2>
+    <p>Here is a well-structured start script for an FDM 3D printer running Marlin firmware, showing how all these codes work together in sequence:</p>
+    <pre><code>; === START SCRIPT ===
+G21                  ; Millimeter units
+G90                  ; Absolute positioning
+M82                  ; Extruder absolute mode
+M104 S210            ; Start hotend heating (non-blocking)
+M140 S60             ; Start bed heating (non-blocking)
+G28                  ; Home all axes
+G29                  ; Auto bed leveling
+M109 S210            ; Wait for hotend temperature
+M190 S60             ; Wait for bed temperature
+G92 E0               ; Reset extruder position
+G1 Z0.2 F300         ; Move to first layer height
+G1 X10 Y10 F3000     ; Move to purge start
+G1 X70 Y10 E8 F800   ; Purge line
+G92 E0               ; Reset extruder after purge
+; === END START SCRIPT — PRINT BEGINS ===</code></pre>
+
+    <div class="info-box"><p><strong>Tip:</strong> Use <a href="index.html">GCodex</a> to load any G-Code file and visually verify that every motion command produces the expected toolpath before running on your machine. Catch missing retracts, wrong depths, and over-travel before they cause real damage.</p></div>
+
+    <div class="related-posts">
+      <h2>Continue Reading</h2>
+      <div class="related-grid">
+        <a href="blog-gcode-beginners-guide.html" class="related-card"><h3>G-Code Beginner's Guide</h3><p>Understand G-Code from first principles</p></a>
+        <a href="blog-troubleshoot-gcode-errors.html" class="related-card"><h3>Troubleshoot G-Code Errors</h3><p>Fix common machine and code faults</p></a>
+        <a href="blog-marlin-firmware-guide.html" class="related-card"><h3>Marlin Firmware Guide</h3><p>Full configuration walkthrough</p></a>
+        <a href="blog-gcode-simulation-importance.html" class="related-card"><h3>Why Simulate G-Code</h3><p>Prevent crashes and wasted material</p></a>
+      </div>
+    </div>
+  </main>
+</div>
+<footer>
+  <a href="index.html">GCodex</a> · <a href="blog.html">Blog</a> · <a href="about.html">About</a> · <a href="faq.html">FAQ</a> · <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · Browser-based · No upload · No signup · Free forever
+</footer>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="fukXA59DNB6qRFuuy7sTsA" async></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marlin Firmware & G-Code: Complete Configuration Guide — GCodex Blog</title>
+<meta name="description" content="Everything you need to configure Marlin firmware — steps-per-mm calibration, PID tuning, EEPROM, auto bed leveling, microstepping, A4988/TMC2209 drivers, and the G-Code commands to control it all.">
+<meta name="keywords" content="marlin firmware gcode, marlin configuration guide, steps per mm calibration, marlin pid tuning, eeprom marlin, auto bed leveling marlin, a4988 microstepping, ramps 1.4 marlin, m503 m500 gcode marlin">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/blog-marlin-firmware-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Marlin Firmware & G-Code: Complete Configuration Guide — GCodex">
+<meta property="og:url" content="https://gcodex.tech/blog-marlin-firmware-guide.html">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="theme-color" content="#1565c0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--topbar-bg:#1565c0;--topbar-dark:#0d47a1;--topbar-sep:rgba(255,255,255,0.15);--accent:#1565c0;--accent-lt:#e3f0ff;--bg:#f5f7fa;--panel:#ffffff;--border:#dde3ec;--text:#1a2740;--text2:#4a5d78;--text3:#8a9bb5}
+html,body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.75}
+#topbar{height:44px;background:var(--topbar-bg);display:flex;align-items:center;border-bottom:2px solid var(--topbar-dark);position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(35,37,41,0.2)}
+#logo{display:flex;align-items:center;gap:9px;padding:0 18px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;letter-spacing:-0.3px;border-right:1px solid var(--topbar-sep);height:100%;flex-shrink:0}
+#logo img{width:27px;height:27px;border-radius:5px}
+#logo em{font-style:normal;color:#90caf9}
+.nav-links{display:flex;align-items:center;gap:2px;padding:0 10px;flex:1}
+.nav-link{height:29px;padding:0 12px;border:1px solid transparent;border-radius:4px;color:rgba(255,255,255,0.75);font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;transition:all 0.12s}
+.nav-link:hover{background:rgba(255,255,255,0.12);color:#fff}
+.nav-link.active{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.3);color:#fff}
+.back-btn{margin-left:auto;margin-right:14px;height:29px;padding:0 14px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.28);border-radius:4px;color:#fff;font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px;transition:all 0.12s;flex-shrink:0}
+#subbar{height:38px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;box-shadow:0 1px 3px rgba(0,0,0,0.06);position:sticky;top:44px;z-index:100}
+.stab{height:100%;padding:0 18px;font-size:12px;font-weight:500;border:none;background:transparent;color:var(--text3);border-bottom:2px solid transparent;display:flex;align-items:center;transition:all 0.12s;text-decoration:none;white-space:nowrap}
+.stab:hover{color:var(--text2);background:#f5f7fa}
+.stab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.page-wrap{max-width:1020px;margin:0 auto;display:flex;min-height:calc(100vh - 82px)}
+.sidebar{width:220px;min-width:220px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--border);padding:22px 0 48px;position:sticky;top:82px;height:calc(100vh - 82px);overflow-y:auto}
+.sidebar-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);padding:0 16px 8px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.sidebar a{display:block;padding:7px 16px;font-size:12px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all 0.1s}
+.sidebar a:hover{color:var(--accent);background:var(--accent-lt);border-left-color:var(--accent)}
+.main{flex:1;padding:36px 44px 80px;background:var(--panel);min-width:0}
+.breadcrumb{font-size:11px;color:var(--text3);margin-bottom:18px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.post-tag{display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;padding:3px 8px;border-radius:3px;background:#fff3e0;color:#e65100;margin-bottom:12px}
+h1{font-size:26px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.4px;line-height:1.3}
+.post-meta{font-size:12px;color:var(--text3);margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+h2{font-size:16px;font-weight:700;color:var(--text);margin:32px 0 10px}
+h3{font-size:14px;font-weight:600;color:var(--text);margin:22px 0 8px}
+p{font-size:13.5px;color:var(--text2);margin-bottom:14px;line-height:1.85}
+ul,ol{padding-left:22px;margin-bottom:14px}
+li{font-size:13.5px;color:var(--text2);margin-bottom:6px;line-height:1.75}
+li strong{color:var(--text)}
+code{background:#f0f4f8;border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#c62828}
+pre{background:#1a2740;border-radius:6px;padding:18px 20px;margin:16px 0;overflow-x:auto}
+pre code{background:none;border:none;color:#90caf9;font-size:12px;padding:0}
+.info-box{background:var(--accent-lt);border-left:3px solid var(--accent);border-radius:4px;padding:14px 18px;margin:20px 0}
+.info-box p{margin:0;font-size:13px;color:#1a2740}
+.warn-box{background:#fff8e1;border-left:3px solid #f59e0b;border-radius:4px;padding:14px 18px;margin:20px 0}
+.warn-box p{margin:0;font-size:13px;color:#1a2740}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.related-posts{margin-top:48px;padding-top:24px;border-top:1px solid var(--border)}
+.related-posts h2{font-size:15px;margin-bottom:14px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.related-card{border:1px solid var(--border);border-radius:6px;padding:14px;text-decoration:none;display:block;transition:box-shadow 0.12s}
+.related-card:hover{box-shadow:0 2px 12px rgba(21,101,192,0.1);text-decoration:none}
+.related-card h3{font-size:12px;font-weight:600;color:var(--text);margin:0 0 4px}
+.related-card p{font-size:11px;color:var(--text3);margin:0}
+footer{text-align:center;padding:18px 24px;font-size:11px;color:var(--text3);background:var(--bg);border-top:1px solid var(--border)}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <a id="logo" href="index.html"><img src="android-chrome-192x192.png" alt="GCodex">G<em>Codex</em></a>
+  <nav class="nav-links">
+    <a href="index.html" class="nav-link">🔧 Viewer</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+    <a href="gcode-guide.html" class="nav-link">G-Code Guide</a>
+    <a href="blog.html" class="nav-link active">Blog</a>
+  </nav>
+  <a href="index.html" class="back-btn">← Open Viewer</a>
+</div>
+<div id="subbar">
+  <a href="blog.html" class="stab">← All Articles</a>
+  <a href="#steps" class="stab active">Steps/mm</a>
+  <a href="#pid" class="stab">PID Tuning</a>
+  <a href="#eeprom" class="stab">EEPROM</a>
+  <a href="#abl" class="stab">Bed Leveling</a>
+</div>
+<div class="page-wrap">
+  <aside class="sidebar">
+    <div class="sidebar-title">In This Article</div>
+    <a href="#intro">Introduction</a>
+    <a href="#hardware">Hardware: RAMPS + A4988</a>
+    <a href="#steps">Steps-per-mm Calibration</a>
+    <a href="#microstepping">Microstepping</a>
+    <a href="#pid">PID Tuning</a>
+    <a href="#eeprom">EEPROM Management</a>
+    <a href="#abl">Auto Bed Leveling</a>
+    <a href="#retraction">Retraction Tuning</a>
+    <a href="#gcodes">Key Marlin G-Codes</a>
+    <a href="#syringe">Syringe Pump Config</a>
+    <div class="sidebar-title" style="margin-top:20px">More Articles</div>
+    <a href="blog-gcode-commands-reference.html">G-Code Commands Ref</a>
+    <a href="blog-troubleshoot-gcode-errors.html">Troubleshoot Errors</a>
+    <a href="blog-bioprinting-gcode.html">Bioprinting with G-Code</a>
+    <a href="blog.html">All Blog Posts</a>
+  </aside>
+  <main class="main">
+    <div class="breadcrumb"><a href="blog.html">Blog</a> › Firmware › Marlin Configuration</div>
+    <span class="post-tag">Firmware</span>
+    <h1 id="intro">Marlin Firmware &amp; G-Code: The Complete Configuration Guide</h1>
+    <div class="post-meta">Published June 2025 · 20 min read · By the GCodex Team</div>
+
+    <p>Marlin is the open-source firmware that runs on the majority of desktop 3D printers, CNC routers, and custom motion platforms in the world — from Prusa MK4 clones to DIY syringe pump bioprinters. At its core, Marlin is a G-Code interpreter: it receives commands like <code>G1 X50 F1500</code> and translates them into precise stepper motor pulses, PID-controlled heater outputs, and safety watchdog functions.</p>
+    <p>Configuring Marlin correctly — and knowing which G-Code commands interact with which firmware settings — is the difference between a machine that works reliably and one that under-extrudes, crashes axes, or fires thermal runaway errors in the middle of a critical print. This guide covers the full configuration workflow, calibration procedures, and the G-Code commands that make it all work.</p>
+
+    <h2 id="hardware">Hardware Context: RAMPS 1.4 + A4988 / TMC2209</h2>
+    <p>The most common Marlin hardware stack — and the basis for this guide — is an Arduino Mega 2560 running the RAMPS 1.4 shield with A4988 or TMC2208/2209 stepper drivers. This combination is used in countless DIY 3D printers, CNC machines, and lab automation devices including syringe pumps. The RAMPS board provides 5 stepper driver slots (X, Y, Z, E0, E1), 3 endstop connectors, heated bed/hotend MOSFETs, and fan control.</p>
+    <p>The firmware's <code>Configuration.h</code> file is where all the permanent settings live. Marlin compiles these settings into the firmware binary that's flashed to the Arduino. Runtime changes (like steps-per-mm adjustments) can be made via G-Code and saved to EEPROM — but the firmware's compiled values are the fallback defaults.</p>
+
+    <h2 id="steps">Steps-per-mm Calibration: The Most Important Setting</h2>
+    <p>Steps-per-mm (steps/mm) tells Marlin how many stepper motor steps correspond to 1 mm of axis movement. Get this wrong and every dimension the machine produces will be scaled incorrectly. The setting depends on three physical factors: your stepper motor's steps-per-revolution (typically 200), your microstepping setting, and your mechanical ratio (belt pitch + pulley tooth count for Cartesian axes, or lead screw pitch for Z and extruder).</p>
+    <h3>Theoretical Calculation</h3>
+    <pre><code>; For a belt-driven axis (GT2 belt, 20-tooth pulley):
+; Steps/rev = 200 × microstepping_factor
+; Distance/rev = tooth_count × belt_pitch = 20 × 2mm = 40mm
+; Steps/mm = Steps/rev ÷ Distance/rev
+
+; At 16× microstepping (A4988 with MS1,MS2,MS3 all HIGH):
+; Steps/mm = (200 × 16) / 40 = 80 steps/mm
+
+; For a lead screw Z axis (8mm lead, M5 rod = 8mm/rev):
+; Steps/mm = (200 × 16) / 8 = 400 steps/mm
+
+; For extruder (BMG dual-drive, ~415 steps/mm typical):
+; Varies greatly by extruder design — MUST be empirically calibrated</code></pre>
+    <h3>Empirical Calibration (Always Do This)</h3>
+    <p>Theoretical values are a starting point. Always verify empirically:</p>
+    <ol>
+      <li>For X/Y/Z: Command a 100mm move. Measure actual distance moved with calipers.</li>
+      <li>Calculate corrected steps/mm: <code>new_steps = current_steps × (commanded / actual)</code></li>
+      <li>For extruder: Mark filament 120mm from the extruder entry. Command <code>G1 E100 F100</code>. Measure remaining distance to mark. Actual extruded = 120 - remaining. Apply same formula.</li>
+    </ol>
+    <pre><code>; Example: commanded 100mm, measured 97.5mm
+; new_steps/mm = 80 × (100 / 97.5) = 82.05
+
+; Set corrected value at runtime:
+M92 X82.05     ; Set X steps/mm
+M92 E418.3     ; Set extruder steps/mm
+M500           ; Save to EEPROM
+M503           ; Verify — read all EEPROM settings</code></pre>
+
+    <h2 id="microstepping">Microstepping and the A4988 Driver</h2>
+    <p>The A4988 stepper driver divides each full motor step into smaller microsteps using internal DAC circuitry, producing smoother motion and higher resolution. The microstepping level is set by three logic pins: MS1, MS2, MS3 on the RAMPS board. A4988 supports: full (1), 1/2, 1/4, 1/8, and 1/16 step modes.</p>
+    <div class="info-box"><p><strong>RAMPS default:</strong> All three MS pins are pulled HIGH via resistors, selecting 1/16 microstepping. This is the most common setting and gives 80 steps/mm for GT2/20T Cartesian axes. If you change microstepping via hardware jumpers, you MUST recalculate and update your steps/mm in firmware or via M92.</p></div>
+    <p>TMC2208/2209 drivers differ: they use a single UART serial pin for configuration and support 256× microstepping internally, but interpolate from 16× externally — so your steps/mm calculation should still use 16× as the effective microstepping ratio unless you change the driver's stealthChop configuration.</p>
+
+    <h2 id="pid">PID Tuning: Stable Temperatures = Better Prints</h2>
+    <p>Marlin uses PID (Proportional-Integral-Derivative) control to regulate hotend and heated bed temperatures. Poorly tuned PID causes temperature oscillations — the hotend swings ±5°C around the target — which directly causes inconsistent extrusion, layer adhesion problems, and under/over-extrusion bands visible on printed walls.</p>
+    <p>Marlin includes an automatic PID tuning routine triggered by M303:</p>
+    <pre><code>; Auto-tune hotend PID at 210°C, 8 cycles:
+M303 E0 S210 C8
+
+; Output looks like:
+; Kp: 22.50  Ki: 1.85  Kd: 68.42
+; bias: 101  d: 101  min: 208.72  max: 211.28
+
+; Apply the suggested values:
+M301 P22.50 I1.85 D68.42   ; Set hotend PID
+M500                        ; Save to EEPROM
+
+; Auto-tune heated bed (use E-1):
+M303 E-1 S60 C8
+M304 P57.12 I11.04 D196.28  ; Set bed PID
+M500</code></pre>
+    <div class="warn-box"><p><strong>⚠ Important:</strong> Run M303 with the hotend at its typical printing temperature and with part cooling fan at its normal speed. PID values change significantly with fan airflow, so tune under realistic conditions.</p></div>
+
+    <h2 id="eeprom">EEPROM Management</h2>
+    <p>Marlin's EEPROM (Electrically Erasable Programmable Read-Only Memory) stores runtime-adjustable settings that persist across power cycles — steps/mm, PID values, Z-offset, acceleration limits, and more. Think of it as a small configuration database on the Arduino that overrides the compiled firmware defaults.</p>
+    <ul>
+      <li><code>M500</code> — Save current settings to EEPROM</li>
+      <li><code>M501</code> — Load settings from EEPROM (undo unsaved changes)</li>
+      <li><code>M502</code> — Reset all settings to firmware-compiled defaults (does NOT save — you must follow with M500 if you want to save the reset)</li>
+      <li><code>M503</code> — Report all current settings (extremely useful for debugging)</li>
+    </ul>
+    <pre><code>M503   ; Read all EEPROM settings — output includes:
+; echo:  M92 X80.00 Y80.00 Z400.00 E415.00   ; Steps/mm
+; echo:  M203 X200.00 Y200.00 Z5.00 E25.00    ; Max feed rates
+; echo:  M201 X500.00 Y500.00 Z100.00 E5000.00 ; Max acceleration
+; echo:  M301 P22.5 I1.85 D68.42              ; PID hotend
+; echo:  M851 Z-1.20                           ; Z probe offset</code></pre>
+
+    <h2 id="abl">Auto Bed Leveling (ABL) with BLTouch / CR Touch</h2>
+    <p>Auto bed leveling probes multiple points on the print bed, builds a mesh of height variations, and compensates for bed warp or tilt during printing by adjusting the Z axis in real time. Marlin supports several ABL modes: 3-point, bilinear mesh, and UBL (Unified Bed Leveling). The G-Code workflow is:</p>
+    <pre><code>G28             ; Home all axes (required before G29)
+G29             ; Run ABL probe routine — builds mesh
+M500            ; Save mesh to EEPROM
+
+; In start script, after G28:
+G29 L1          ; Load saved mesh from EEPROM slot 1 (UBL)
+; or just G29   ; Re-probe (bilinear mode)</code></pre>
+    <p>The Z-probe offset (<code>M851 Z-x.xx</code>) is the distance between the probe trigger point and the nozzle tip. This must be measured and set correctly — it determines how far from the bed the nozzle actually is when the probe triggers. Fine-tuning the baby-step Z offset during the first layer is done with <code>M290 Z-0.05</code> (move nozzle 0.05mm closer) in real time.</p>
+
+    <h2 id="retraction">Retraction Tuning</h2>
+    <p>Retraction pulls the filament back into the nozzle during travel moves to prevent oozing strings. The key parameters are retraction distance and speed:</p>
+    <pre><code>; Set retraction via G-Code (if EEPROM_SETTINGS enabled):
+M207 S1.0 F2400   ; Retract 1.0mm at 40mm/s (F in mm/min: 40×60=2400)
+M208 S0.0 F2400   ; Recover (unretract) 0mm extra, same speed
+M500              ; Save</code></pre>
+    <p>For direct-drive extruders: 0.5–1.5mm retraction distance is typical. For Bowden: 3–7mm. Too much retraction causes grinding and clogs; too little causes stringing. Use a retraction tower calibration print to dial in the optimal value.</p>
+
+    <h2 id="gcodes">Key Marlin G-Code Commands at a Glance</h2>
+    <ul>
+      <li><code>M92 X Y Z E</code> — Set steps/mm for each axis</li>
+      <li><code>M203 X Y Z E</code> — Set maximum feed rates (mm/min)</li>
+      <li><code>M201 X Y Z E</code> — Set maximum acceleration (mm/s²)</li>
+      <li><code>M204 P R</code> — Set print and retract acceleration</li>
+      <li><code>M205 X Y Z E</code> — Set jerk/junction deviation limits</li>
+      <li><code>M301 P I D</code> — Set hotend PID values</li>
+      <li><code>M304 P I D</code> — Set heated bed PID values</li>
+      <li><code>M303 E S C</code> — Run auto PID tuning</li>
+      <li><code>M851 Z</code> — Set Z probe offset</li>
+      <li><code>M290 Z</code> — Baby-step Z offset (live adjust)</li>
+      <li><code>M119</code> — Report endstop states</li>
+      <li><code>M114</code> — Report current position</li>
+      <li><code>M112</code> — Emergency stop (all motors off, heaters off)</li>
+    </ul>
+
+    <h2 id="syringe">Configuring Marlin for a Syringe Pump / Bioprinter</h2>
+    <p>Syringe pumps and bioprinters built on RAMPS 1.4 use the extruder axis (E) to drive a linear actuator (stepper + lead screw) that pushes a syringe plunger. The E-steps/mm must be calculated from the lead screw pitch and transmission ratio, not from an extruder gear. A typical M5 lead screw with 0.8mm pitch at 16× microstepping gives:</p>
+    <pre><code>; M5 lead screw: 0.8mm/rev, 200 steps/rev, 16× microstepping
+; Steps/mm = (200 × 16) / 0.8 = 4000 steps/mm
+
+M92 E4000       ; Set extruder (syringe) steps/mm
+M203 E5         ; Limit max E feed rate to 5 mm/min (slow for viscous bio-ink)
+M201 E10        ; Low acceleration for smooth extrusion onset
+M500            ; Save to EEPROM
+
+; Dispense 2mm of plunger travel (= defined volume based on syringe ID):
+G1 E2 F2        ; Move syringe 2mm at 2mm/min</code></pre>
+    <p>Flow rate synchronization between X/Y motion and E extrusion is managed by the slicer or by custom G-Code. The volumetric flow rate of the bioink depends on the syringe inner diameter — calibrating E-steps to actual dispensed volume (by measuring bead diameter or collecting dispensed material) is essential for print accuracy.</p>
+
+    <div class="related-posts">
+      <h2>Continue Reading</h2>
+      <div class="related-grid">
+        <a href="blog-bioprinting-gcode.html" class="related-card"><h3>Bioprinting with G-Code</h3><p>Scaffolds, hydrogels, and living tissue</p></a>
+        <a href="blog-troubleshoot-gcode-errors.html" class="related-card"><h3>Troubleshoot G-Code Errors</h3><p>Fix thermal runaway, layer shifts, and more</p></a>
+        <a href="blog-gcode-commands-reference.html" class="related-card"><h3>G-Code Commands Reference</h3><p>Every key code with examples</p></a>
+        <a href="blog-3d-printing-vs-cnc.html" class="related-card"><h3>3D Printing vs CNC</h3><p>Which process fits your project?</p></a>
+      </div>
+    </div>
+  </main>
+</div>
+<footer>
+  <a href="index.html">GCodex</a> · <a href="blog.html">Blog</a> · <a href="about.html">About</a> · <a href="faq.html">FAQ</a> · <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · Browser-based · No upload · No signup · Free forever
+</footer>
+</body>
+</html>
