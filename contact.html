@@ -216,8 +216,7 @@ footer a:hover { text-decoration:underline; }
         Send Message
       </button>
       <div class="submit-note">
-        Short messages open your email client · Long messages open Gmail automatically.
-      </div>
+Opens a pre-filled Gmail compose window.      </div>
       <div class="success-msg" id="successMsg">
         ✅ Opening your email client now — please send the pre-filled message. We'll reply within 24 hours!
       </div>
@@ -314,15 +313,10 @@ function sendMessage() {
   btn.disabled = true;
   btn.textContent = 'Opening…';
 
-  if (message.length > LONG_MSG_LIMIT) {
-    // Long message → Gmail compose
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(TO_EMAIL)}&su=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
-    window.open(gmailUrl, '_blank');
-  } else {
-    // Short message → native mailto (any email client)
-    const mailtoUrl = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
-    window.location.href = mailtoUrl;
-  }
+  const gmailUrl =
+`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(TO_EMAIL)}&su=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
+
+window.location.href = gmailUrl;
 
   // Show success message
   document.getElementById('successMsg').style.display = 'block';
