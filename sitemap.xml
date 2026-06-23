@@ -161,49 +161,49 @@
   <!-- ═══ G-CODE COMMAND REFERENCE PAGES ═══ -->
   <url>
     <loc>https://gcodex.tech/gcode-g0.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-g1.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-g28.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-g29.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-g92.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-m104.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-m109.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-m140.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -211,7 +211,7 @@
   <!-- ═══ CONTACT PAGE ═══ -->
   <url>
     <loc>https://gcodex.tech/contact.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -219,56 +219,56 @@
   <!-- ═══ AI DISCOVERY ═══ -->
   <url>
     <loc>https://gcodex.tech/llms.txt</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://gcodex.tech/stl-to-gcode.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/klipper-gcode.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/cam-software-guide.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-g2.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-g3.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-g90-g91.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-m106.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://gcodex.tech/gcode-m500.html</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
