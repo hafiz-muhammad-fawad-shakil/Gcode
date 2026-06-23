@@ -1,38 +1,64 @@
 {
-  "version": 2,
-  "name": "gcodex",
-  "public": true,
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/www/(.*)",
-      "destination": "https://gcodex.tech/$1",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/(.*)\\.html",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     },
     {
-      "source": "/(.+)\\.(js|css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ico)",
+      "source": "/sitemap.xml",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
-      "source": "/(index\\.html|sitemap\\.xml|robots\\.txt)",
+      "source": "/robots.txt",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
