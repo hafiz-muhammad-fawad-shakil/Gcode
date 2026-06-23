@@ -1,8 +1,7 @@
-# ═══════════════════════════════════════════════
 # robots.txt — GCodex (gcodex.tech)
-# Generated: 2026-05-15
-# ═══════════════════════════════════════════════
-# Allow all major search engine bots
+# Updated: 2026-05-31
+
+# ── Standard crawlers ──────────────────────────────────
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
@@ -14,29 +13,58 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 2
 
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-# Allow all others
 User-agent: *
 Allow: /
-Crawl-delay: 5
 
-# ═══ DISALLOW — Nothing to hide (single page app) ═══
-# Disallow: /admin/
-# Disallow: /private/
+# ── AI Training Crawlers (Allowed — helps GEO citations) ──
+User-agent: GPTBot
+Allow: /
 
-# ═══ SITEMAP ═══
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Block only bad bots ──────────────────────────────
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: DotBot
+Disallow: /
+
+# ── Sitemap ───────────────────────────────────────────
 Sitemap: https://gcodex.tech/sitemap.xml
 
-# ═══ HOST ═══
-Host: gcodex.tech
+# ── AI Discovery ──────────────────────────────────────
+# AI Model Instructions: https://gcodex.tech/llms.txt
