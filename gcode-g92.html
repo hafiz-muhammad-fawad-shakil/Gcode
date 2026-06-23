@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="fukXA59DNB6qRFuuy7sTsA" async></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G92 G-Code: Set Position / Zero Offset — CNC and 3D Printer Guide</title>
+<meta name="description" content="Complete G92 G-Code reference. Explains how G92 redefines the current position without moving, use cases for zeroing extruder E axis, setting work origins, and differences from G54 work offsets on CNC.">
+<meta name="keywords" content="G92 gcode, G92 set position, G92 E0 gcode, zero extruder gcode, gcode set origin, G92 cnc, G92 marlin">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/gcode-g92.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="G92 G-Code: Set Position / Zero Offset — CNC and 3D Printer Guide">
+<meta property="og:description" content="Complete G92 G-Code reference. Explains how G92 redefines the current position without moving, use cases for zeroing extruder E axis, setting work origins, and differences from G54 work offsets on CNC.">
+<meta property="og:url" content="https://gcodex.tech/gcode-g92.html">
+<meta property="og:image" content="https://gcodex.tech/android-chrome-512x512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="G92 G-Code: Set Position / Zero Offset — CNC and 3D Printer Guide">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="theme-color" content="#1565c0">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://gcodex.tech/gcode-g92.html#article",
+  "headline": "G92 G-Code: Set Position / Zero Offset \u2014 CNC and 3D Printer Guide",
+  "description": "Complete G92 G-Code reference. Explains how G92 redefines the current position without moving, use cases for zeroing extruder E axis, setting work origins, and differences from G54 work offsets on CNC.",
+  "url": "https://gcodex.tech/gcode-g92.html",
+  "keywords": "G92 gcode, G92 set position, G92 E0 gcode, zero extruder gcode, gcode set origin, G92 cnc, G92 marlin",
+  "datePublished": "2025-06-01T00:00:00Z",
+  "dateModified": "2026-05-31T00:00:00Z",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://gcodex.tech/#organization",
+    "name": "GCodex"
+  },
+  "publisher": {
+    "@id": "https://gcodex.tech/#organization"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "G-Code"
+    },
+    {
+      "@type": "Thing",
+      "name": "G92 command"
+    },
+    {
+      "@type": "Thing",
+      "name": "CNC Machining"
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://gcodex.tech/#website"
+  },
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gcodex.tech/gcode-g92.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "GCodex",
+      "item": "https://gcodex.tech/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "G-Code Guide",
+      "item": "https://gcodex.tech/gcode-guide.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "G92 Command",
+      "item": "https://gcodex.tech/gcode-g92.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does G92 E0 do in 3D printing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "G92 E0 tells Marlin or Klipper that the current extruder position is 0 mm. This resets the extruder reference point so the next extrusion commands start from a known baseline. It is placed in start scripts after a purge line and sometimes between layers in absolute extrusion mode."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between G92 and G54?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "G92 creates a coordinate offset relative to the current position \u2014 it is temporary and can be cleared by homing. G54 (and G55\u2013G59) are stored work coordinate system offsets measured and entered by the operator. G54 is the correct way to set a permanent part datum on a CNC machine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does G92 move the machine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. G92 only changes the controller's internal record of the current position. The physical axes do not move at all. It is purely a software coordinate shift."
+      }
+    }
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1565c0;--bd:#0d47a1;--sp:rgba(255,255,255,0.15);--ac:#1565c0;--alt:#e3f0ff;--panel:#fff;--border:#dde3ec;--tx:#1a2740;--t2:#4a5d78;--t3:#8a9bb5}
+html,body{font-family:'Inter',system-ui,sans-serif;background:#f5f7fa;color:var(--tx);font-size:14px;line-height:1.8}
+#topbar{height:44px;background:var(--bg);display:flex;align-items:center;border-bottom:2px solid var(--bd);position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+#logo{display:flex;align-items:center;gap:9px;padding:0 18px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;letter-spacing:-0.3px;border-right:1px solid var(--sp);height:100%;flex-shrink:0}
+#logo img{width:27px;height:27px;border-radius:5px}
+#logo em{font-style:normal;color:#90caf9}
+.nav-links{display:flex;align-items:center;gap:2px;padding:0 10px;flex:1}
+.nl{height:29px;padding:0 12px;border:1px solid transparent;border-radius:4px;color:rgba(255,255,255,0.75);font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;transition:all .12s}
+.nl:hover{background:rgba(255,255,255,0.12);color:#fff}
+.back-btn{margin-left:auto;margin-right:14px;height:29px;padding:0 14px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.28);border-radius:4px;color:#fff;font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+.bc{font-size:11px;color:var(--t3);margin-bottom:18px}.bc a{color:var(--ac);text-decoration:none}
+.cmd-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;background:var(--ac);color:#fff;padding:6px 18px;border-radius:6px;margin-bottom:14px;letter-spacing:1px}
+h1{font-size:24px;font-weight:700;color:var(--tx);margin-bottom:8px;line-height:1.3}
+.meta{font-size:12px;color:var(--t3);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:1fr 280px;gap:24px;margin-bottom:36px}
+@media(max-width:680px){.grid{grid-template-columns:1fr}}
+.main-col{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:24px}
+.aside{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:18px}
+.card h3{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.6px}
+h2{font-size:15px;font-weight:700;color:var(--tx);margin:24px 0 8px}
+p{font-size:13.5px;color:var(--t2);margin-bottom:12px;line-height:1.85}
+ul,ol{padding-left:20px;margin-bottom:12px}
+li{font-size:13.5px;color:var(--t2);margin-bottom:5px}
+li strong{color:var(--tx)}
+code{background:#f0f4f8;border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#c62828}
+pre{background:#1a2740;border-radius:6px;padding:16px 20px;margin:14px 0;overflow-x:auto}
+pre code{background:none;border:none;color:#90caf9;font-size:12px;padding:0}
+.qa-block{background:var(--alt);border-left:3px solid var(--ac);border-radius:4px;padding:14px 18px;margin:18px 0}
+.qa-block .q{font-weight:700;font-size:13px;color:var(--tx);margin-bottom:4px}
+.qa-block .a{font-size:13px;color:var(--t2);margin:0}
+.related a{display:block;padding:8px 0;font-size:13px;color:var(--ac);text-decoration:none;border-bottom:1px solid var(--border)}
+.related a:last-child{border-bottom:none}
+.related a:hover{text-decoration:underline}
+.syntax-box{background:#f9fbff;border:1px solid var(--border);border-left:3px solid var(--ac);border-radius:4px;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--tx)}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--alt);color:var(--ac)}
+footer{text-align:center;padding:18px 24px;font-size:11px;color:var(--t3);background:#f5f7fa;border-top:1px solid var(--border)}
+footer a{color:var(--ac);text-decoration:none}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="topbar">
+  <a id="logo" href="index.html"><img src="android-chrome-192x192.png" alt="GCodex">G<em>Codex</em></a>
+  <nav class="nav-links">
+    <a href="index.html" class="nl">🔧 Viewer</a>
+    <a href="about.html" class="nl">About</a>
+    <a href="faq.html" class="nl">FAQ</a>
+    <a href="gcode-guide.html" class="nl">G-Code Guide</a>
+    <a href="blog.html" class="nl">Blog</a>
+    <a href="contact.html" class="nl">Contact</a>
+  </nav>
+  <a href="index.html" class="back-btn">← Open Viewer</a>
+</div>
+
+<div class="wrap">
+  <div class="bc"><a href="index.html">GCodex</a> › <a href="gcode-guide.html">G-Code Guide</a> › G92 Command</div>
+
+  <div class="cmd-badge">G92</div>
+  <h1>G92 — Set Position (Zero Offset)</h1>
+  <div class="meta">Category: Coordinates &nbsp;·&nbsp; Applies to: CNC Mill, 3D Printer, Marlin, Klipper, GRBL &nbsp;·&nbsp; Updated: May 2026</div>
+
+  <div class="grid">
+    <div class="main-col">
+
+      <h2>What is G92?</h2>
+      <p>G92 redefines the current machine position as the specified coordinate, without moving any axis. It is most commonly used in 3D printing to reset the extruder position (G92 E0) and in CNC programming to set a work datum.</p>
+
+      <h2>Syntax</h2>
+      <div class="syntax-box">G92 [X<pos>] [Y<pos>] [Z<pos>] [E<pos>]</div>
+
+      <h2>Parameters</h2>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:16px">
+        <tr style="background:#f0f4f8"><th style="text-align:left;padding:8px 12px;border:1px solid var(--border);font-size:12px">Parameter</th><th style="text-align:left;padding:8px 12px;border:1px solid var(--border);font-size:12px">Description</th></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">X</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Redefine current X position as this value</td></tr>
+<tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">Y</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Redefine current Y position as this value</td></tr>
+<tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">Z</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Redefine current Z position as this value</td></tr>
+<tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">E</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Redefine current extruder position as this value (most common use)</td></tr>
+      </table>
+
+      <h2>Examples</h2>
+      <div style="margin-bottom:14px"><pre><code>G92 E0</code></pre><div style="font-size:12px;color:var(--t3);margin-top:-6px;padding:0 2px">↑ Reset extruder position to 0 — standard before every layer in 3D printing</div></div>
+<div style="margin-bottom:14px"><pre><code>G92 X0 Y0</code></pre><div style="font-size:12px;color:var(--t3);margin-top:-6px;padding:0 2px">↑ Declare current X and Y as the work origin (0,0) without moving</div></div>
+<div style="margin-bottom:14px"><pre><code>G92 X10</code></pre><div style="font-size:12px;color:var(--t3);margin-top:-6px;padding:0 2px">↑ Tell the controller 'I am currently at X=10' — shifts all subsequent coordinates</div></div>
+
+      <h2>Important Notes</h2>
+      <ul><li>G92 does NOT move the machine — it only changes the controller's internal position record.</li>
+<li>G92 E0 is the most common use in 3D printing — resets extruder before purge lines and layer starts.</li>
+<li>On CNC machines, G92 creates a temporary offset. Use G54–G59 work offsets for permanent datum settings.</li>
+<li>G92 with no arguments resets all axes to zero at current position.</li>
+<li>G92 offsets are cleared by G28 (homing) in most firmware.</li></ul>
+
+      <h2>Common Mistakes</h2>
+      <ul><li><strong>❌</strong> Using G92 X0 Y0 as a work offset on CNC — it doesn't persist reliably. Use G54 instead.</li>
+<li><strong>❌</strong> Forgetting G92 E0 before a purge line — extruder position drifts across prints causing extrusion errors.</li>
+<li><strong>❌</strong> Using G92 to 'fix' a coordinate without understanding why the coordinates are wrong — masks deeper offset errors.</li></ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="qa-block"><div class="q">Q: What does G92 E0 do in 3D printing?</div><div class="a">G92 E0 tells Marlin or Klipper that the current extruder position is 0 mm. This resets the extruder reference point so the next extrusion commands start from a known baseline. It is placed in start scripts after a purge line and sometimes between layers in absolute extrusion mode.</div></div>
+<div class="qa-block"><div class="q">Q: What is the difference between G92 and G54?</div><div class="a">G92 creates a coordinate offset relative to the current position — it is temporary and can be cleared by homing. G54 (and G55–G59) are stored work coordinate system offsets measured and entered by the operator. G54 is the correct way to set a permanent part datum on a CNC machine.</div></div>
+<div class="qa-block"><div class="q">Q: Does G92 move the machine?</div><div class="a">No. G92 only changes the controller's internal record of the current position. The physical axes do not move at all. It is purely a software coordinate shift.</div></div>
+
+    </div>
+    <aside class="aside">
+      <div class="card">
+        <h3>Try It in GCodex</h3>
+        <p style="font-size:12px;color:var(--t2);margin-bottom:12px">Paste any G-Code containing G92 into GCodex and see the toolpath rendered in real time.</p>
+        <a href="index.html" style="display:block;text-align:center;background:var(--ac);color:#fff;font-weight:700;font-size:12px;padding:10px;border-radius:4px;text-decoration:none">Open Viewer →</a>
+      </div>
+      <div class="card">
+        <h3>Applies To</h3>
+        <div class="tag-row"><span class="tag">CNC Mill</span><span class="tag">3D Printer</span><span class="tag">Marlin</span><span class="tag">Klipper</span><span class="tag">GRBL</span></div>
+      </div>
+      <div class="card">
+        <h3>Related Commands</h3>
+        <div class="related"><a href="gcode-g28.html">G28 — Home All Axes</a>
+<a href="gcode-g0.html">G0 — Rapid Positioning</a>
+<a href="gcode-g1.html">G1 — Linear Feed Move</a>
+<a href="blog-gcode-commands-reference.html">Full G-Code Commands Reference</a>
+<a href="blog-troubleshoot-gcode-errors.html">Troubleshoot Coordinate Errors</a></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">GCodex</a> · <a href="blog.html">Blog</a> · <a href="gcode-guide.html">G-Code Guide</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · Free forever · No upload · biomedionics@gmail.com
+</footer>
+</body>
+</html>

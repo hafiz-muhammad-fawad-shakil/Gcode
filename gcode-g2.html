@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="fukXA59DNB6qRFuuy7sTsA" async></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>G2 G-Code: Clockwise Arc — CNC and 3D Printer Reference</title>
+<meta name="description" content="Complete G2 G-Code reference — clockwise circular arc interpolation for CNC milling and 3D printing. Syntax, I/J/K parameters, R-format arcs, and examples.">
+<meta name="keywords" content="G2 gcode, G2 clockwise arc, gcode arc command, G2 I J gcode, circular interpolation gcode">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/gcode-g2.html">
+<meta property="og:type" content="article"><meta property="og:title" content="G2 G-Code: Clockwise Arc — CNC and 3D Printer Reference">
+<meta property="og:url" content="https://gcodex.tech/gcode-g2.html">
+<meta property="og:image" content="https://gcodex.tech/android-chrome-512x512.png">
+<link rel="icon" type="image/png" href="favicon-32x32.png"><meta name="theme-color" content="#1565c0">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://gcodex.tech/gcode-g2.html#article",
+  "headline": "G2 G-Code: Clockwise Arc \u2014 CNC and 3D Printer Reference",
+  "description": "Complete G2 G-Code reference \u2014 clockwise circular arc interpolation for CNC milling and 3D printing. Syntax, I/J/K parameters, R-format arcs, and examples.",
+  "url": "https://gcodex.tech/gcode-g2.html",
+  "datePublished": "2025-06-01T00:00:00Z",
+  "dateModified": "2026-05-31T00:00:00Z",
+  "author": {
+    "@id": "https://gcodex.tech/#organization"
+  },
+  "publisher": {
+    "@id": "https://gcodex.tech/#organization"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "G-Code"
+    },
+    {
+      "@type": "Thing",
+      "name": "G2 command"
+    }
+  ],
+  "inLanguage": "en",
+  "isAccessibleForFree": true
+}
+</script><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "GCodex",
+      "item": "https://gcodex.tech/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "G-Code Guide",
+      "item": "https://gcodex.tech/gcode-guide.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "G2 Command",
+      "item": "https://gcodex.tech/gcode-g2.html"
+    }
+  ]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between G2 and G3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "G2 cuts a clockwise arc (when viewed from positive Z, looking down). G3 cuts a counter-clockwise arc. Both use the same parameters (X/Y end point, I/J center offsets, R radius). Climb milling finish passes typically use G3 for conventional mill setups."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use R format vs I/J format for arcs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use I/J for most arcs \u2014 it is unambiguous and reliable. R format is convenient for short arcs (less than 180\u00b0) but is ambiguous for arcs greater than 180\u00b0 and may produce unexpected paths on some controllers. If precise arc geometry matters, always use I/J."
+      }
+    }
+  ]
+}
+</script><style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1565c0;--bd:#0d47a1;--sp:rgba(255,255,255,.15);--ac:#1565c0;--alt:#e3f0ff;--panel:#fff;--border:#dde3ec;--tx:#1a2740;--t2:#4a5d78;--t3:#8a9bb5;--green:#2e7d32;--green-lt:#e8f5e9}
+html,body{font-family:'Inter',system-ui,sans-serif;background:#f5f7fa;color:var(--tx);font-size:14px;line-height:1.8}
+#topbar{height:44px;background:var(--bg);display:flex;align-items:center;border-bottom:2px solid var(--bd);position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+#logo{display:flex;align-items:center;gap:9px;padding:0 18px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;letter-spacing:-.3px;border-right:1px solid var(--sp);height:100%;flex-shrink:0}
+#logo img{width:27px;height:27px;border-radius:5px}
+#logo em{font-style:normal;color:#90caf9}
+.nav-links{display:flex;align-items:center;gap:2px;padding:0 10px;flex:1}
+.nl{height:29px;padding:0 12px;border:1px solid transparent;border-radius:4px;color:rgba(255,255,255,.75);font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;transition:all .12s}
+.nl:hover{background:rgba(255,255,255,.12);color:#fff}
+.nl.active{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.3);color:#fff}
+.back-btn{margin-left:auto;margin-right:14px;height:29px;padding:0 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:4px;color:#fff;font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.wrap{max-width:1020px;margin:0 auto;padding:40px 24px 80px}
+.bc{font-size:11px;color:var(--t3);margin-bottom:18px}.bc a{color:var(--ac);text-decoration:none}
+h1{font-size:26px;font-weight:700;color:var(--tx);margin-bottom:10px;letter-spacing:-.4px;line-height:1.3}
+.sub{font-size:14px;color:var(--t2);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+h2{font-size:16px;font-weight:700;color:var(--tx);margin:32px 0 10px}
+h3{font-size:14px;font-weight:600;color:var(--tx);margin:22px 0 8px}
+p{font-size:13.5px;color:var(--t2);margin-bottom:14px;line-height:1.85}
+ul,ol{padding-left:22px;margin-bottom:14px}
+li{font-size:13.5px;color:var(--t2);margin-bottom:6px;line-height:1.75}
+li strong{color:var(--tx)}
+code{background:#f0f4f8;border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#c62828}
+pre{background:#1a2740;border-radius:6px;padding:18px 20px;margin:16px 0;overflow-x:auto}
+pre code{background:none;border:none;color:#90caf9;font-size:12px;padding:0}
+.grid2{display:grid;grid-template-columns:1fr 260px;gap:24px}
+@media(max-width:680px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:22px}
+.card h3{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px}
+.ib{background:var(--alt);border-left:3px solid var(--ac);border-radius:4px;padding:14px 18px;margin:18px 0}
+.ib p{margin:0;font-size:13px;color:var(--tx)}
+.qa{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:14px 18px;margin:12px 0}
+.qa .q{font-weight:700;font-size:13px;color:var(--tx);margin-bottom:6px}
+.qa .a{font-size:13px;color:var(--t2);margin:0}
+.tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--alt);color:var(--ac);display:inline-block;margin:2px}
+.cta{background:var(--bg);border-radius:8px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.cta p{color:rgba(255,255,255,.85);font-size:13px;margin:0}
+.cta a{background:#fff;color:var(--ac);font-weight:700;font-size:12px;padding:9px 18px;border-radius:4px;text-decoration:none}
+.aside-card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:16px}
+.aside-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--t3);margin-bottom:10px}
+.aside-card a{display:block;font-size:12px;color:var(--ac);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border)}
+.aside-card a:last-child{border-bottom:none}
+.aside-card a:hover{text-decoration:underline}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:16px 0}
+th{background:#f0f4f8;color:var(--tx);font-weight:600;padding:9px 14px;text-align:left;border:1px solid var(--border)}
+td{padding:8px 14px;border:1px solid var(--border);color:var(--t2)}
+tr:nth-child(even) td{background:#fafbfd}
+footer{text-align:center;padding:18px 24px;font-size:11px;color:var(--t3);background:#f5f7fa;border-top:1px solid var(--border);margin-top:40px}
+footer a{color:var(--ac);text-decoration:none}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head><body>
+<div id="topbar">
+  <a id="logo" href="index.html"><img src="android-chrome-192x192.png" alt="GCodex">G<em>Codex</em></a>
+  <nav class="nav-links">
+    <a href="index.html" class="nl">🔧 Viewer</a>
+    <a href="about.html" class="nl">About</a>
+    <a href="faq.html" class="nl">FAQ</a>
+    <a href="gcode-guide.html" class="nl">G-Code Guide</a>
+    <a href="blog.html" class="nl">Blog</a>
+    <a href="contact.html" class="nl">Contact</a>
+  </nav>
+  <a href="index.html" class="back-btn">← Open Viewer</a>
+</div>
+<div class="wrap">
+  <div class="bc"><a href="index.html">GCodex</a> › <a href="gcode-guide.html">G-Code Guide</a> › G2</div>
+  <div style="display:inline-block;font-family:monospace;font-size:20px;font-weight:700;background:var(--ac);color:#fff;padding:5px 16px;border-radius:5px;margin-bottom:12px">G2</div>
+  <h1>G2 G-Code: Clockwise Arc</h1>
+  <p class="sub">G2 moves the machine in a clockwise circular arc at the programmed feed rate. The arc is defined by the end point (X, Y) and the arc center offset from the start (I, J) — or by radius R.</p>
+  <div class="grid2">
+  <div>
+    <h2>Syntax</h2>
+    <pre><code>G2 [X<end>] [Y<end>] [Z<end>] [I<offset>] [J<offset>] [R<radius>] [F<rate>]</code></pre>
+    <h2>Parameters</h2>
+    <table><tr style="background:#f0f4f8"><th style="padding:8px 12px;border:1px solid var(--border);font-size:12px">Parameter</th><th style="padding:8px 12px;border:1px solid var(--border);font-size:12px">Description</th></tr><tr><td style="font-family:monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border)">X/Y</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">End point of the arc</td></tr><tr><td style="font-family:monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border)">I/J</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Arc center offset from START point in X and Y</td></tr><tr><td style="font-family:monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border)">R</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Arc radius — simpler alternative to I/J but can be ambiguous</td></tr><tr><td style="font-family:monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border)">F</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Feed rate in mm/min</td></tr></table>
+    <h2>Examples</h2><div style="margin-bottom:14px"><pre><code>G2 X50 Y0 I25 J0 F600</code></pre><div style="font-size:11px;color:var(--t3);padding:2px">↑ CW semicircle: start (0,0), end (50,0), center at (25,0)</div></div><div style="margin-bottom:14px"><pre><code>G2 X0 Y0 I10 J0 F800</code></pre><div style="font-size:11px;color:var(--t3);padding:2px">↑ CW full circle (start=end, center 10mm in X)</div></div><div style="margin-bottom:14px"><pre><code>G2 X30 Y30 R30 F500</code></pre><div style="font-size:11px;color:var(--t3);padding:2px">↑ CW arc using radius — end at (30,30), radius=30mm</div></div>
+    <h2>Important Notes</h2><ul><li>G17 (XY plane) must be active for G2/G3 arcs in most programs.</li><li>I/J format is more reliable than R format — R is ambiguous for arcs greater than 180°.</li><li>G2 and G3 are modal — use G1 to return to linear moves.</li></ul>
+    <h2>Common Mistakes</h2><ul><li>❌ Arc radius mismatch error: I/J values must satisfy equal radius from start and end — floating point rounding causes this. Use R format or round to 3 decimal places.</li><li>❌ Forgetting to set G17 plane before arcs on multi-axis machines.</li></ul>
+    <h2>Frequently Asked Questions</h2><div class="qa"><div class="q">Q: What is the difference between G2 and G3?</div><div class="a">G2 cuts a clockwise arc (when viewed from positive Z, looking down). G3 cuts a counter-clockwise arc. Both use the same parameters (X/Y end point, I/J center offsets, R radius). Climb milling finish passes typically use G3 for conventional mill setups.</div></div><div class="qa"><div class="q">Q: When should I use R format vs I/J format for arcs?</div><div class="a">Use I/J for most arcs — it is unambiguous and reliable. R format is convenient for short arcs (less than 180°) but is ambiguous for arcs greater than 180° and may produce unexpected paths on some controllers. If precise arc geometry matters, always use I/J.</div></div>
+  </div>
+  <aside>
+    <div class="aside-card" style="background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:16px">
+      <h4 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--t3);margin-bottom:10px">Try It Live</h4>
+      <p style="font-size:12px;color:var(--t2);margin-bottom:10px">Paste G-Code using G2 into GCodex and visualize the result instantly.</p>
+      <a href="index.html" style="display:block;text-align:center;background:var(--ac);color:#fff;font-weight:700;font-size:12px;padding:9px;border-radius:4px;text-decoration:none">Open Viewer →</a>
+    </div>
+    <div class="aside-card" style="background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:18px">
+      <h4 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--t3);margin-bottom:10px">Related Commands</h4>
+      <a href="gcode-g3.html" style="display:block;padding:6px 0;font-size:12px;color:var(--ac);text-decoration:none;border-bottom:1px solid var(--border)">G3 — Counter-Clockwise Arc</a><a href="gcode-g1.html" style="display:block;padding:6px 0;font-size:12px;color:var(--ac);text-decoration:none;border-bottom:1px solid var(--border)">G1 — Linear Feed Move</a><a href="gcode-g0.html" style="display:block;padding:6px 0;font-size:12px;color:var(--ac);text-decoration:none;border-bottom:1px solid var(--border)">G0 — Rapid Move</a><a href="blog-gcode-commands-reference.html" style="display:block;padding:6px 0;font-size:12px;color:var(--ac);text-decoration:none;border-bottom:1px solid var(--border)">Full G-Code Reference</a>
+    </div>
+  </aside>
+  </div>
+</div>
+<footer>
+  <a href="index.html">GCodex</a> · <a href="blog.html">Blog</a> · <a href="gcode-guide.html">G-Code Guide</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · biomedionics@gmail.com · Free forever
+</footer>
+</body></html>

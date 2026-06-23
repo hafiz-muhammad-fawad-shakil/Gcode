@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="fukXA59DNB6qRFuuy7sTsA" async></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G28 G-Code: Home All Axes — CNC and 3D Printer Homing Explained</title>
+<meta name="description" content="Complete G28 G-Code reference. Explains homing sequence, axis-specific homing, safe order, common errors, and differences between CNC and Marlin/Klipper 3D printer implementations.">
+<meta name="keywords" content="G28 gcode, G28 home axes, gcode homing command, G28 3d printer, G28 cnc, home all axes gcode, marlin G28">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/gcode-g28.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="G28 G-Code: Home All Axes — CNC and 3D Printer Homing Explained">
+<meta property="og:description" content="Complete G28 G-Code reference. Explains homing sequence, axis-specific homing, safe order, common errors, and differences between CNC and Marlin/Klipper 3D printer implementations.">
+<meta property="og:url" content="https://gcodex.tech/gcode-g28.html">
+<meta property="og:image" content="https://gcodex.tech/android-chrome-512x512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="G28 G-Code: Home All Axes — CNC and 3D Printer Homing Explained">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="theme-color" content="#1565c0">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://gcodex.tech/gcode-g28.html#article",
+  "headline": "G28 G-Code: Home All Axes \u2014 CNC and 3D Printer Homing Explained",
+  "description": "Complete G28 G-Code reference. Explains homing sequence, axis-specific homing, safe order, common errors, and differences between CNC and Marlin/Klipper 3D printer implementations.",
+  "url": "https://gcodex.tech/gcode-g28.html",
+  "keywords": "G28 gcode, G28 home axes, gcode homing command, G28 3d printer, G28 cnc, home all axes gcode, marlin G28",
+  "datePublished": "2025-06-01T00:00:00Z",
+  "dateModified": "2026-05-31T00:00:00Z",
+  "author": {
+    "@type": "Organization",
+    "@id": "https://gcodex.tech/#organization",
+    "name": "GCodex"
+  },
+  "publisher": {
+    "@id": "https://gcodex.tech/#organization"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "G-Code"
+    },
+    {
+      "@type": "Thing",
+      "name": "G28 command"
+    },
+    {
+      "@type": "Thing",
+      "name": "CNC Machining"
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://gcodex.tech/#website"
+  },
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gcodex.tech/gcode-g28.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "GCodex",
+      "item": "https://gcodex.tech/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "G-Code Guide",
+      "item": "https://gcodex.tech/gcode-guide.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "G28 Command",
+      "item": "https://gcodex.tech/gcode-g28.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does my printer home X and Y before Z?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most Marlin configurations with Z_SAFE_HOMING home X and Y first so the Z probe is positioned at a known safe location (usually bed center) before probing Z. This prevents the probe from triggering on a clip or edge of the bed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if an endstop isn't triggering during G28?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The axis will travel until it hits the hard mechanical limit (potentially damaging the machine) or Marlin's HOMING_FEEDRATE timeout stops it. Use M119 to check endstop states. If an endstop shows 'open' when it should be triggered, check wiring and physical position."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does G28 set position to zero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "G28 moves to the machine's homing position and resets internal position tracking. On 3D printers this is typically X0 Y0 Z0 at the front-left-bottom corner. On CNC mills G28 goes to machine zero \u2014 you must then activate a work offset (G54) to set your part origin."
+      }
+    }
+  ]
+}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1565c0;--bd:#0d47a1;--sp:rgba(255,255,255,0.15);--ac:#1565c0;--alt:#e3f0ff;--panel:#fff;--border:#dde3ec;--tx:#1a2740;--t2:#4a5d78;--t3:#8a9bb5}
+html,body{font-family:'Inter',system-ui,sans-serif;background:#f5f7fa;color:var(--tx);font-size:14px;line-height:1.8}
+#topbar{height:44px;background:var(--bg);display:flex;align-items:center;border-bottom:2px solid var(--bd);position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+#logo{display:flex;align-items:center;gap:9px;padding:0 18px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;letter-spacing:-0.3px;border-right:1px solid var(--sp);height:100%;flex-shrink:0}
+#logo img{width:27px;height:27px;border-radius:5px}
+#logo em{font-style:normal;color:#90caf9}
+.nav-links{display:flex;align-items:center;gap:2px;padding:0 10px;flex:1}
+.nl{height:29px;padding:0 12px;border:1px solid transparent;border-radius:4px;color:rgba(255,255,255,0.75);font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;transition:all .12s}
+.nl:hover{background:rgba(255,255,255,0.12);color:#fff}
+.back-btn{margin-left:auto;margin-right:14px;height:29px;padding:0 14px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.28);border-radius:4px;color:#fff;font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+.bc{font-size:11px;color:var(--t3);margin-bottom:18px}.bc a{color:var(--ac);text-decoration:none}
+.cmd-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;background:var(--ac);color:#fff;padding:6px 18px;border-radius:6px;margin-bottom:14px;letter-spacing:1px}
+h1{font-size:24px;font-weight:700;color:var(--tx);margin-bottom:8px;line-height:1.3}
+.meta{font-size:12px;color:var(--t3);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:1fr 280px;gap:24px;margin-bottom:36px}
+@media(max-width:680px){.grid{grid-template-columns:1fr}}
+.main-col{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:24px}
+.aside{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:18px}
+.card h3{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.6px}
+h2{font-size:15px;font-weight:700;color:var(--tx);margin:24px 0 8px}
+p{font-size:13.5px;color:var(--t2);margin-bottom:12px;line-height:1.85}
+ul,ol{padding-left:20px;margin-bottom:12px}
+li{font-size:13.5px;color:var(--t2);margin-bottom:5px}
+li strong{color:var(--tx)}
+code{background:#f0f4f8;border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#c62828}
+pre{background:#1a2740;border-radius:6px;padding:16px 20px;margin:14px 0;overflow-x:auto}
+pre code{background:none;border:none;color:#90caf9;font-size:12px;padding:0}
+.qa-block{background:var(--alt);border-left:3px solid var(--ac);border-radius:4px;padding:14px 18px;margin:18px 0}
+.qa-block .q{font-weight:700;font-size:13px;color:var(--tx);margin-bottom:4px}
+.qa-block .a{font-size:13px;color:var(--t2);margin:0}
+.related a{display:block;padding:8px 0;font-size:13px;color:var(--ac);text-decoration:none;border-bottom:1px solid var(--border)}
+.related a:last-child{border-bottom:none}
+.related a:hover{text-decoration:underline}
+.syntax-box{background:#f9fbff;border:1px solid var(--border);border-left:3px solid var(--ac);border-radius:4px;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--tx)}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--alt);color:var(--ac)}
+footer{text-align:center;padding:18px 24px;font-size:11px;color:var(--t3);background:#f5f7fa;border-top:1px solid var(--border)}
+footer a{color:var(--ac);text-decoration:none}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="topbar">
+  <a id="logo" href="index.html"><img src="android-chrome-192x192.png" alt="GCodex">G<em>Codex</em></a>
+  <nav class="nav-links">
+    <a href="index.html" class="nl">🔧 Viewer</a>
+    <a href="about.html" class="nl">About</a>
+    <a href="faq.html" class="nl">FAQ</a>
+    <a href="gcode-guide.html" class="nl">G-Code Guide</a>
+    <a href="blog.html" class="nl">Blog</a>
+    <a href="contact.html" class="nl">Contact</a>
+  </nav>
+  <a href="index.html" class="back-btn">← Open Viewer</a>
+</div>
+
+<div class="wrap">
+  <div class="bc"><a href="index.html">GCodex</a> › <a href="gcode-guide.html">G-Code Guide</a> › G28 Command</div>
+
+  <div class="cmd-badge">G28</div>
+  <h1>G28 — Home All Axes</h1>
+  <div class="meta">Category: Homing &nbsp;·&nbsp; Applies to: CNC Mill, 3D Printer, Marlin, Klipper, GRBL &nbsp;·&nbsp; Updated: May 2026</div>
+
+  <div class="grid">
+    <div class="main-col">
+
+      <h2>What is G28?</h2>
+      <p>G28 sends the machine to its reference position (home) by triggering the homing sequence. On 3D printers it moves each axis until an endstop is triggered, then backs off. On CNC machines it moves to the machine reference zero.</p>
+
+      <h2>Syntax</h2>
+      <div class="syntax-box">G28 [X] [Y] [Z]</div>
+
+      <h2>Parameters</h2>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:16px">
+        <tr style="background:#f0f4f8"><th style="text-align:left;padding:8px 12px;border:1px solid var(--border);font-size:12px">Parameter</th><th style="text-align:left;padding:8px 12px;border:1px solid var(--border);font-size:12px">Description</th></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">X</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Home only the X axis</td></tr>
+<tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">Y</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Home only the Y axis</td></tr>
+<tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">Z</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Home only the Z axis (always home X and Y first for safety)</td></tr>
+<tr><td style="font-family:'JetBrains Mono',monospace;color:#c62828;font-weight:700;padding:7px 12px;border:1px solid var(--border);background:#fff5f5">(no args)</td><td style="padding:7px 12px;border:1px solid var(--border);font-size:13px;color:var(--t2)">Home all axes in the firmware-defined safe order</td></tr>
+      </table>
+
+      <h2>Examples</h2>
+      <div style="margin-bottom:14px"><pre><code>G28</code></pre><div style="font-size:12px;color:var(--t3);margin-top:-6px;padding:0 2px">↑ Home all axes (safe default — always use this first)</div></div>
+<div style="margin-bottom:14px"><pre><code>G28 X Y</code></pre><div style="font-size:12px;color:var(--t3);margin-top:-6px;padding:0 2px">↑ Home only X and Y — useful when only those axes were moved manually</div></div>
+<div style="margin-bottom:14px"><pre><code>G28 Z</code></pre><div style="font-size:12px;color:var(--t3);margin-top:-6px;padding:0 2px">↑ Home Z only — used after manually adjusting bed height</div></div>
+
+      <h2>Important Notes</h2>
+      <ul><li>Always run G28 before any print or job — without homing the machine has no known position.</li>
+<li>Marlin homes in the order Z (if Z_SAFE_HOMING is disabled), then X and Y. With Z_SAFE_HOMING, X and Y home first, then Z probes at center.</li>
+<li>After G28 the work coordinate system is set to the machine's defined home offset.</li>
+<li>On 3D printers, G28 must precede G29 (auto bed leveling). Never run G29 without G28 first.</li>
+<li>On CNC mills, G28 returns to machine zero — not necessarily the work offset origin (G54–G59).</li></ul>
+
+      <h2>Common Mistakes</h2>
+      <ul><li><strong>❌</strong> Homing Z before X/Y — nozzle or tool can crash into a print or clamp during the lateral move.</li>
+<li><strong>❌</strong> Running G29 without G28 first — printer position is undefined, causing incorrect probe results.</li>
+<li><strong>❌</strong> Using G28 mid-print — immediately stops the print and moves the nozzle, ruining the job.</li></ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="qa-block"><div class="q">Q: Why does my printer home X and Y before Z?</div><div class="a">Most Marlin configurations with Z_SAFE_HOMING home X and Y first so the Z probe is positioned at a known safe location (usually bed center) before probing Z. This prevents the probe from triggering on a clip or edge of the bed.</div></div>
+<div class="qa-block"><div class="q">Q: What happens if an endstop isn't triggering during G28?</div><div class="a">The axis will travel until it hits the hard mechanical limit (potentially damaging the machine) or Marlin's HOMING_FEEDRATE timeout stops it. Use M119 to check endstop states. If an endstop shows 'open' when it should be triggered, check wiring and physical position.</div></div>
+<div class="qa-block"><div class="q">Q: Does G28 set position to zero?</div><div class="a">G28 moves to the machine's homing position and resets internal position tracking. On 3D printers this is typically X0 Y0 Z0 at the front-left-bottom corner. On CNC mills G28 goes to machine zero — you must then activate a work offset (G54) to set your part origin.</div></div>
+
+    </div>
+    <aside class="aside">
+      <div class="card">
+        <h3>Try It in GCodex</h3>
+        <p style="font-size:12px;color:var(--t2);margin-bottom:12px">Paste any G-Code containing G28 into GCodex and see the toolpath rendered in real time.</p>
+        <a href="index.html" style="display:block;text-align:center;background:var(--ac);color:#fff;font-weight:700;font-size:12px;padding:10px;border-radius:4px;text-decoration:none">Open Viewer →</a>
+      </div>
+      <div class="card">
+        <h3>Applies To</h3>
+        <div class="tag-row"><span class="tag">CNC Mill</span><span class="tag">3D Printer</span><span class="tag">Marlin</span><span class="tag">Klipper</span><span class="tag">GRBL</span></div>
+      </div>
+      <div class="card">
+        <h3>Related Commands</h3>
+        <div class="related"><a href="gcode-g29.html">G29 — Auto Bed Leveling</a>
+<a href="gcode-g92.html">G92 — Set Position</a>
+<a href="gcode-g0.html">G0 — Rapid Positioning</a>
+<a href="blog-troubleshoot-gcode-errors.html">Troubleshoot Homing Errors</a>
+<a href="blog-marlin-firmware-guide.html">Marlin Firmware Guide</a></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">GCodex</a> · <a href="blog.html">Blog</a> · <a href="gcode-guide.html">G-Code Guide</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · Free forever · No upload · biomedionics@gmail.com
+</footer>
+</body>
+</html>
