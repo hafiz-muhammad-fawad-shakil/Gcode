@@ -1,9 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+
   "headers": [
     {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|llms\\.txt|favicon\\.ico|.*\\.(?:png|jpg|jpeg|svg|webp|css|js|ico|woff|woff2|ttf)$).*)",
+      "source": "/((?!sitemap\\.xml|robots\\.txt|llms\\.txt|opensearch\\.xml|favicon\\.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|avif|css|js|ico|woff|woff2|ttf)$).*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -23,6 +24,27 @@
         }
       ]
     },
+
+    {
+      "source": "/(.*)\\.(png|jpg|jpeg|gif|svg|webp|avif|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+
+    {
+      "source": "/(.*)\\.(css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+
     {
       "source": "/sitemap.xml",
       "headers": [
@@ -32,6 +54,7 @@
         }
       ]
     },
+
     {
       "source": "/robots.txt",
       "headers": [
@@ -41,6 +64,7 @@
         }
       ]
     },
+
     {
       "source": "/llms.txt",
       "headers": [
@@ -49,8 +73,19 @@
           "value": "public, max-age=86400"
         }
       ]
+    },
+
+    {
+      "source": "/opensearch.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
     }
   ],
+
   "redirects": [
     {
       "source": "/index",
@@ -61,6 +96,13 @@
       "source": "/home",
       "destination": "/",
       "permanent": true
+    }
+  ],
+
+  "errors": [
+    {
+      "statusCode": 404,
+      "destination": "/404.html"
     }
   ]
 }
