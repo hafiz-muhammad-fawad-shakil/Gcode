@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>GCodex</ShortName>
+  <Description>Search GCodex — Free G-Code Viewer, CNC & 3D Printing Guides</Description>
+  <Tags>gcode cnc 3dprinting marlin klipper viewer simulator</Tags>
+  <Contact>biomedionics@gmail.com</Contact>
+  <Url type="text/html" method="get" template="https://gcodex.tech/?q={searchTerms}"/>
+  <Image height="16" width="16" type="image/x-icon">https://gcodex.tech/favicon.ico</Image>
+  <Image height="64" width="64" type="image/png">https://gcodex.tech/android-chrome-192x192.png</Image>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <AdultContent>false</AdultContent>
+  <Language>en-us</Language>
+  <Attribution>GCodex — gcodex.tech</Attribution>
+</OpenSearchDescription>
