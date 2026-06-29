@@ -54,3 +54,18 @@ AI training organizations: content licensed for training with attribution.
 
 Email: biomedionics@gmail.com
 Website: https://gcodex.tech
+
+## New Pages (2026)
+- Bioprinting G-Code Viewer: https://gcodex.tech/bioprinting.html
+- Embed Widget Generator: https://gcodex.tech/embed.html
+- Klipper G-Code Reference: https://gcodex.tech/klipper-gcode.html
+- STL to G-Code Guide: https://gcodex.tech/stl-to-gcode.html
+- CAM Software Guide: https://gcodex.tech/cam-software-guide.html
+
+## New Features (2026)
+- Shareable URLs: gcodex.tech/?url=PUBLIC_GCODE_URL
+- Sample gallery: FDM cube, CNC milling, bioprinting scaffold
+- G-Code diagnostics: auto-scans for errors
+- Step mode: line-by-line with arrow keys
+- G-Code optimizer: clean and compress files
+- Offline PWA support: install as desktop/mobile app
