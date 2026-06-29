@@ -251,8 +251,8 @@
 <!-- ═══ PRIMARY SEO ═══ -->
 <!-- Target: "gcode viewer" #1, "g-code viewer online", "gcode simulator", "toolpath analyzer" -->
 <title>GCodex — Free Online G-Code Viewer, Simulator & Analyzer | CNC & 3D Printer</title>
-<meta name="description" content="GCode: the best free online G-Code viewer and CNC machine simulator. View, analyze and simulate G-code toolpaths in 3D/2D, inspect layers, verify CNC and 3D printer files — no upload, no signup. Faster than NCViewer. Better than gcode.ws.">
-<meta name="keywords" content="gcode viewer, online gcode viewer, gcode viewer free, gcode viewer no upload, g-code simulator online, cnc gcode viewer, visualize gcode, 3d printer gcode viewer, cnc toolpath viewer, marlin gcode, verify gcode online">
+<meta name="description" content="GCodex — free online G-Code viewer, G-Code visualizer, G-Code analyzer and CNC simulator. Works offline in any browser. No upload, no signup. Supports CNC, FDM 3D printing, Klipper, Marlin, GRBL and bioprinting workflows.">
+<meta name="keywords" content="gcode viewer, online gcode viewer, gcode visualizer, g code visualizer, gcode analyzer, g code analysis, gcode simulation, offline gcode viewer, gcode viewer no upload, free gcode viewer, cnc gcode viewer, 3d printer gcode viewer, marlin gcode viewer, klipper gcode, gcode visualization, browser gcode viewer">
 <meta name="author" content="GCodex">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
@@ -1017,6 +1017,16 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
   }
 }
 </script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(r => console.log('GCodex SW registered:', r.scope))
+      .catch(e => console.log('SW registration failed:', e));
+  });
+}
+</script>
 </head>
 <body>
 
@@ -1035,10 +1045,29 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
       <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       Open File
     </button>
-    <button class="tb-btn" onclick="doSample()">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-      Sample
-    </button>
+    <div style="position:relative;display:inline-block">
+      <button class="tb-btn" onclick="toggleSampleMenu()" id="btn-sample">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Samples ▾
+      </button>
+      <div id="sample-menu" style="display:none;position:absolute;top:40px;left:0;background:#1e2a3a;border:1px solid #2d3f55;border-radius:7px;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:500;min-width:220px;overflow:hidden">
+        <div style="padding:6px 0">
+          <div style="padding:6px 14px 4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#8a9bb5">Choose a sample</div>
+          <button onclick="doSampleFDM();toggleSampleMenu()" style="width:100%;text-align:left;padding:10px 14px;background:transparent;border:none;color:#e2e8f0;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:10px" onmouseover="this.style.background='#2d3f55'" onmouseout="this.style.background='transparent'">
+            <span style="font-size:18px">🖨️</span>
+            <div><div style="font-weight:600;margin-bottom:1px">FDM Calibration Cube</div><div style="color:#8a9bb5;font-size:10px">3D printer · PLA filament</div></div>
+          </button>
+          <button onclick="doSampleCNC();toggleSampleMenu()" style="width:100%;text-align:left;padding:10px 14px;background:transparent;border:none;color:#e2e8f0;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:10px" onmouseover="this.style.background='#2d3f55'" onmouseout="this.style.background='transparent'">
+            <span style="font-size:18px">⚙️</span>
+            <div><div style="font-weight:600;margin-bottom:1px">CNC Milling Toolpath</div><div style="color:#8a9bb5;font-size:10px">Pocket + contour · aluminum</div></div>
+          </button>
+          <button onclick="doSampleBio();toggleSampleMenu()" style="width:100%;text-align:left;padding:10px 14px;background:transparent;border:none;color:#e2e8f0;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:10px" onmouseover="this.style.background='#2d3f55'" onmouseout="this.style.background='transparent'">
+            <span style="font-size:18px">🧬</span>
+            <div><div style="font-weight:600;margin-bottom:1px">Bioprinting Scaffold</div><div style="color:#8a9bb5;font-size:10px">Hydrogel grid · syringe pump</div></div>
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="tb-sep"></div>
     <button class="tb-btn" onclick="resetCam()">
       <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0"/><path d="M12 8v4l2 2"/></svg>
@@ -1061,6 +1090,10 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
     <button class="tb-btn" onclick="downloadRaw()">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download
+    </button>
+    <button class="tb-btn" onclick="copyShareLink()" id="btn-share" title="Copy shareable link">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share
     </button>
   </div>
 
@@ -1309,6 +1342,14 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
           <div class="an-box-title">Command Frequency</div>
           <div id="cmd-list"></div>
         </div>
+        <!-- DIAGNOSTICS PANEL -->
+        <div class="an-box" id="diag-box">
+          <div class="an-box-title" style="display:flex;align-items:center;justify-content:space-between">
+            <span>🔍 Diagnostics</span>
+            <button onclick="runDiagnostics()" style="font-size:10px;padding:3px 10px;background:#1565c0;color:#fff;border:none;border-radius:3px;cursor:pointer">Scan</button>
+          </div>
+          <div id="diag-results" style="font-size:11px;color:#8a9bb5;padding:8px 0">Click Scan to check for G-code issues.</div>
+        </div>
       </div>
 
       <!-- Convert view -->
@@ -1372,6 +1413,37 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
                 Download File
               </button>
               <button class="btn-sec" onclick="doCopy()">Copy to Clipboard</button>
+            </div>
+          </div>
+
+          <!-- OPTIMIZER CARD -->
+          <div class="cv-card" style="border-color:rgba(76,175,80,0.3)">
+            <h3 style="color:#4caf50">✨ Clean &amp; Optimize</h3>
+            <div style="font-size:11px;color:var(--text3);line-height:1.7;margin-bottom:14px">
+              Reduce file size and fix common issues before export:<br>
+              removes comments &amp; whitespace · normalizes feed rates · strips redundant coordinates · re-indexes line numbers
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+              <label style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);cursor:pointer">
+                <input type="checkbox" id="opt-comments" checked style="accent-color:#4caf50"> Remove comments
+              </label>
+              <label style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);cursor:pointer">
+                <input type="checkbox" id="opt-redundant" checked style="accent-color:#4caf50"> Strip redundant coords
+              </label>
+              <label style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);cursor:pointer">
+                <input type="checkbox" id="opt-linenums" style="accent-color:#4caf50"> Re-index line numbers
+              </label>
+              <label style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);cursor:pointer">
+                <input type="checkbox" id="opt-normalize" checked style="accent-color:#4caf50"> Normalize feed rates
+              </label>
+            </div>
+            <div id="opt-result" style="font-size:11px;color:#4caf50;margin-bottom:10px;min-height:16px"></div>
+            <div style="display:flex;gap:8px">
+              <button class="btn-prim" onclick="doOptimize()" style="background:#4caf50;border-color:#4caf50">
+                <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Optimize &amp; Download
+              </button>
+              <button class="btn-sec" onclick="doOptimizeClipboard()">Optimize &amp; Copy</button>
             </div>
           </div>
 
@@ -1473,7 +1545,9 @@ canvas#c2d { display:none; position:absolute; top:0; left:0; width:100%; height:
       <div id="playbar">
         <button class="pb-btn" onclick="pbFirst()" title="First">⏮</button>
         <button class="pb-btn" onclick="pbBack()" title="−100 segs">⏪</button>
+        <button class="pb-btn" onclick="stepSeg(-1)" title="Step back 1 line (←)">‹</button>
         <button class="pb-btn on" id="pb-play" onclick="pbToggle()">▶</button>
+        <button class="pb-btn" onclick="stepSeg(+1)" title="Step forward 1 line (→)">›</button>
         <button class="pb-btn" onclick="pbFwd()" title="+100 segs">⏩</button>
         <button class="pb-btn" onclick="pbLast()" title="Last">⏭</button>
         <input type="range" id="pb-range" min="0" max="100" value="0"
@@ -1957,6 +2031,9 @@ function loadGcode(text, name, size) {
   sph={theta:0.8,phi:0.7,r:Math.max(80,span*1.6)};
   tgt={x:0,y:(data.maxZ||0)/2,z:0};
   applyCam();
+  // Re-apply camera after DOM settles (panel opening changes canvas width)
+  setTimeout(() => { resizeCvs(); applyCam(); }, 120);
+  setTimeout(() => { resizeCvs(); applyCam(); }, 400);
 
   // Playback
   el('pb-range').max=S.gcodeLines.length-1; el('pb-range').value=0;
@@ -2142,7 +2219,7 @@ function setView(v) {
     el('legend').style.display       = is3d?'block':'none';
     el('playbar').style.display      = is3d?'flex':'none';
   }
-  if(v==='3d') setTimeout(resizeCvs,30);
+  if(v==='3d') setTimeout(()=>{ resizeCvs(); applyCam(); },30);
   if(v==='2d') draw2D();
   if(v==='help') buildHelp();
 }
@@ -2309,6 +2386,7 @@ function toggleBedColor() {
 
 // ── CAMERA ──
 function resetCam() {
+  resizeCvs();
   if(S.parsed){ const d=S.parsed; const span=Math.max(d.maxX-d.minX,d.maxY-d.minY,d.maxZ||10)*1.5; sph={theta:0.8,phi:0.7,r:Math.max(80,span*1.6)}; tgt={x:0,y:(d.maxZ||0)/2,z:0}; }
   else { sph={theta:0.8,phi:0.7,r:300}; tgt={x:0,y:0,z:0}; }
   applyCam();
@@ -3134,10 +3212,20 @@ function showArticle(id) {
 }
 window.addEventListener('load', ()=>{
   initThree(); applyCam();
-  window.addEventListener('resize', ()=>{ resizeCvs(); if(S.view==='2d') draw2D(); });
+  window.addEventListener('resize', ()=>{ resizeCvs(); applyCam(); if(S.view==='2d') draw2D(); });
 });
 window.addEventListener('dragover', e=>e.preventDefault());
 window.addEventListener('drop', e=>{ e.preventDefault(); const f=e.dataTransfer.files[0]; if(f)processFile(f); });
 </script>
+<footer style="text-align:center;padding:14px 24px;font-size:11px;color:#8a9bb5;background:#0d1117;border-top:1px solid #1e2a3a;position:relative;z-index:10">
+  <a href="index.html" style="color:#90caf9;text-decoration:none">GCodex</a> ·
+  <a href="about.html" style="color:#90caf9;text-decoration:none">About</a> ·
+  <a href="faq.html" style="color:#90caf9;text-decoration:none">FAQ</a> ·
+  <a href="gcode-guide.html" style="color:#90caf9;text-decoration:none">G-Code Guide</a> ·
+  <a href="blog.html" style="color:#90caf9;text-decoration:none">Blog</a> ·
+  <a href="contact.html" style="color:#90caf9;text-decoration:none">Contact</a> ·
+  <a href="privacy-policy.html" style="color:#90caf9;text-decoration:none">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · <a href="mailto:biomedionics@gmail.com" style="color:#90caf9;text-decoration:none">biomedionics@gmail.com</a> · Free forever
+</footer>
 </body>
 </html>
