@@ -1,1 +1,49 @@
-{"name":"Gcode Viewer","short_name":"GcodeViewer","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#121218","background_color":"#121218","display":"standalone"}
+{
+  "name": "GCodex \u2014 Free G-Code Viewer & Simulator",
+  "short_name": "GCodex",
+  "description": "Free browser-based G-Code viewer, analyzer, simulator and editor. Works offline. No upload. No signup.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#1565c0",
+  "orientation": "any",
+  "categories": [
+    "productivity",
+    "utilities",
+    "developer tools"
+  ],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "label": "GCodex G-Code Viewer"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "G-Code Guide",
+      "url": "/gcode-guide.html",
+      "description": "Complete G-Code reference"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog.html",
+      "description": "G-Code, CNC and 3D printing guides"
+    }
+  ]
+}
