@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="fukXA59DNB6qRFuuy7sTsA" async></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embed GCodex Viewer — Add G-Code Visualization to Any Page</title>
+<meta name="description" content="Embed the GCodex interactive G-Code viewer on your website, GitHub README, Thingiverse page, or documentation. Free iframe widget — just paste a URL and copy the code.">
+<meta name="keywords" content="embed gcode viewer, gcode viewer iframe, embed gcode visualization, gcode widget website, interactive gcode embed">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gcodex.tech/embed.html">
+<link rel="icon" type="image/png" href="favicon-32x32.png">
+<meta name="theme-color" content="#1565c0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Embed GCodex Viewer","url":"https://gcodex.tech/embed.html","description":"Free embeddable G-Code viewer iframe widget for websites, GitHub, and documentation.","isPartOf":{"@type":"WebSite","name":"GCodex","url":"https://gcodex.tech"}}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ac:#1565c0;--alt:#e3f0ff;--panel:#fff;--border:#dde3ec;--tx:#1a2740;--t2:#4a5d78;--t3:#8a9bb5}
+html,body{font-family:'Inter',system-ui,sans-serif;background:#f5f7fa;color:var(--tx);font-size:14px;line-height:1.75}
+#topbar{height:44px;background:#1565c0;display:flex;align-items:center;border-bottom:2px solid #0d47a1;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+#logo{display:flex;align-items:center;gap:9px;padding:0 18px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;letter-spacing:-.3px;border-right:1px solid rgba(255,255,255,.15);height:100%;flex-shrink:0}
+#logo img{width:27px;height:27px;border-radius:5px}
+#logo em{font-style:normal;color:#90caf9}
+.nav-links{display:flex;align-items:center;gap:2px;padding:0 10px;flex:1}
+.nl{height:29px;padding:0 12px;border:1px solid transparent;border-radius:4px;color:rgba(255,255,255,.75);font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;transition:all .12s}
+.nl:hover{background:rgba(255,255,255,.12);color:#fff}
+.nl.active{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.3);color:#fff}
+.back-btn{margin-left:auto;margin-right:14px;height:29px;padding:0 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:4px;color:#fff;font-size:12px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.wrap{max-width:880px;margin:0 auto;padding:40px 24px 80px}
+.bc{font-size:11px;color:var(--t3);margin-bottom:20px}.bc a{color:var(--ac);text-decoration:none}
+h1{font-size:26px;font-weight:700;color:var(--tx);margin-bottom:8px;letter-spacing:-.4px}
+.sub{font-size:14px;color:var(--t2);margin-bottom:36px;line-height:1.7}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:28px;margin-bottom:24px}
+.card h2{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+label{display:block;font-size:12px;font-weight:600;color:var(--t2);margin-bottom:5px;margin-top:14px}
+input[type="text"],input[type="url"],select{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:5px;font-family:'Inter',sans-serif;font-size:13px;color:var(--tx);background:#fff;outline:none;transition:border-color .12s}
+input:focus,select:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(21,101,192,.08)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.row2{grid-template-columns:1fr}}
+.btn-gen{width:100%;margin-top:20px;padding:11px;background:var(--ac);color:#fff;border:none;border-radius:6px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background .12s}
+.btn-gen:hover{background:#1976d2}
+.code-box{background:#1a2740;border-radius:8px;padding:18px 20px;margin-top:16px;position:relative;overflow-x:auto}
+.code-box pre{color:#90caf9;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;white-space:pre-wrap;word-break:break-all}
+.copy-btn{position:absolute;top:10px;right:10px;padding:4px 12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:4px;color:#fff;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif}
+.copy-btn:hover{background:rgba(255,255,255,.2)}
+.preview-wrap{margin-top:20px}
+.preview-wrap h3{font-size:13px;font-weight:600;color:var(--t2);margin-bottom:10px}
+iframe#preview{width:100%;border:1px solid var(--border);border-radius:8px;background:#0d1117}
+.use-cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:16px}
+.uc{background:#f9fbff;border:1px solid var(--border);border-radius:7px;padding:14px 16px}
+.uc .icon{font-size:20px;margin-bottom:6px}
+.uc h4{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.uc p{font-size:11px;color:var(--t3);margin:0;line-height:1.5}
+footer{text-align:center;padding:18px 24px;font-size:11px;color:var(--t3);background:#f5f7fa;border-top:1px solid var(--border);margin-top:40px}
+footer a{color:var(--ac);text-decoration:none}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <a id="logo" href="index.html"><img src="android-chrome-192x192.png" alt="GCodex">G<em>Codex</em></a>
+  <nav class="nav-links">
+    <a href="index.html" class="nl">🔧 Viewer</a>
+    <a href="about.html" class="nl">About</a>
+    <a href="faq.html" class="nl">FAQ</a>
+    <a href="gcode-guide.html" class="nl">G-Code Guide</a>
+    <a href="blog.html" class="nl">Blog</a>
+    <a href="contact.html" class="nl">Contact</a>
+  </nav>
+  <a href="index.html" class="back-btn">← Open Viewer</a>
+</div>
+
+<div class="wrap">
+  <div class="bc"><a href="index.html">GCodex</a> › Embed Viewer</div>
+  <h1>Embed GCodex on Your Page</h1>
+  <p class="sub">Add a live, interactive G-Code viewer to any website, GitHub README, Thingiverse listing, Printables page, or documentation — for free. Paste a public G-Code file URL, generate the iframe code, and copy it anywhere.</p>
+
+  <div class="card">
+    <h2>⚙️ Configure Your Embed</h2>
+
+    <label>Public G-Code File URL <span style="color:#c62828">*</span></label>
+    <input type="url" id="fileUrl" placeholder="https://raw.githubusercontent.com/user/repo/main/file.gcode" oninput="generateCode()">
+    <div style="font-size:11px;color:var(--t3);margin-top:4px">Must be a publicly accessible URL (GitHub raw, direct link). CORS must allow access.</div>
+
+    <div class="row2">
+      <div>
+        <label>Width</label>
+        <input type="text" id="embedW" value="100%" oninput="generateCode()">
+      </div>
+      <div>
+        <label>Height (px)</label>
+        <input type="text" id="embedH" value="480" oninput="generateCode()">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div>
+        <label>Title / Label</label>
+        <input type="text" id="embedTitle" value="G-Code Viewer" oninput="generateCode()">
+      </div>
+      <div>
+        <label>Border Style</label>
+        <select id="embedBorder" onchange="generateCode()">
+          <option value="none">No border</option>
+          <option value="1px solid #dde3ec" selected>Subtle border</option>
+          <option value="2px solid #1565c0">Blue border</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-gen" onclick="generateCode()">Generate Embed Code</button>
+
+    <div class="code-box" id="code-output" style="display:none">
+      <pre id="code-text"></pre>
+      <button class="copy-btn" onclick="copyCode()">Copy</button>
+    </div>
+
+    <div class="preview-wrap" id="preview-wrap" style="display:none">
+      <h3>Live Preview</h3>
+      <iframe id="preview" scrolling="no" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📖 Where to Use It</h2>
+    <div class="use-cases">
+      <div class="uc"><div class="icon">📄</div><h4>GitHub README</h4><p>Show your CNC toolpath or 3D print G-Code visually in your project README</p></div>
+      <div class="uc"><div class="icon">🖨️</div><h4>Thingiverse / Printables</h4><p>Let visitors preview your model's G-Code before downloading</p></div>
+      <div class="uc"><div class="icon">📝</div><h4>Build Logs &amp; Blogs</h4><p>Embed interactive toolpath visualization in your engineering articles</p></div>
+      <div class="uc"><div class="icon">📚</div><h4>Documentation</h4><p>Illustrate G-Code tutorials with live, interactive examples</p></div>
+      <div class="uc"><div class="icon">🏫</div><h4>Education</h4><p>Embed sample toolpaths in course materials and lab guides</p></div>
+      <div class="uc"><div class="icon">🧬</div><h4>Research Papers</h4><p>Share bioprinting scaffold G-Code interactively in supplementary materials</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔗 Direct Shareable Link</h2>
+    <p style="font-size:13px;color:var(--t2);margin-bottom:12px">Share a GCodex link that automatically loads any publicly hosted G-Code file:</p>
+    <div class="code-box">
+      <pre>https://gcodex.tech/?url=https://raw.githubusercontent.com/USER/REPO/main/file.gcode</pre>
+      <button class="copy-btn" onclick="navigator.clipboard.writeText('https://gcodex.tech/?url=https://raw.githubusercontent.com/USER/REPO/main/file.gcode');this.textContent='Copied!'">Copy</button>
+    </div>
+    <p style="font-size:11px;color:var(--t3);margin-top:8px">Replace the URL after <code>?url=</code> with any public G-Code file URL. Works in GitHub READMEs, forum posts, Discord, and social media.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">GCodex</a> · <a href="about.html">About</a> · <a href="faq.html">FAQ</a> · <a href="gcode-guide.html">G-Code Guide</a> · <a href="blog.html">Blog</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
+  &nbsp;|&nbsp; © 2026 GCodex · biomedionics@gmail.com · Free forever
+</footer>
+
+<script>
+function generateCode() {
+  const url   = document.getElementById('fileUrl').value.trim();
+  const w     = document.getElementById('embedW').value.trim() || '100%';
+  const h     = document.getElementById('embedH').value.trim() || '480';
+  const title = document.getElementById('embedTitle').value.trim() || 'G-Code Viewer';
+  const bord  = document.getElementById('embedBorder').value;
+
+  const src = url ? `https://gcodex.tech/?url=${encodeURIComponent(url)}` : 'https://gcodex.tech/';
+  const borderStyle = bord !== 'none' ? ` style="border:${bord};border-radius:8px;"` : '';
+
+  const code = `<!-- GCodex Interactive G-Code Viewer -->
+<iframe
+  src="${src}"
+  width="${w}"
+  height="${h}"
+  title="${title}"
+  frameborder="0"
+  allowfullscreen
+  loading="lazy"${borderStyle}>
+</iframe>
+<p><small>Powered by <a href="https://gcodex.tech" target="_blank">GCodex</a> — Free Online G-Code Viewer</small></p>`;
+
+  document.getElementById('code-text').textContent = code;
+  document.getElementById('code-output').style.display = 'block';
+
+  // Preview
+  const pv = document.getElementById('preview');
+  pv.src = src;
+  pv.style.height = Math.min(parseInt(h)||480, 500) + 'px';
+  document.getElementById('preview-wrap').style.display = url ? 'block' : 'none';
+}
+
+function copyCode() {
+  const code = document.getElementById('code-text').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+
+generateCode();
+</script>
+</body>
+</html>
